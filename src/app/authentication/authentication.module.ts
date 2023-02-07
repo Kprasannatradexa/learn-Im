@@ -3,10 +3,13 @@ import { CommonModule } from '@angular/common';
 
 import { AuthenticationRoutingModule } from './authentication-routing.module';
 import { SharedModule } from '../shared/shared.module';
+import { AuthenticationContainerComponent } from './components/authentication-container/authentication-container.component';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    AuthenticationContainerComponent
+  ],
   imports: [
     CommonModule,
     AuthenticationRoutingModule,
