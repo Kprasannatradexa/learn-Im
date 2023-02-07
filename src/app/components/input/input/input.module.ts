@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { InputComponent } from './input.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 
@@ -9,7 +10,11 @@ import { InputComponent } from './input.component';
     InputComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    SharedModule
+  ],
+  exports: [
+    InputComponent
   ]
 })
 export class InputModule { }
