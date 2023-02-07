@@ -1,0 +1,99 @@
+// Backgrounds
+
+$background-1: var(--ThemeColor);
+/*primary color for background*/
+$background-ssr-1: var(--theme-color);
+/*primary color for background*/
+$accent-background: var(--ThemeAccentVariant);
+/*primary color for background*/
+$background-2: #7d7d7d;
+$background-3: #ffffff;
+$background-4: #eeeeee;
+$background-5: #f5f8fa;
+$background-6: #aa385a;
+$background-7: #f9f9f9;
+$background-8: #262e2e;
+$background-9: #f5f8fa;
+$background-10: rgba(43, 179, 179, 0.1);
+$background-11: #f4f4f3;
+$background-12: #d3ebfb;
+$background-13: #bce0f7;
+$background-14: #2bb3b3;
+$background-15: #00bda5;
+$background-16: #000000;
+$background-17: #dddddd;
+$background-18: #e9e9e9;
+$background-19: #cccccc;
+
+// text colors
+$color-1: var(--ThemeTextVariant);
+$color-2: #7d7d7d;
+$color-3: #141414;
+$color-4: var(--ThemeTextColor);
+/*primary color for text*/
+$color-5: #ffffff;
+$color-6: #aa385a;
+/*primary color for hover text*/
+$color-7: #e4e4e4;
+$color-8: #1c7eeb;
+$color-9: #2bb3b3;
+$color-10: #f15a15;
+$color-11: #888888;
+$color-12: #ef3333;
+$color-13: #4caf50;
+$color-14: #000000;
+$color-15: #dddddd;
+$color-16: #787878;
+$color-17: #666666;
+$color-18: #6a82fb;
+$color-19: #fc5c7d;
+$color-20: #cccccc;
+
+// borders
+$border-color-1: #cccccc;
+$border-color-2: #7d7d7d;
+$border-color-3: #ffffff;
+$border-color-4: #141414;
+$border-color-5: #262e2e;
+$border-color-6: #d4d3d3;
+$border-color-7: var(--ThemeBorderColor);
+/*primary color for border*/
+$border-color-8: #aa385a;
+$border-color-9: #dddddd;
+$border-color-10: #1c7eeb;
+$border-color-11: #2bb3b3;
+$border-color-12: #f15a15;
+$border-color-13: rgba(38, 46, 46, 0.1);
+$border-color-14: #eeeeee;
+$border-color-15: #e5e5e5;
+$border-color-16: #000000;
+$border-color-17: #c8102e;
+$border-color-18: #8e8e8e;
+$border-color-19: #787878;
+$border-color-20: #d0d0d0;
+
+//error/$danger
+$error: #ff0000;
+$danger: #c8102e;
+$confirmed: #2bb3b3;
+$processing: #fbb040;
+$completed: #4caf50;
+$cancelled: #d32f2f;
+$onhold: #d32f2f;
+$initiated: #2bb3b3;
+$success-theme-color: var(--ThemeSuccessVariant);
+
+$box-shadow-1: 0px 4px 4px rgba(0, 0, 0, 0.25);
+$box-shadow-2: 0 0px 6px 0px #dddddd;
+
+// font-family variables
+$gotham-bold: gotham bold;
+
+$gotham-light: gotham book;
+
+$gotham-medium: gotham medium;
+
+$font-weight-300: 300;
+$font-weight-400: 400;
+$font-weight-500: 500;
+$font-weight-600: 600;
