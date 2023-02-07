@@ -1,0 +1,144 @@
+@import 'src/assets/scss/partials/variables';
+
+.input-wrapper {
+    width: 100%;
+    margin-bottom: 14px;
+
+    label {
+        font-family: $gotham-light;
+        letter-spacing: -0.1px;
+        font-size: 0.875rem;
+        text-align: left;
+        width: auto;
+        font-weight: 600;
+        display: block;
+        padding: 0 20px 10px 0px;
+        margin: 0;
+    }
+
+    input[type='text'],
+    input[type='password'],
+    input[type='date'] {
+        position: relative;
+        font-family: $gotham-light;
+        background-color: $background-4;
+        outline-style: none;
+        font-weight: 400;
+        text-align: left;
+        width: 100%;
+        min-width: 96%;
+        border: none;
+        border-radius: 0px;
+        padding-left: 14px;
+        height: 36px;
+        line-height: 33px;
+        font-size: 0.875rem;
+        margin: 0;
+        vertical-align: baseline;
+    }
+
+    .border-none {
+        border: none;
+    }
+
+    .asterisk {
+        color: $color-1;
+    }
+
+    .secondary-background {
+        background-color: $background-3  !important;
+    }
+
+    .input-container {
+        position: relative;
+
+        .password-input-padding {
+            padding-right: 75px;
+        }
+    }
+
+    .error-msg {
+        font-size: 0.75rem;
+        color: $danger;
+        margin: 5px 0px 0px;
+    }
+
+    %icon-shared {
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        background: $background-3;
+        height: 30px;
+        width: 30px;
+        transform: translate(-50%, -50%);
+        border-radius: 4px;
+        border: 1px solid $border-color-1;
+    }
+
+    .eye-icon {
+        padding: 5px;
+        right: -8px;
+        @extend %icon-shared;
+    }
+
+    .eye-icon-placement {
+        right: 26px;
+    }
+
+    .password-info-icon {
+        padding: 8px;
+        @extend %icon-shared;
+        right: -8px;
+    }
+}
+
+.error-msg p {
+    margin: 0;
+    padding: 0;
+}
+
+.error-state input {
+    border: 1px solid $danger  !important;
+}
+
+.error-state label {
+    color: $danger  !important;
+}
+
+.error-state .asterisk {
+    color: $danger  !important;
+}
+
+.error-password-info-icon {
+    cursor: pointer;
+    width: 12px;
+    height: 12px;
+    margin-left: 5px;
+}
+
+input[type='date']::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: auto;
+    height: auto;
+    color: transparent;
+    background: transparent;
+}
+
+/* adjust increase/decrease button */
+input[type='date']::-webkit-inner-spin-button {
+    z-index: 1;
+}
+
+/* adjust clear button */
+input[type='date']::-webkit-clear-button {
+    z-index: 1;
+}
+
+input::-webkit-date-and-time-value {
+    text-align: left;
+}
