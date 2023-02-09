@@ -12,6 +12,6 @@ export class ButtonLgComponent {
   @Input() isSecondaryBtnStyle: boolean = false;
 
 
-  @Output() buttonClicked = new EventEmitter();
+  @Output() buttonClicked = new EventEmitter<boolean>();
 
 }
