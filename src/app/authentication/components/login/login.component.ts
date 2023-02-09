@@ -10,7 +10,7 @@ import { CustomValidators } from 'src/app/core/constants/validator';
 export class LoginComponent implements OnInit {
 
   loginForm = this.fb.group({
-    login_credential: ['', [CustomValidators.required, CustomValidators.required]],
+    login_credential: ['', [CustomValidators.required, CustomValidators.email]],
     password: ['', [CustomValidators.required]]
   })
 
