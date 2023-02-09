@@ -10,7 +10,7 @@
         font-size: 0.875rem;
         text-align: left;
         width: auto;
-        font-weight: 600;
+        font-weight: 400;
         display: block;
         padding: 0 20px 10px 0px;
         margin: 0;
@@ -21,16 +21,16 @@
     input[type='date'] {
         position: relative;
         font-family: $gotham-light;
-        background-color: $background-4;
+        // background-color: $background-4;
         outline-style: none;
         font-weight: 400;
         text-align: left;
         width: 100%;
         min-width: 96%;
-        border: none;
+        border: 1px solid #00000066;
         border-radius: 0px;
         padding-left: 14px;
-        height: 36px;
+        height: 40px;
         line-height: 33px;
         font-size: 0.875rem;
         margin: 0;
