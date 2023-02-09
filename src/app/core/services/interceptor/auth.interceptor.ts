@@ -38,8 +38,8 @@ export class AuthInterceptor implements HttpInterceptor {
         modifiedRequest = request.clone({
           headers: new HttpHeaders({
             'Content-Type': 'application/json',
-            clientid: this.clientId,
-            clientsecret: this.clientSecret
+            clientid: 'Q2zyGhLcTi7Z5K4lGCLoxlgE4fBAGkLHqhL9Qxk1',
+            clientsecret: 'pbkdf2_sha256$390000$ePFTZbXwuIhXF3LUcct8wO$mOEqw+mfb7PYurBSBnCY+RWDDHkUHUp0l7AY/TvNU00='
           })
         })
         return next.handle(modifiedRequest)
