@@ -7,6 +7,7 @@ import { AuthenticationContainerComponent } from './components/authentication-co
 import { LoginComponent } from './components/login/login.component';
 import { InputModule } from '../components/input/input/input.module';
 import { RegistrationComponent } from './components/registration/registration.component';
+import { ButtonLgModule } from '../components/button-lg/button-lg.module';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { RegistrationComponent } from './components/registration/registration.co
     CommonModule,
     AuthenticationRoutingModule,
     SharedModule,
-    InputModule
+    InputModule,
+    ButtonLgModule
   ]
 })
 export class AuthenticationModule { }
