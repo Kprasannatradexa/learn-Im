@@ -1,1 +1,19 @@
-<p>login works!</p>
+<div class="form-section container">
+  <form [formGroup]="loginForm">
+    <app-input
+      [type]="'text'"
+      [label]="'Email'"
+      [control]="loginForm.get('login_credential')"
+      [errorMessages]="{
+        required: 'Email is required',
+        email: 'Enter a valid email address'
+      }"
+    ></app-input>
+    <app-input
+      type="password"
+      label="Password"
+      [control]="loginForm.get('password')"
+      [errorMessages]="{ required: 'Password is Required' }"
+    ></app-input>
+  </form>
+</div>
