@@ -16,7 +16,6 @@ export interface Environment {
 export class EnvironmentService {
 
   readonly baseUrl = environment.baseUrl;
-  readonly backendBaseUrl = environment.backendBaseUrl;
 
   private _environment = new BehaviorSubject<Environment | null>(null);
   environment$ = this._environment.asObservable().pipe(filter(environment => !!environment));
