@@ -1,0 +1,146 @@
+@import './variables.scss';
+
+%hover-transition-shared {
+    transition: all 0.15s ease;
+    -webkit-transition: all 0.15s ease-in-out;
+    -o-transition: all 0.15s ease-in-out;
+    transition: all 0.15s ease-in-out;
+}
+
+// animations
+.slide-in {
+    animation: slide-in 0.5s forwards;
+    -webkit-animation: slide-in 0.5s forwards;
+}
+
+.slide-out {
+    animation: slide-out 0.5s forwards;
+    -webkit-animation: slide-out 0.5s forwards;
+}
+
+@keyframes slide-in {
+    100% {
+        transform: translateX(0%);
+    }
+}
+
+@-webkit-keyframes slide-in {
+    100% {
+        -webkit-transform: translateX(0%);
+    }
+}
+
+@keyframes slide-out {
+    0% {
+        transform: translateX(0%);
+    }
+
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+@-webkit-keyframes slide-out {
+    0% {
+        -webkit-transform: translateX(0%);
+    }
+
+    100% {
+        -webkit-transform: translateX(-100%);
+    }
+}
+
+.text-shimmer {
+    color: rgba(255, 255, 255, 0.1);
+    background: -webkit-gradient(linear,
+            left top,
+            right top,
+            from(#222),
+            to(#222),
+            color-stop(0.5, $completed));
+    background: -moz-gradient(linear,
+            left top,
+            right top,
+            from(#222),
+            to(#222),
+            color-stop(0.5, $completed));
+    background: gradient(linear,
+            left top,
+            right top,
+            from(#222),
+            to(#222),
+            color-stop(0.5, $completed));
+    -webkit-background-size: 125px 100%;
+    -moz-background-size: 125px 100%;
+    background-size: 125px 100%;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    -webkit-animation-name: text-shimmer;
+    -moz-animation-name: text-shimmer;
+    animation-name: text-shimmer;
+    -webkit-animation-duration: 2s;
+    -moz-animation-duration: 2s;
+    animation-duration: 2s;
+    -webkit-animation-iteration-count: infinite;
+    -moz-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    background-color: #222;
+}
+
+@-moz-keyframes text-shimmer {
+    0% {
+        background-position: top left;
+    }
+
+    100% {
+        background-position: top right;
+    }
+}
+
+@-webkit-keyframes text-shimmer {
+    0% {
+        background-position: top left;
+    }
+
+    100% {
+        background-position: top right;
+    }
+}
+
+@-o-keyframes text-shimmer {
+    0% {
+        background-position: top left;
+    }
+
+    100% {
+        background-position: top right;
+    }
+}
+
+@keyframes text-shimmer {
+    0% {
+        background-position: top left;
+    }
+
+    100% {
+        background-position: top right;
+    }
+}
+
+/* Ripple effect */
+// .ripple {
+//   background-position: center;
+//   transition: background 0.4s;
+// }
+// .ripple:hover {
+//   background: rgba(0, 0, 0, 0.2)
+//     radial-gradient(circle, transparent 1%, rgba(0, 0, 0, 0.2) 1%) center/15000%;
+// }
+// .ripple:active {
+//   background-color: $background-1;
+//   background-size: 100%;
+//   transition: background 0.2s;
+// }
