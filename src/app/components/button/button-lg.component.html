@@ -1,0 +1,17 @@
+<div class="button-wrapper">
+  <button
+    class="ripple"
+    (click)="buttonClicked.next(true)"
+    [disabled]="loading || disabled"
+    [class.btn-disabled]="loading || disabled"
+    type="button"
+    [class.secondary-btn-style]="isSecondaryBtnStyle"
+  >
+    <ng-container *ngIf="!loading; else isLoading">
+      <ng-content></ng-content>
+    </ng-container>
+    <ng-template #isLoading>
+      <app-spinner></app-spinner>
+    </ng-template>
+  </button>
+</div>
