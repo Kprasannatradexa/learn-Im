@@ -1,31 +1,55 @@
 <div class="registration-section">
-  <form [formGroup]="registrationForm">
-    <app-input
-      [type]="'text'"
-      [label]="'Name'"
-      [control]="registrationForm.get('user_name')"
-      [errorMessages]="{ required: 'Name is required' }"
-    >
-    </app-input>
-    <app-input
-      [type]="'text'"
-      [label]="'Email'"
-      [control]="registrationForm.get('email')"
-      [errorMessages]="{
-        required: 'Email is required',
-        email: 'Enter a valid email address.'
-      }"
-    >
-    </app-input>
-    <app-input
-      [type]="'password'"
-      [label]="'Password'"
-      [control]="registrationForm.get('password')"
-      [errorMessages]="{
-        required: 'Password is required',
-        password: 'Enter a valid password.'
-      }"
-    >
-    </app-input>
-  </form>
+  <div class="main-container">
+    <div class="col-12 col-sm-12 col-md-7 col-lg-4 col-xl-4 m-auto">
+      <div class="form-heading">
+        <h2>Sign Up</h2>
+        <p class="form-caption">
+          Get started with an account in Learn.Imaginext
+        </p>
+      </div>
+      <form [formGroup]="registrationForm">
+        <app-input
+          [label]="'Name'"
+          [control]="registrationForm.get('user_name')"
+          [errorMessages]="{ required: 'Name is required' }"
+        >
+        </app-input>
+        <app-input
+          [label]="'Email'"
+          [control]="registrationForm.get('email')"
+          [errorMessages]="{
+            required: 'Email is required',
+            email: 'Enter a valid email address.'
+          }"
+        >
+        </app-input>
+        <app-input
+          [label]="'Contact'"
+          [control]="registrationForm.get('mobile_number')"
+          [errorMessages]="{
+            required: 'Mobile Number Required',
+            phone: 'Invalid Phone number',
+            pattern: 'Invalid number, Only 10 digits allowed'
+          }"
+        >
+        </app-input>
+
+        <app-input
+          [type]="'password'"
+          [label]="'Password'"
+          [control]="registrationForm.get('password')"
+          [errorMessages]="{
+            required: 'Password is required',
+            password: 'Enter a valid password.'
+          }"
+        >
+        </app-input>
+        <div class="row">
+          <div class="col-12 p-0 mt-30">
+            <app-button-lg (buttonClicked)="register()">Verify</app-button-lg>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
 </div>
