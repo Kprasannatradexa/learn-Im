@@ -4,6 +4,12 @@ import { AbstractControl, Validators } from "@angular/forms";
 export const EMAIL_PATTERN = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 export const PHONE_PATTERN = /^[1-9]{1}[0-9]{9}$/;
 export const OTP_PATTERN = /^\d{6}$/;
+export const PASSWORD_RANGE_PATTERN = /^\S{8,20}$/;
+export const MIN_ONE_LOWER = /(?=.*[a-z])/;
+export const MIN_ONE_UPPER = /(?=.*[A-Z])/;
+export const MIN_ONE_DIGIT = /(?=.*\d)/;
+export const MIN_ONE_SPECIAL = /[-+_!@#$%^&*.,?]/;
+export const NUMBER = /^[-+]?[0-9]*\.?[0-9]+$/;
 
 export class CustomValidators {
     static required = Validators.compose([
@@ -40,6 +46,16 @@ export class CustomValidators {
 
         if (!(validPhone || validEmail)) {
             return { credential: true }
+        } else {
+            return null;
+        }
+    }
+
+    static password(c: AbstractControl): { [key: string]: any } | null {
+        const password = c.value + '';
+
+        if (!(PASSWORD_RANGE_PATTERN.test(password) && MIN_ONE_LOWER.test(password) && MIN_ONE_UPPER.test(password) && MIN_ONE_DIGIT.test(password) && MIN_ONE_SPECIAL.test(password))) {
+            return { password: true }
         } else {
             return null;
         }
