@@ -3,14 +3,12 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const ENVIRONMENT_CONSTANTS = {
-  baseUrl: 'https://devapi.hyperinvento.com/v1',
-  backendBaseUrl: 'https://devapi.hyperinvento.com'
+  baseUrl: 'https://a8292ew53l.execute-api.ap-south-1.amazonaws.com/dev/v1',
 }
 
 export const environment = {
   production: false,
   baseUrl: `${ENVIRONMENT_CONSTANTS.baseUrl}`,
-  backendBaseUrl: `${ENVIRONMENT_CONSTANTS.backendBaseUrl}`,
 };
 
 /*
