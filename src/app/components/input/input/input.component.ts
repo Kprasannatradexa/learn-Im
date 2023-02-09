@@ -11,8 +11,8 @@ export class InputComponent {
 
   IMAGE_URLS = IMAGE_URLS
 
-  @Input() type: string = '';
-  @Input() label: string = '';
+  @Input() type = 'text';
+  @Input() label!: string;
   @Input() placeholder: string = '';
   @Input() control: any;
   @Input() errorMessages: any;
@@ -25,7 +25,7 @@ export class InputComponent {
 
 
   // @Output() keyDown = new EventEmitter();
-  // @Output() infoToggle$ = new EventEmitter();
+  // @Output() infoToggle = new EventEmitter();
 
 
   public maskedPassword: boolean = false;
