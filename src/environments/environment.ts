@@ -2,8 +2,15 @@
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+export const ENVIRONMENT_CONSTANTS = {
+  baseUrl: 'https://devapi.hyperinvento.com/v1',
+  backendBaseUrl: 'https://devapi.hyperinvento.com'
+}
+
 export const environment = {
-  production: false
+  production: false,
+  baseUrl: `${ENVIRONMENT_CONSTANTS.baseUrl}`,
+  backendBaseUrl: `${ENVIRONMENT_CONSTANTS.backendBaseUrl}`,
 };
 
 /*
