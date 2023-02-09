@@ -1,6 +1,5 @@
-import { Component, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { IMAGE_URLS } from 'src/app/core/constants/image-source';
-import { EventEmitter } from 'stream';
 
 @Component({
   selector: 'app-input',
@@ -24,8 +23,7 @@ export class InputComponent {
   @Input() passwordInfo: boolean = false;
 
 
-  // @Output() keyDown = new EventEmitter();
-  // @Output() infoToggle = new EventEmitter();
+  @Output() infoToggle$ = new EventEmitter<boolean>();
 
 
   public maskedPassword: boolean = false;

@@ -29,12 +29,12 @@
     />
 
     <!-- password info -->
-    <!-- <img
+    <img
       src="https://assets.hyperinvento.com/www_imaginext_com/assets/imaginext-assets/images/info-circle-grey.svg"
       *ngIf="passwordInfo"
       class="password-info-icon"
-      (click)="infoToggle$.next()"
-    /> -->
+      (click)="infoToggle$.next(true)"
+    />
   </div>
 
   <!-- error message -->
@@ -44,11 +44,11 @@
   >
     <p>{{ errorMessage }}</p>
 
-    <!-- <img
+    <img
       src="https://assets.hyperinvento.com/www_imaginext_com/assets/imaginext-assets/images/info-circle-danger.svg"
       *ngIf="passwordInfo"
       class="error-password-info-icon"
-      (click)="infoToggle$.next()"
-    /> -->
+      (click)="infoToggle$.next(true)"
+    />
   </div>
 </div>
