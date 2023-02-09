@@ -1,1 +1,178 @@
-/* You can add global styles to this file, and also import other style files */
+/* Global styles */
+@import "./assets/scss/partials/variables";
+
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    color: $color-1;
+    font-family: $gotham-light  !important;
+}
+
+a {
+    cursor: pointer;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none !important;
+}
+
+*:focus {
+    outline: 0 !important;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+}
+
+p {
+    margin: 0;
+}
+
+button {
+    outline: none;
+}
+
+.main-container .row {
+    width: 100%;
+    max-width: 1272px;
+    margin: 0 auto;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.full-height {
+    height: 100%;
+}
+
+.clickable {
+    cursor: pointer;
+}
+
+.position-relative {
+    position: relative;
+}
+
+.radio-label {
+    font-family: $gotham-light;
+    font-size: 0.875rem;
+    font-weight: 600;
+    padding: 0 0 10px;
+}
+
+.font-weight-300 {
+    font-weight: 400;
+}
+
+.font-weight-400 {
+    font-weight: 400;
+}
+
+.font-weight-500 {
+    font-weight: 600;
+}
+
+.font-weight-600 {
+    font-weight: 600;
+}
+
+.error-state-msg {
+    font-size: 0.875rem;
+    color: $danger;
+    margin: 0px 0px 10px;
+}
+
+.cdk-overlay-pane {
+    z-index: 1000;
+    display: unset !important;
+    width: 100%;
+    margin: 60px;
+}
+
+textarea,
+input[type="text"],
+input[type="button"],
+input[type="submit"] {
+    -webkit-appearance: none;
+    border-radius: 0;
+}
+
+.owl-carousel {
+    z-index: 0 !important;
+}
+
+.otp-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+// .router-link {
+//     color: $color-1;
+//     @extend %hover-transition-shared;
+// }
+
+.router-link:hover {
+    color: $color-2;
+}
+
+.max-width-unset {
+    max-width: unset !important;
+}
+
+.success-notification {
+    background-color: $background-1  !important;
+}
+
+.simple-notification-wrapper {
+    top: 70px !important;
+    z-index: 1031 !important;
+}
+
+.wrapper-container {
+    h2 {
+        font-size: 1.375rem;
+        text-transform: uppercase;
+        margin: 0px 0px 30px;
+        letter-spacing: 0.5px;
+    }
+}
+
+.color-success {
+    color: $color-13;
+}
+
+.row {
+    padding: 0;
+}
+
+// All Mobile screens
+// @media (min-width: 275px) and (max-width: 767px) {
+//     .cdk-overlay-pane {
+//         margin: 15px;
+//     }
+// }
+
+@media (min-width: 1024px) {
+    .sticky-content {
+        position: -webkit-sticky;
+        position: sticky;
+    }
+}
