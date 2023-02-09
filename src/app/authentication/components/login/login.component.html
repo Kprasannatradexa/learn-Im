@@ -1,7 +1,9 @@
 <div class="form-section container">
-  <div class="row">
-    <div class="col-md-6 col-lg-6 col-sm-12 justify-content">
-      <form [formGroup]="loginForm">
+  <form [formGroup]="loginForm">
+    <div class="row">
+      <div
+        class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-7 p-0 order-1 order-sm-1 order-md-1 order-lg-2 order-xl-2"
+      >
         <h1>Let's Sign You in</h1>
         <app-input
           [type]="'text'"
@@ -18,7 +20,7 @@
           [control]="loginForm.get('password')"
           [errorMessages]="{ required: 'Password is Required' }"
         ></app-input>
-      </form>
+      </div>
     </div>
-  </div>
+  </form>
 </div>
