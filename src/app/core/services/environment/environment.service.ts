@@ -4,9 +4,9 @@ import { environment } from 'src/environments/environment';
 
 
 export interface Environment {
-  clientId: string;
-  clientSecret: string;
-  url: string
+  client_id: string;
+  client_secret: string;
+  url?: string
 }
 
 @Injectable({
