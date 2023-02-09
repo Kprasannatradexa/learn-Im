@@ -1,0 +1,61 @@
+@import 'src/assets/scss/partials/variables';
+
+.login-section {
+    margin: 40px auto 40px;
+    padding: 20px;
+
+    .login-card {
+        padding: 20px;
+        // background: $background-9;
+        position: relative;
+
+        .login-card-title {
+            display: flex;
+            align-items: center;
+
+            h2 {
+                font-size: 1.25rem;
+                font-weight: 600;
+                margin: 0;
+            }
+
+            .left-arrow-icon {
+                margin-right: 12px;
+                cursor: pointer;
+                width: 20px;
+            }
+        }
+
+        p {
+            margin: 14px 0px;
+            font-weight: 400;
+            letter-spacing: -0.1px;
+            font-size: 0.875rem;
+        }
+
+        .form-link {
+            cursor: pointer;
+            font-size: 0.875rem;
+            color: $color-2;
+            display: block;
+            margin: 10px 0px 0px;
+            // @extend %hover-transition-shared;
+        }
+
+        .form-link:hover {
+            color: $color-1;
+        }
+
+        .checkbox-title {
+            font-weight: 400;
+            letter-spacing: -0.1px;
+            font-size: 0.875rem;
+            margin: 0;
+        }
+    }
+}
+
+// .login-section>form>.row {
+//     border: 1px solid #ccc;
+//     border-radius: 4px;
+// }

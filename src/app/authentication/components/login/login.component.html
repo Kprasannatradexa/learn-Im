@@ -1,26 +1,41 @@
-<div class="form-section container">
-  <form [formGroup]="loginForm">
-    <div class="row">
-      <div
-        class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-7 p-0 order-1 order-sm-1 order-md-1 order-lg-2 order-xl-2"
-      >
-        <h1>Let's Sign You in</h1>
-        <app-input
-          [type]="'text'"
-          [label]="'Email'"
-          [control]="loginForm.get('login_credential')"
-          [errorMessages]="{
-            required: 'Email is required',
-            email: 'Enter a valid email address'
-          }"
-        ></app-input>
-        <app-input
-          type="password"
-          label="Password"
-          [control]="loginForm.get('password')"
-          [errorMessages]="{ required: 'Password is Required' }"
-        ></app-input>
+<div class="main-container">
+  <div class="login-section container">
+    <form [formGroup]="loginForm">
+      <div class="row">
+        <div
+          class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-7 p-0 order-1 order-sm-1 order-md-1 order-lg-2 order-xl-2"
+        >
+          <div class="login-card">
+            <div class="login-card-title">
+              <img
+                [routerLink]="['../login-otp']"
+                [queryParamsHandling]="'preserve'"
+                [src]="IMAGE_URLS.arrowLeftIcon"
+                class="left-arrow-icon"
+              />
+              <h2>Let's Sign You in</h2>
+            </div>
+            <app-input
+              [type]="'text'"
+              [label]="'Email'"
+              [control]="loginForm.get('login_credential')"
+              [errorMessages]="{
+                required: 'Email is required',
+                email: 'Enter a valid email address'
+              }"
+            ></app-input>
+            <app-input
+              type="password"
+              label="Password"
+              [control]="loginForm.get('password')"
+              [errorMessages]="{
+                required: 'Password is required',
+                password: 'Enter a valid password.'
+              }"
+            ></app-input>
+          </div>
+        </div>
       </div>
-    </div>
-  </form>
+    </form>
+  </div>
 </div>
