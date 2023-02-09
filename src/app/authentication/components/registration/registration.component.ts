@@ -1,23 +1,72 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { ReplaySubject, takeUntil } from 'rxjs';
+import { IMAGE_URLS } from 'src/app/core/constants/image-source';
 import { CustomValidators } from 'src/app/core/constants/validator';
+import { AuthenticationRepositoryService } from '../../services/authentication-repository.service';
 
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
   styleUrls: ['./registration.component.scss']
 })
-export class RegistrationComponent implements OnInit {
+export class RegistrationComponent implements OnInit, OnDestroy {
+
+  IMAGE_URLS = IMAGE_URLS;
 
   registrationForm = this.fb.group({
     user_name: ['', [CustomValidators.required]],
     email: ['', [CustomValidators.required, CustomValidators.email]],
+    mobile_number: ['', [CustomValidators.required, CustomValidators.phone]],
     password: ['', [CustomValidators.required, CustomValidators.password]],
   })
 
-  constructor(private fb: FormBuilder) { }
+  private destroyed$: ReplaySubject<boolean> = new ReplaySubject(1);
+
+  constructor(private fb: FormBuilder,
+    private authenticationRepositoryService: AuthenticationRepositoryService) { }
 
   ngOnInit(): void {
+  }
+
+  register() {
+    this.registrationForm.markAllAsTouched();
+    if (this.registrationForm.valid) {
+      const { user_name, email, password } = this.registrationForm.getRawValue();
+
+      const userName = user_name.split(' ');
+
+      const first_name = userName[0];
+      const last_name = userName[1];
+
+      const requestObj = {
+        first_name,
+        ...(last_name && {
+          last_name
+        }),
+        email,
+        password
+      }
+
+      this.authenticationRepositoryService.register(requestObj).pipe(
+        takeUntil(this.destroyed$)
+      ).subscribe({
+        next: (response) => {
+          console.log(response);
+          console.log("You are registered now");
+        },
+        error: (error) => {
+          console.log(error);
+        }
+      })
+
+    }
+  }
+
+
+  ngOnDestroy(): void {
+    this.destroyed$.next(true);
+    this.destroyed$.complete();
   }
 
 }
