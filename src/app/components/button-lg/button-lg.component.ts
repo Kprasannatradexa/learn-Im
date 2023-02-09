@@ -1,15 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-button-lg',
   templateUrl: './button-lg.component.html',
   styleUrls: ['./button-lg.component.scss']
 })
-export class ButtonLgComponent implements OnInit {
+export class ButtonLgComponent {
 
-  constructor() { }
+  @Input() loading: boolean = false;
+  @Input() disabled: boolean = false;
+  @Input() isSecondaryBtnStyle: boolean = false;
 
-  ngOnInit(): void {
-  }
+
+  @Output() buttonClicked = new EventEmitter();
 
 }
