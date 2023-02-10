@@ -49,5 +49,29 @@ export class ForgotPasswordComponent {
 
   }
 
+  verifyOtp() {
+
+    this.otp.markAllAsTouched();
+
+    if (this.otp.valid) {
+      this.authenticationRepositoryService.verifyOtp({ otp: this.otp.value }).pipe(
+        takeUntil(this.destroyed$)
+      ).subscribe({
+        next: ((response) => {
+          if (response?.access_token) {
+            console.log('OTP verified');
+          }
+        }),
+        error: ((error) => {
+          console.log(error);
+        })
+      })
+    }
+
+  }
+
+
+
+
 
 }
