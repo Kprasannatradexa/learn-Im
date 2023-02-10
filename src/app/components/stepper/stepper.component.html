@@ -1,1 +1,15 @@
-<p>stepper works!</p>
+<div class="stepper-container" [class.child-stepper]="isChild">
+  <div class="stepper-menu item-common left-bg-color">
+    <!-- Stepper Iterator -->
+    <div class="stepper-links">
+      <p *ngIf="heading" class="white-text display-13 mb-58">
+        {{ heading | titlecase }}
+      </p>
+    </div>
+  </div>
+
+  <!-- Current Step View -->
+  <div #formsView class="right-section item-common">
+    <ng-container [ngTemplateOutlet]="selected?.content ?? null"></ng-container>
+  </div>
+</div>

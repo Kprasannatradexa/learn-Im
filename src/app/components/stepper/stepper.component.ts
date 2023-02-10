@@ -1,15 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { CdkStepper } from '@angular/cdk/stepper';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { ReplaySubject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-stepper',
   templateUrl: './stepper.component.html',
   styleUrls: ['./stepper.component.scss']
 })
-export class StepperComponent implements OnInit {
+export class StepperComponent extends CdkStepper {
 
-  constructor() { }
+  @ViewChild('formsView', { read: ElementRef }) formsView!: ElementRef;
+  @Input() activeClass = 'active';
+  @Input() heading!: string;
+  @Input() isChild = false;
 
-  ngOnInit(): void {
-  }
 
 }
