@@ -46,7 +46,6 @@ export class ForgotPasswordComponent {
         })
       })
     }
-
   }
 
   verifyOtp() {
@@ -67,7 +66,26 @@ export class ForgotPasswordComponent {
         })
       })
     }
+  }
 
+  resendOtp() {
+
+    const currentCredential = this.authenticationRepositoryService.currentLoginCredentials;
+
+    if (!currentCredential) {
+      console.log('Otp cannot be sent');
+    }
+
+    this.authenticationRepositoryService.sendOtp({ otp: currentCredential }).pipe(
+      takeUntil(this.destroyed$)
+    ).subscribe({
+      next: ((success) => {
+        console.log('OTP sent');
+      }),
+      error: ((error) => {
+        console.log(error);
+      })
+    })
   }
 
 
