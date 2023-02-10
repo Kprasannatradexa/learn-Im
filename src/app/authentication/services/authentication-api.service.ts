@@ -14,7 +14,7 @@ export class AuthenticationApiService {
   ) { }
 
   register(requestObj: any) {
-    return this.http.post(`${this.url}/buyer/auth/signup/`, requestObj)
+    return this.http.post(`${this.url}/user/signup/`, requestObj)
   }
 
   login(requestObj: any) {
