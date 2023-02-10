@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ReplaySubject, takeUntil } from 'rxjs';
 import { IMAGE_URLS } from 'src/app/core/constants/image-source';
 import { CustomValidators } from 'src/app/core/constants/validator';
@@ -24,7 +25,8 @@ export class LoginComponent implements OnDestroy {
 
   constructor(
     private fb: FormBuilder,
-    private authenticationRepositoryService: AuthenticationRepositoryService) { }
+    private authenticationRepositoryService: AuthenticationRepositoryService,
+    private router: Router) { }
 
 
 
@@ -48,6 +50,10 @@ export class LoginComponent implements OnDestroy {
         })
       })
     }
+  }
+
+  forgotPassword() {
+    this.router.navigate(['auth/forgot-password'], { skipLocationChange: true, queryParamsHandling: 'preserve' })
   }
 
   ngOnDestroy(): void {
