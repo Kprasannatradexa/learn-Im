@@ -29,4 +29,25 @@ export class ForgotPasswordComponent {
     new_password: ['', [CustomValidators.required, CustomValidators.password]]
   })
 
+  sendOtp() {
+    this.login_credential.markAllAsTouched();
+
+    if (this.login_credential.valid) {
+      const userCredential = this.login_credential.value;
+      this.authenticationRepositoryService.sendOtp({ username: userCredential }).pipe(
+        takeUntil(this.destroyed$)
+      ).subscribe({
+        next: ((success) => {
+          this.authenticationRepositoryService.currentLoginCredentials = userCredential;
+          console.log('OTP sent');
+        }),
+        error: ((error) => {
+          console.log(error);
+        })
+      })
+    }
+
+  }
+
+
 }
