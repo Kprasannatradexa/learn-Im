@@ -8,13 +8,15 @@ import { LoginComponent } from './components/login/login.component';
 import { InputModule } from '../components/input/input/input.module';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { ButtonLgModule } from '../components/button-lg/button-lg.module';
+import { LoginOtpComponent } from './components/login-otp/login-otp.component';
 
 
 @NgModule({
   declarations: [
     AuthenticationContainerComponent,
     LoginComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    LoginOtpComponent
   ],
   imports: [
     CommonModule,
