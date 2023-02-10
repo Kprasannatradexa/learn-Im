@@ -4,24 +4,31 @@
   <h3 class="otp-caption">A 6 digit code has sent to .</h3>
 
   <div
-    class="d-flex flex-column flex-sm-column flex-md-row flex-lg-row flex-xl-row flex-xxl-row align-items-start mb-40"
+    class="d-flex flex-column flex-sm-column flex-md-row flex-lg-row flex-xl-row flex-xxl-row align-items-start mb-10"
   >
     <div class="me-4 mb-4 mb-sm-4 mb-md-0 mb-lg-0 mb-xl-0">
       <ng-otp-input (onInputChange)="onOtpChange($event)" [config]="OTP_CONFIG">
       </ng-otp-input>
-    </div>
 
-    <div>
-      <app-button-lg [loading]="buttonLoading" (click)="verifyOtp()"
-        >Verify</app-button-lg
-      >
+      <div class="mt-30">
+        <app-button-lg [loading]="buttonLoading" (click)="verifyOtp()"
+          >Verify</app-button-lg
+        >
+      </div>
+
+      <div class="resend-link-container">
+        <p>
+          OR
+          <span class="resend-link" (click)="resendOTP()"> Resend OTP</span>
+        </p>
+      </div>
     </div>
   </div>
 
-  <div class="resend-link-container">
+  <div class="sign-up-container">
     <p>
-      Didn't receive the OTP?
-      <span class="resend-link" (click)="resendOTP()"> Resend</span>
+      Don't have an account?.
+      <a class="resend-link" [routerLink]="['../register']">Sign Up</a>
     </p>
   </div>
 </div>
