@@ -15,7 +15,15 @@
           }"
         >
         </app-input>
-        <app-button-lg (buttonClicked)="sendOtp()">Request OTP</app-button-lg>
+        <div class="mt-30">
+          <app-button-lg (buttonClicked)="sendOtp()">Request OTP</app-button-lg>
+        </div>
+        <div class="term-section">
+          <p>OR</p>
+          <a class="terms-link" [routerLink]="['../login']"
+            >Login with Password</a
+          >
+        </div>
       </div>
     </div>
   </div>
