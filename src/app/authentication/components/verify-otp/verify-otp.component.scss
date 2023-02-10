@@ -3,7 +3,7 @@
 .otp-card {
     padding: 40px 20px;
     position: relative;
-    max-width: 650px;
+    max-width: 375px;
     margin: 40px auto 120px;
 
     .otp-title {
@@ -22,26 +22,35 @@
         opacity: 0.8;
     }
 
+    p {
+        font-size: 0.875rem;
+        color: $color-2;
+        padding: 0;
+        margin: 0;
+    }
+
+    .resend-link {
+        cursor: pointer;
+        color: $color-21;
+        text-decoration: underline;
+
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+
     .resend-link-container {
+        padding: 20px 100px 10px;
+
+        span {
+            padding-left: 10px;
+        }
+    }
+
+
+    .sign-up-container {
+        padding: 10px 70px 10px;
         border-top: 1px solid rgba(204, 204, 204, 0.5);
-        padding-top: 10px;
-
-        p {
-            font-size: 0.875rem;
-            color: $color-2;
-            padding: 0;
-            margin: 0;
-        }
-
-        .resend-link {
-            cursor: pointer;
-            color: $color-3;
-            text-decoration: underline;
-
-            &:hover {
-                opacity: 0.8;
-            }
-        }
     }
 }
 
