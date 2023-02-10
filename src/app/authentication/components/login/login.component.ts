@@ -1,16 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { ReplaySubject, takeUntil } from 'rxjs';
 import { IMAGE_URLS } from 'src/app/core/constants/image-source';
 import { CustomValidators } from 'src/app/core/constants/validator';
+import { AuthenticationRepositoryService } from '../../services/authentication-repository.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnDestroy {
 
   IMAGE_URLS = IMAGE_URLS;
+
+  private destroyed$: ReplaySubject<boolean> = new ReplaySubject(1);
 
 
   loginForm = this.fb.group({
@@ -18,10 +22,11 @@ export class LoginComponent implements OnInit {
     password: ['', [CustomValidators.required, CustomValidators.password]]
   })
 
-  constructor(private fb: FormBuilder) { }
+  constructor(
+    private fb: FormBuilder,
+    private authenticationRepositoryService: AuthenticationRepositoryService) { }
 
-  ngOnInit(): void {
-  }
+
 
   login() {
     this.loginForm.markAllAsTouched();
@@ -30,8 +35,21 @@ export class LoginComponent implements OnInit {
         user_name: this.loginForm.get('login_credential')?.value,
         password: this.loginForm.get('password')?.value
       }
-      console.log(requestObj);
+      this.authenticationRepositoryService.login(requestObj).pipe(
+        takeUntil(this.destroyed$)
+      ).subscribe({
+        next: ((response) => {
+          console.log(requestObj);
+        }),
+        error: ((error) => {
+          console.log(error);
+        })
+      })
     }
+  }
+
+  ngOnDestroy(): void {
+
   }
 
 }
