@@ -51,6 +51,17 @@
             color: $color-1;
         }
 
+        .forgot-password {
+            justify-content: flex-end;
+            display: flex;
+            margin-top: -10px;
+
+            a.terms-link {
+                color: $color-21;
+                text-decoration: underline;
+            }
+        }
+
         .checkbox-title {
             font-weight: 400;
             letter-spacing: -0.1px;
