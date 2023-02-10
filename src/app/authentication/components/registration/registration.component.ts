@@ -32,7 +32,7 @@ export class RegistrationComponent implements OnInit, OnDestroy {
   register() {
     this.registrationForm.markAllAsTouched();
     if (this.registrationForm.valid) {
-      const { user_name, email, password } = this.registrationForm.getRawValue();
+      const { user_name, email, mobile_number, password } = this.registrationForm.getRawValue();
 
       const userName = user_name.split(' ');
 
@@ -44,6 +44,7 @@ export class RegistrationComponent implements OnInit, OnDestroy {
         ...(last_name && {
           last_name
         }),
+        mobile_number,
         email,
         password
       }
