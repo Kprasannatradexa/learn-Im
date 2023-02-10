@@ -1,1 +1,19 @@
-<p>login-otp works!</p>
+<div class="main-container">
+  <div class="login-section container">
+    <div class="row">
+      <div class="col-12 col-sm-12 col-md-7 col-lg-4 col-xl-4 m-auto">
+        <div class="form-header"></div>
+        <app-input
+          [label]="'Email'"
+          [control]="login_credential"
+          [errorMessages]="{
+            required: 'Email is required',
+            email: 'Enter a valid email address'
+          }"
+        >
+        </app-input>
+        <app-button-lg (buttonClicked)="sendOtp()">Request OTP</app-button-lg>
+      </div>
+    </div>
+  </div>
+</div>
