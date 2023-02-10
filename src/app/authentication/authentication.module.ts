@@ -9,6 +9,7 @@ import { InputModule } from '../components/input/input/input.module';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { ButtonLgModule } from '../components/button-lg/button-lg.module';
 import { LoginOtpComponent } from './components/login-otp/login-otp.component';
+import { VerifyOtpComponent } from './components/verify-otp/verify-otp.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { LoginOtpComponent } from './components/login-otp/login-otp.component';
     AuthenticationContainerComponent,
     LoginComponent,
     RegistrationComponent,
-    LoginOtpComponent
+    LoginOtpComponent,
+    VerifyOtpComponent
   ],
   imports: [
     CommonModule,
