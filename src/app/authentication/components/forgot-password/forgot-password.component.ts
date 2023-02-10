@@ -16,4 +16,8 @@ export class ForgotPasswordComponent {
   login_credential = this.fb.control('', [Validators.required, CustomValidators.noWhiteSpaceValidator, CustomValidators.email])
 
 
+  sendOtp() {
+
+  }
+
 }
