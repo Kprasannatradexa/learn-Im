@@ -15,7 +15,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
     SharedModule
   ],
   exports: [
-    StepperComponent
+    StepperComponent, CdkStepperModule
   ]
 })
 export class StepperModule { }
