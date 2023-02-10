@@ -3,13 +3,22 @@
     padding: 20px;
 
 
-    .form-header {
-        .left-arrow-icon {
-            margin: 0 12px 40px 0;
-            cursor: pointer;
-            width: 19px;
-            height: 19px;
+    .form-heading {
+        h2 {
+            font-family: 'Open Sans';
+            font-style: normal;
+            font-weight: 700;
+            font-size: 30px;
+            line-height: 41px;
         }
+
+        p {
+            margin: 0 0 30px;
+            font-weight: 400;
+            letter-spacing: -0.1px;
+            font-size: 0.875rem;
+        }
+
     }
 
 }
