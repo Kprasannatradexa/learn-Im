@@ -32,14 +32,14 @@ export class LoginComponent implements OnDestroy {
     this.loginForm.markAllAsTouched();
     if (this.loginForm.valid) {
       const requestObj = {
-        user_name: this.loginForm.get('login_credential')?.value,
+        username: this.loginForm.get('login_credential')?.value,
         password: this.loginForm.get('password')?.value
       }
       this.authenticationRepositoryService.login(requestObj).pipe(
         takeUntil(this.destroyed$)
       ).subscribe({
         next: ((response) => {
-          console.log(requestObj);
+          console.log(response);
         }),
         error: ((error) => {
           console.log(error);
