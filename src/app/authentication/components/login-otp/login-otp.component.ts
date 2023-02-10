@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ReplaySubject, takeUntil } from 'rxjs';
@@ -11,9 +11,9 @@ import { AuthenticationRepositoryService } from '../../services/authentication-r
   templateUrl: './login-otp.component.html',
   styleUrls: ['./login-otp.component.scss']
 })
-export class LoginOtpComponent {
+export class LoginOtpComponent implements OnDestroy {
 
-  private desytroyed$: ReplaySubject<boolean> = new ReplaySubject(1);
+  private destroyed$: ReplaySubject<boolean> = new ReplaySubject(1);
 
   constructor(
     private fb: FormBuilder,
@@ -34,7 +34,7 @@ export class LoginOtpComponent {
         user_name: login_credential
       }
       this.authenticationRepositoryService.sendOtp(requestObj).pipe(
-        takeUntil(this.desytroyed$)
+        takeUntil(this.destroyed$)
       ).subscribe({
         next: ((success) => {
           this.authenticationRepositoryService.currentLoginCredentials = login_credential;
@@ -45,6 +45,11 @@ export class LoginOtpComponent {
         })
       })
     }
+  }
+
+  ngOnDestroy(): void {
+    this.destroyed$.next(true);
+    this.destroyed$.complete();
   }
 
 }
