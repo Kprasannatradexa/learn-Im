@@ -37,6 +37,7 @@ export class LoginOtpComponent implements OnDestroy {
         takeUntil(this.destroyed$)
       ).subscribe({
         next: ((success) => {
+          console.log('OTP sent');
           this.authenticationRepositoryService.currentLoginCredentials = login_credential;
           this.router.navigate(['/auth/verify-otp'], { skipLocationChange: true, queryParamsHandling: 'preserve' })
         }),

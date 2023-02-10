@@ -39,7 +39,9 @@ export class LoginComponent implements OnDestroy {
         takeUntil(this.destroyed$)
       ).subscribe({
         next: ((response) => {
-          console.log(response);
+          if (response?.access_token) {
+            console.log(response);
+          }
         }),
         error: ((error) => {
           console.log(error);

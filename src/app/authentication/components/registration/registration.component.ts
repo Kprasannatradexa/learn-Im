@@ -53,8 +53,10 @@ export class RegistrationComponent implements OnInit, OnDestroy {
         takeUntil(this.destroyed$)
       ).subscribe({
         next: (response) => {
-          console.log(response);
-          console.log("You are registered now");
+          if (response?.access_token) {
+            console.log(response);
+            console.log("You are registered now");
+          }
         },
         error: (error) => {
           console.log(error);
