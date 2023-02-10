@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthenticationContainerComponent } from './components/authentication-container/authentication-container.component';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { LoginOtpComponent } from './components/login-otp/login-otp.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegistrationComponent } from './components/registration/registration.component';
@@ -29,6 +30,11 @@ const routes: Routes = [
         data: {
           redirectRoute: '/auth/login-otp'
         },
+      },
+      {
+        path: 'forgot-password',
+        component: ForgotPasswordComponent,
+        data: { redirectRoute: '/auth/login' }
       }
     ]
   }
