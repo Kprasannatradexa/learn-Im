@@ -3,7 +3,7 @@
     <form [formGroup]="loginForm">
       <div class="row">
         <div
-          class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-7 p-0 order-1 order-sm-1 order-md-1 order-lg-2 order-xl-2"
+          class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 p-0 order-1 order-sm-1 order-md-1 order-lg-2 order-xl-2 m-auto"
         >
           <div class="login-card">
             <div class="login-card-title">
@@ -13,8 +13,13 @@
                 [src]="IMAGE_URLS.arrowLeftIcon"
                 class="left-arrow-icon"
               />
-              <h2>Let's Sign You in</h2>
             </div>
+
+            <div class="form-heading">
+              <h2>Let's Sign You In.</h2>
+              <p>Welcome Back</p>
+            </div>
+
             <app-input
               [type]="'text'"
               [label]="'Email'"
@@ -33,9 +38,20 @@
                 password: 'Enter a valid password.'
               }"
             ></app-input>
+
+            <div class="row">
+              <div class="col-12 p-0 mt-30">
+                <app-button-lg (buttonClicked)="login()" [loading]="false"
+                  >Login</app-button-lg
+                >
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </form>
+    <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 m-auto">
+      <hr />
+    </div>
   </div>
 </div>
