@@ -23,4 +23,15 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  login() {
+    this.loginForm.markAllAsTouched();
+    if (this.loginForm.valid) {
+      const requestObj = {
+        user_name: this.loginForm.get('login_credential')?.value,
+        password: this.loginForm.get('password')?.value
+      }
+      console.log(requestObj);
+    }
+  }
+
 }
