@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
+import { CustomValidators } from 'src/app/core/constants/validator';
 
 @Component({
   selector: 'app-forgot-password',
@@ -7,7 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ForgotPasswordComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private fb: FormBuilder
+  ) { }
+
+  login_credential = this.fb.control('', [Validators.required, CustomValidators.noWhiteSpaceValidator, CustomValidators.email])
 
   ngOnInit(): void {
   }
