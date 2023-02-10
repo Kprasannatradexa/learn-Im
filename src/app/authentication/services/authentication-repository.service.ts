@@ -9,7 +9,7 @@ import { AuthenticationApiService } from './authentication-api.service';
 })
 export class AuthenticationRepositoryService {
 
-  private currentLoginCredential = new BehaviorSubject<string>('');
+  private currentLoginCredential = new BehaviorSubject<string | null>(null);
   currentLoginCredential$ = this.currentLoginCredential.asObservable();
 
   constructor(private authenticationApiService: AuthenticationApiService,
@@ -90,7 +90,7 @@ export class AuthenticationRepositoryService {
     this.currentLoginCredential.next(currentLoginCredential);
   }
 
-  public get currentLoginCredentials() {
-    return this.currentLoginCredential.value;
+  public get currentLoginCredentials(): string {
+    return this.currentLoginCredential.value as string;
   }
 }
