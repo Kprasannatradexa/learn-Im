@@ -35,7 +35,7 @@ export class AuthenticationRepositoryService {
     }));
   }
 
-  sendOtp(userName: string) {
+  sendOtp(userName: any) {
     return this.authenticationApiService.sendOtp(userName);
   }
 
