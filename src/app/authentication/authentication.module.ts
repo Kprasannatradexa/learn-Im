@@ -11,6 +11,7 @@ import { ButtonLgModule } from '../components/button-lg/button-lg.module';
 import { LoginOtpComponent } from './components/login-otp/login-otp.component';
 import { VerifyOtpComponent } from './components/verify-otp/verify-otp.component';
 import { NgOtpInputModule } from 'ng-otp-input';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { NgOtpInputModule } from 'ng-otp-input';
     RegistrationComponent,
     LoginOtpComponent,
     VerifyOtpComponent,
+    ForgotPasswordComponent
   ],
   imports: [
     CommonModule,
