@@ -13,21 +13,26 @@
             display: flex;
             align-items: center;
 
-            h2 {
-                font-size: 1.25rem;
-                font-weight: 600;
-                margin: 0;
+            .left-arrow-icon {
+                margin: 0 12px 40px 0;
+                cursor: pointer;
+                width: 19px;
+                height: 19px;
             }
 
-            .left-arrow-icon {
-                margin-right: 12px;
-                cursor: pointer;
-                width: 20px;
+            .form-heading {
+                h2 {
+                    font-family: 'Open Sans';
+                    font-style: normal;
+                    font-weight: 700;
+                    font-size: 30px;
+                    line-height: 41px;
+                }
             }
         }
 
         p {
-            margin: 14px 0px;
+            margin: 0 0 14px;
             font-weight: 400;
             letter-spacing: -0.1px;
             font-size: 0.875rem;
