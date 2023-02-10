@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ReplaySubject, takeUntil } from 'rxjs';
+import { of, ReplaySubject, takeUntil } from 'rxjs';
 import { CustomValidators } from 'src/app/core/constants/validator';
 import { AuthenticationRepositoryService } from '../../services/authentication-repository.service';
 
@@ -10,7 +10,7 @@ import { AuthenticationRepositoryService } from '../../services/authentication-r
   templateUrl: './verify-otp.component.html',
   styleUrls: ['./verify-otp.component.scss']
 })
-export class VerifyOtpComponent {
+export class VerifyOtpComponent implements OnDestroy {
 
   buttonLoading: boolean = false;
 
@@ -78,5 +78,11 @@ export class VerifyOtpComponent {
       })
     })
 
+  }
+
+  ngOnDestroy(): void {
+    this.authenticationRepositoryService.currentLoginCredential$ = of(null);
+    this.destroyed$.next(true);
+    this.destroyed$.complete();
   }
 }
