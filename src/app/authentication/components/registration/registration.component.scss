@@ -14,18 +14,35 @@
 
     .term-section {
         border-bottom: 1px solid $border-color-1;
-        padding: 20px 0px 10px;
+        padding: 20px 0px 20px;
         margin: 0 15px 0 15px;
 
-        p {
-            font-size: 0.875rem;
-            max-width: 500px;
-        }
     }
 
     a.terms-link {
         color: $color-21;
     }
+
+    p {
+        font-size: 0.875rem;
+        max-width: 500px;
+    }
+
+    .login-container {
+        padding: 20px 100px 10px;
+
+        .resend-link {
+            cursor: pointer;
+            color: $color-21;
+            text-decoration: underline;
+
+            &:hover {
+                opacity: 0.8;
+            }
+        }
+    }
+
+
 
 }
 
