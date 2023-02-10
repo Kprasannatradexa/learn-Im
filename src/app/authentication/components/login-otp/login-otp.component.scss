@@ -1,3 +1,6 @@
+@import 'src/assets/scss/partials/variables';
+
+
 .login-section {
     margin: 40px auto 40px;
     padding: 20px;
@@ -19,6 +22,24 @@
             font-size: 0.875rem;
         }
 
+    }
+
+    .term-section {
+        padding: 20px 70px 10px;
+        margin: 0 15px 0 15px;
+
+        p {
+            font-size: 0.875rem;
+            max-width: 500px;
+            color: #262E2E;
+            display: inline;
+            padding-right: 15px;
+        }
+    }
+
+    a.terms-link {
+        color: $color-21;
+        text-decoration: underline;
     }
 
 }
