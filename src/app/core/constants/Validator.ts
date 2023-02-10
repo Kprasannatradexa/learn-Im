@@ -12,6 +12,9 @@ export const MIN_ONE_SPECIAL = /[-+_!@#$%^&*.,?]/;
 export const NUMBER = /^[-+]?[0-9]*\.?[0-9]+$/;
 
 export class CustomValidators {
+
+    static phone = Validators.pattern('\\d{10}');
+
     static required = Validators.compose([
         Validators.required,
         CustomValidators.noWhiteSpaceValidator
@@ -29,7 +32,7 @@ export class CustomValidators {
     }
 
     static otp(c: AbstractControl): { [key: string]: any } | null {
-        const value = c.value + '' || '';
+        const value = c?.value + '' || '';
         const isValid = OTP_PATTERN.test(value);
 
         if (!isValid) {
@@ -40,9 +43,9 @@ export class CustomValidators {
     }
 
     static loginCredential(c: AbstractControl): { [key: string]: any } | null {
-        const value = c.value + '' || '';
+        const value = c?.value + '' || '';
         const validPhone = PHONE_PATTERN.test(value);
-        const validEmail = EMAIL_PATTERN.test(value.toLocaleLowerCase());
+        const validEmail = EMAIL_PATTERN.test(value.toLowerCase());
 
         if (!(validPhone || validEmail)) {
             return { credential: true }
@@ -52,7 +55,7 @@ export class CustomValidators {
     }
 
     static password(c: AbstractControl): { [key: string]: any } | null {
-        const password = c.value + '';
+        const password = c?.value + '';
 
         if (!(PASSWORD_RANGE_PATTERN.test(password) && MIN_ONE_LOWER.test(password) && MIN_ONE_UPPER.test(password) && MIN_ONE_DIGIT.test(password) && MIN_ONE_SPECIAL.test(password))) {
             return { password: true }
@@ -62,7 +65,7 @@ export class CustomValidators {
     }
 
     static noWhiteSpaceValidator(c: AbstractControl): { [key: string]: any } | null {
-        const isWhiteSpace = (c.value + '').trim().length === 0;
+        const isWhiteSpace = (c?.value + '').trim().length === 0;
         const isValid = !isWhiteSpace;
         return isValid ? null : { required: true };
     }
