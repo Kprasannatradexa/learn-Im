@@ -10,7 +10,7 @@ import { AuthenticationRepositoryService } from '../../services/authentication-r
   templateUrl: './verify-otp.component.html',
   styleUrls: ['./verify-otp.component.scss']
 })
-export class VerifyOtpComponent implements OnDestroy {
+export class VerifyOtpComponent implements OnInit, OnDestroy {
 
   buttonLoading: boolean = false;
 
@@ -31,6 +31,11 @@ export class VerifyOtpComponent implements OnDestroy {
 
   otp = this.fb.control(null, { updateOn: 'blur', validators: CustomValidators.otp })
 
+  currentLoginCredentials: string = ''
+
+  ngOnInit(): void {
+    this.currentLoginCredentials = this.authenticationRepositoryService.currentLoginCredentials;
+  }
 
   onOtpChange(value: string) {
     this.otp.setValue(value)
@@ -59,14 +64,13 @@ export class VerifyOtpComponent implements OnDestroy {
 
 
   resendOTP() {
-    const currentLoginCredentials = this.authenticationRepositoryService.currentLoginCredentials;
 
-    if (!currentLoginCredentials) {
+    if (!this.currentLoginCredentials) {
       console.log("Cannot resend OTP");
       this.router.navigate(['/auth/login-otp'])
     }
 
-    this.authenticationRepositoryService.sendOtp({ username: currentLoginCredentials }).pipe(
+    this.authenticationRepositoryService.sendOtp({ username: this.currentLoginCredentials }).pipe(
       takeUntil(this.destroyed$)
     ).subscribe({
       next: ((success) => {
