@@ -18,11 +18,11 @@ export class AuthenticationApiService {
   }
 
   login(requestObj: any) {
-    return this.http.post(`${this.url}/buyer/auth/login/`, requestObj)
+    return this.http.post(`${this.url}/user/login/`, requestObj)
   }
 
   sendOtp(requestObj: any) {
-    return this.http.post(`${this.url}/buyer/auth/request_login_otp`, requestObj)
+    return this.http.post(`${this.url}/user/request_login_otp/`, requestObj)
   }
 
   verifyOtp(requestObj: any) {
