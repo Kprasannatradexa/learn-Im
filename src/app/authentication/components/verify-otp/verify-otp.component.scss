@@ -1,0 +1,76 @@
+@import 'src/assets/scss/partials/variables';
+
+.otp-card {
+    padding: 40px 20px;
+    position: relative;
+    max-width: 650px;
+    margin: 40px auto 120px;
+
+    .otp-title {
+        font-size: 1.25rem;
+        font-weight: 600;
+        letter-spacing: -0.1px;
+        margin: 0px auto 10px;
+    }
+
+    .otp-caption {
+        font-size: 1rem;
+        font-weight: 500;
+        line-height: 21px;
+        color: $color-2;
+        margin: 0px auto 40px;
+        opacity: 0.8;
+    }
+
+    .resend-link-container {
+        border-top: 1px solid rgba(204, 204, 204, 0.5);
+        padding-top: 10px;
+
+        p {
+            font-size: 0.875rem;
+            color: $color-2;
+            padding: 0;
+            margin: 0;
+        }
+
+        .resend-link {
+            cursor: pointer;
+            color: $color-3;
+            text-decoration: underline;
+
+            &:hover {
+                opacity: 0.8;
+            }
+        }
+    }
+}
+
+// All Mobile screens
+@media (max-width: 640px) {
+    .otp-card {
+        .otp-title {
+            font-size: 1.125rem;
+        }
+
+        .otp-caption {
+            font-size: 0.875rem;
+        }
+
+        ::ng-deep base-button-lg .button-wrapper button {
+            height: 36px !important;
+            line-height: 34px !important;
+            min-width: 100px !important;
+
+            .loader {
+                width: 20px !important;
+                height: 20px !important;
+            }
+        }
+
+        .resend-link-container {
+            p {
+                font-size: 0.75rem;
+            }
+        }
+    }
+}
