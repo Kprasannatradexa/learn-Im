@@ -12,4 +12,43 @@
         }
     }
 
+    .term-section {
+        border-bottom: 1px solid $border-color-1;
+        padding: 20px 0px 10px;
+        margin: 0 15px 0 15px;
+
+        p {
+            font-size: 0.875rem;
+            max-width: 500px;
+        }
+    }
+
+    a.terms-link {
+        color: $color-21;
+    }
+
+}
+
+// All Mobile screens
+@media (min-width: 275px) and (max-width: 767px) {
+    .registration-section {
+        padding-top: 20px;
+
+        .legend-header {
+            font-size: 1rem;
+        }
+
+        .required-field {
+            font-size: 0.75rem;
+        }
+
+        legend {
+            margin-bottom: 12px;
+        }
+
+        .input-tips {
+            margin: 0px 0px 15px 0px;
+            padding-left: 0px;
+        }
+    }
 }
