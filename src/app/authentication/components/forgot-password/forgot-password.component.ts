@@ -109,8 +109,19 @@ export class ForgotPasswordComponent {
     this.resetPasswordForm.markAllAsTouched();
 
     if (this.resetPasswordForm.valid) {
-      console.log('This is reset password');
-
+      this.authenticationRepositoryService.resetPassword({ new_password: this.resetPasswordForm.get('new_password') }).pipe(
+        takeUntil(this.destroyed$)
+      ).subscribe({
+        next: ((response) => {
+          if (response) {
+            this.authenticationRepositoryService.resetUser();
+            console.log('Password has been reset.');
+          }
+        }),
+        error: ((error) => {
+          console.log(error);
+        })
+      })
     }
   }
 
