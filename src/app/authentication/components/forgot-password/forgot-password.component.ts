@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ReplaySubject, takeUntil } from 'rxjs';
+import { StepperComponent } from 'src/app/components/stepper/stepper.component';
 import { CustomValidators } from 'src/app/core/constants/validator';
 import { AuthenticationRepositoryService } from '../../services/authentication-repository.service';
 
@@ -10,6 +11,15 @@ import { AuthenticationRepositoryService } from '../../services/authentication-r
   styleUrls: ['./forgot-password.component.scss']
 })
 export class ForgotPasswordComponent {
+
+  @ViewChild('cdkStepper') cdkStepper!: StepperComponent;
+
+  OTP_CONFIG = {
+    length: 6,
+    allowNumbersOnly: true,
+    containerClass: 'otp-container',
+    inputClass: 'otp-input'
+  }
 
   constructor(
     private fb: FormBuilder,
@@ -21,25 +31,32 @@ export class ForgotPasswordComponent {
 
   login_credential = this.fb.control('', [Validators.required, CustomValidators.noWhiteSpaceValidator, CustomValidators.email])
 
+  userEmail: string = '';
 
   otp = this.fb.control(null, { updateOn: 'blur', validators: CustomValidators.otp })
 
   resetPasswordForm = this.fb.group({
-    password: ['', [CustomValidators.required, CustomValidators.password]],
+    // password: ['', [CustomValidators.required, CustomValidators.password]],
     new_password: ['', [CustomValidators.required, CustomValidators.password]]
   })
+
+  onOtpChange(value: string) {
+    this.otp.setValue(value);
+  }
 
   sendOtp() {
     this.login_credential.markAllAsTouched();
 
     if (this.login_credential.valid) {
       const userCredential = this.login_credential.value;
-      this.authenticationRepositoryService.sendOtp({ username: userCredential }).pipe(
+      this.authenticationRepositoryService.sendOtp({ user_name: userCredential }).pipe(
         takeUntil(this.destroyed$)
       ).subscribe({
         next: ((success) => {
           this.authenticationRepositoryService.currentLoginCredentials = userCredential;
+          this.userEmail = userCredential;
           console.log('OTP sent');
+          this.cdkStepper.next();
         }),
         error: ((error) => {
           console.log(error);
@@ -68,7 +85,7 @@ export class ForgotPasswordComponent {
     }
   }
 
-  resendOtp() {
+  resendOTP() {
 
     const currentCredential = this.authenticationRepositoryService.currentLoginCredentials;
 
@@ -86,6 +103,15 @@ export class ForgotPasswordComponent {
         console.log(error);
       })
     })
+  }
+
+  resetPassword() {
+    this.resetPasswordForm.markAllAsTouched();
+
+    if (this.resetPasswordForm.valid) {
+      console.log('This is reset password');
+
+    }
   }
 
 
