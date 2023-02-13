@@ -59,11 +59,12 @@ export class AuthenticationRepositoryService {
     }))
   }
 
-  resetPassword(new_password: string) {
-    const requestObj = {
-      new_password
-    }
-    return this.authenticationApiService.resetPassword(requestObj);
+  resetPassword(requestObj: any) {
+    return this.authenticationApiService.resetPassword(requestObj).pipe(tap((response: any) => {
+      if (response?.access_token) {
+        this.handleAuthentication(response)
+      }
+    }));
   }
 
 
