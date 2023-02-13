@@ -1,0 +1,33 @@
+.home-container {
+    background: #F9FBFC;
+    padding: 60px 0 0 60px;
+
+    .home-heading-section {
+        margin-bottom: 60px;
+
+        h2 {
+            font-weight: 400;
+            padding-right: 900px;
+        }
+
+        p {
+            padding-right: 800px;
+        }
+    }
+
+    .search-container {
+        input {
+            width: 30%;
+            height: 40px;
+            border-radius: 10px;
+        }
+    }
+
+}
+
+// All Mobile screens
+@media (max-width: 640px) {
+    .home-container {
+        padding: 10px 0 0 10px;
+    }
+}
