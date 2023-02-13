@@ -23,5 +23,10 @@ export class HomeApiService {
     return this.http.get(`${this.url}/courses/`)
   }
 
+  getInstitutes() {
+    return this.http.get(`${this.url}/institutes/`)
+  }
+
+
 
 }
