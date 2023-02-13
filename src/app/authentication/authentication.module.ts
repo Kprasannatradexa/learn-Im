@@ -12,6 +12,7 @@ import { LoginOtpComponent } from './components/login-otp/login-otp.component';
 import { VerifyOtpComponent } from './components/verify-otp/verify-otp.component';
 import { NgOtpInputModule } from 'ng-otp-input';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { StepperModule } from '../components/stepper/stepper.module';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
     SharedModule,
     InputModule,
     ButtonLgModule,
-    NgOtpInputModule
+    NgOtpInputModule,
+    StepperModule
   ]
 })
 export class AuthenticationModule { }
