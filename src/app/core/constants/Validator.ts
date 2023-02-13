@@ -1,4 +1,4 @@
-import { AbstractControl, Validators } from "@angular/forms";
+import { AbstractControl, FormGroup, ValidatorFn, Validators } from "@angular/forms";
 
 
 export const EMAIL_PATTERN = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -69,5 +69,21 @@ export class CustomValidators {
         const isValid = !isWhiteSpace;
         return isValid ? null : { required: true };
     }
+
+    static comparePassword(password1: string, password2: string) {
+        return (formGroup: FormGroup) => {
+            const password = formGroup.controls[password1];
+            const cnfPassword = formGroup.controls[password2];
+            if (cnfPassword.errors && !cnfPassword.errors?.['differentPassword']) {
+                return;
+            }
+            if (password.value !== cnfPassword.value) {
+                cnfPassword.setErrors({ differentPassword: true });
+            } else {
+                cnfPassword.setErrors(null);
+            }
+        }
+    }
+
 
 }
