@@ -36,7 +36,7 @@ export class ForgotPasswordComponent {
   otp = this.fb.control(null, { updateOn: 'blur', validators: CustomValidators.otp })
 
   resetPasswordForm = this.fb.group({
-    // password: ['', [CustomValidators.required, CustomValidators.password]],
+    password: ['', [CustomValidators.required, CustomValidators.password]],
     new_password: ['', [CustomValidators.required, CustomValidators.password]]
   })
 
