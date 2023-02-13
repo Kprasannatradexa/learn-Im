@@ -9,7 +9,7 @@ import { HomeApiService } from '../../services/home-api.service';
 })
 export class HomeComponent implements OnInit {
 
-  searchQuery = new Subject();
+  searchQuery = new Subject<string>();
   searchQuery$ = this.searchQuery.asObservable();
 
   destroyed$: ReplaySubject<boolean> = new ReplaySubject(1);
@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.searchQuery$.subscribe((searchValue: any) => {
+    this.searchQuery$.subscribe((searchValue: string) => {
       console.log(searchValue);
       this.getSearchedCourses(searchValue);
     })
