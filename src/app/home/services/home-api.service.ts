@@ -27,6 +27,15 @@ export class HomeApiService {
     return this.http.get(`${this.url}/institutes/`)
   }
 
+  getSearchedCourse(searchValue: string) {
+    return this.http.get(`${this.url}/courses/`, {
+      params: new HttpParams()
+        .set('search', searchValue)
+        .set('expand', 'product')
+        .append('expand', 'institute')
+    })
+  }
+
 
 
 }
