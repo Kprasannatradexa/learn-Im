@@ -17,7 +17,12 @@
 
     <ng-template #uploadFile>
       <label class="custom-file-upload">
-        <input type="file" #selectedFile (change)="getSelectedFile($event)" />
+        <input
+          type="file"
+          accept=".pdf"
+          #selectedFile
+          (change)="getSelectedFile($event)"
+        />
         Custom Upload
       </label>
 
