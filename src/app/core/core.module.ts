@@ -27,6 +27,9 @@ import { DragDropDirective } from './directives/drag-drop.directive';
       useClass: ServerInterceptor,
       multi: true
     }
+  ],
+  exports: [
+    DragDropDirective
   ]
 })
 export class CoreModule { }

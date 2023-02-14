@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { BookingRoutingModule } from './booking-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { InvoiceUploadComponent } from './components/invoice-upload/invoice-upload.component';
+import { CoreModule } from '../core/core.module';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { InvoiceUploadComponent } from './components/invoice-upload/invoice-uplo
   imports: [
     CommonModule,
     BookingRoutingModule,
-    SharedModule
+    SharedModule,
+    CoreModule
   ]
 })
 export class BookingModule { }
