@@ -10,6 +10,17 @@
     .nav-items {
         display: flex;
         justify-content: space-between;
-        color: white;
+        color: #FFFFFFB2;
+    }
+
+    .nav-items {
+        li {
+            font-size: 22px;
+        }
+    }
+
+    li.item-active {
+        color: #FFFFFF;
+        border-bottom: 7px solid #80CBC4;
     }
 }

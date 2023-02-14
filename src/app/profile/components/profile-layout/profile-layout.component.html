@@ -2,15 +2,31 @@
   <div class="profile-container">
     <h2 class="section-heading">My Profile</h2>
     <ul class="nav nav-items">
-      <li class="nav-item">
-        <a aria-current="page">My Profile</a>
+      <li
+        class="nav-item"
+        routerLink="/profile"
+        routerLinkActive="item-active"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        My Profile
       </li>
-      <li class="nav-item">
-        <a aria-current="page">Courses Completed</a>
+      <li
+        class="nav-item"
+        routerLink="/profile/completed-courses"
+        routerLinkActive="item-active"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        Courses Completed
       </li>
-      <li class="nav-item">
-        <a aria-current="page">Information</a>
+      <li
+        class="nav-item"
+        routerLink="/profile/information"
+        routerLinkActive="item-active"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        Information
       </li>
     </ul>
   </div>
+  <router-outlet></router-outlet>
 </div>
