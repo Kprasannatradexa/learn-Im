@@ -1,1 +1,25 @@
-<p>select-time-slot works!</p>
+<div class="container">
+  <div class="section-heading">
+    <h2>Book a slot</h2>
+    <p>Choose an available time slot and confirm your booking.</p>
+  </div>
+  <div class="row">
+    <div class="col-7">
+      <input type="date" #date />
+    </div>
+    <div class="col-5">
+      <h4>Available slots</h4>
+      <select class="form-select" aria-label="Default select example">
+        <option *ngFor="let option of options" #selectedOption>
+          {{ option.start_time }} - {{ option.end_time }}
+        </option>
+      </select>
+    </div>
+  </div>
+  <div class="button-container">
+    <app-button-lg (buttonClicked)="redirectTo()" class="mr-8"
+      >Back</app-button-lg
+    >
+    <app-button-lg (buttonClicked)="bookASlot()">Submit</app-button-lg>
+  </div>
+</div>
