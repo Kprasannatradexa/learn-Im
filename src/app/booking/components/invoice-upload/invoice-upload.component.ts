@@ -26,7 +26,10 @@ export class InvoiceUploadComponent {
   }
 
   uploadInvoice() {
-    console.log(this.uploadedFile);
+    if (this.uploadedFile) {
+      console.log(this.uploadedFile);
+    }
+    console.log('Please upload the file.');
 
   }
 }
