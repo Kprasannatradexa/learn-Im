@@ -1,1 +1,42 @@
-<p>invoice-upload works!</p>
+<div class="container">
+  <div class="booking-section m-auto">
+    <div class="booking-heading">
+      <h2>Book a slot</h2>
+      <p>
+        Upload a copy of your product's invoice from Imaginext to reserve your
+        spot in this course.
+      </p>
+    </div>
+
+    <ng-container *ngIf="uploadedFile; else uploadFile">
+      <button (click)="reset()">Clear</button>
+      <div class="drag-container">
+        {{ uploadedFile.name }}
+      </div>
+    </ng-container>
+
+    <ng-template #uploadFile>
+      <label class="custom-file-upload">
+        <input type="file" #selectedFile (change)="getSelectedFile($event)" />
+        Custom Upload
+      </label>
+
+      <div
+        class="drag-container"
+        appDragDrop
+        (fileDropped)="fileUploaded($event)"
+      >
+        Upload File
+      </div>
+    </ng-template>
+
+    <div class="button-container">
+      <app-button-lg
+        (buttonClicked)="uploadInvoice()"
+        [isSecondaryBtnStyle]="true"
+        >Back</app-button-lg
+      >
+      <app-button-lg (buttonClicked)="uploadInvoice()">Next</app-button-lg>
+    </div>
+  </div>
+</div>
