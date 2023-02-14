@@ -6,7 +6,8 @@ import { AuthenticationGuard } from './shared/guards/authentication.guard';
 const routes: Routes = [
   { path: '', loadChildren: () => HomeModule },
   { path: 'auth', loadChildren: () => import('./authentication/authentication.module').then(m => m.AuthenticationModule) },
-  { path: 'booking', canActivate: [AuthenticationGuard], loadChildren: () => import('./booking/booking.module').then(m => m.BookingModule) }
+  { path: 'booking', canActivate: [AuthenticationGuard], loadChildren: () => import('./booking/booking.module').then(m => m.BookingModule) },
+  { path: 'profile', loadChildren: () => import('./profile/profile.module').then(m => m.ProfileModule) }
 ];
 
 @NgModule({
