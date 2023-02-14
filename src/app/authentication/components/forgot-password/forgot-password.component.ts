@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ReplaySubject, takeUntil } from 'rxjs';
 import { StepperComponent } from 'src/app/components/stepper/stepper.component';
-import { CustomValidators } from 'src/app/core/constants/validator';
+import { CustomValidators } from 'src/app/core/constants/validators';
 import { AuthenticationRepositoryService } from '../../services/authentication-repository.service';
 
 @Component({

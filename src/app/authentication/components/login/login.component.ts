@@ -3,7 +3,7 @@ import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ReplaySubject, takeUntil } from 'rxjs';
 import { IMAGE_URLS } from 'src/app/core/constants/image-source';
-import { CustomValidators } from 'src/app/core/constants/validator';
+import { CustomValidators } from 'src/app/core/constants/validators';
 import { AuthenticationRepositoryService } from '../../services/authentication-repository.service';
 
 @Component({
