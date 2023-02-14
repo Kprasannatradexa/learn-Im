@@ -4,11 +4,14 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './services/interceptor/auth.interceptor';
 import { ServerInterceptor } from './services/interceptor/server.interceptor';
 import { SharedModule } from '../shared/shared.module';
+import { DragDropDirective } from './directives/drag-drop.directive';
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    DragDropDirective
+  ],
   imports: [
     CommonModule,
     SharedModule
