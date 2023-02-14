@@ -5,13 +5,15 @@ import { ProfileRoutingModule } from './profile-routing.module';
 import { ProfileLayoutComponent } from './components/profile-layout/profile-layout.component';
 import { MyCoursesComponent } from './components/my-courses/my-courses.component';
 import { CompletedCoursesComponent } from './components/completed-courses/completed-courses.component';
+import { MyProfileComponent } from './components/my-profile/my-profile.component';
 
 
 @NgModule({
   declarations: [
     ProfileLayoutComponent,
     MyCoursesComponent,
-    CompletedCoursesComponent
+    CompletedCoursesComponent,
+    MyProfileComponent
   ],
   imports: [
     CommonModule,
