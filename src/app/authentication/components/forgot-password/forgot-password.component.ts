@@ -37,8 +37,13 @@ export class ForgotPasswordComponent {
 
   resetPasswordForm = this.fb.group({
     password: ['', [CustomValidators.required, CustomValidators.password]],
-    new_password: ['', [CustomValidators.required, CustomValidators.password]]
-  })
+    new_password: ['', [CustomValidators.required]]
+  },
+    {
+      validators: [
+        CustomValidators.comparePassword('password', 'new_password')
+      ]
+    })
 
   onOtpChange(value: string) {
     this.otp.setValue(value);
@@ -76,10 +81,13 @@ export class ForgotPasswordComponent {
         next: ((response) => {
           if (response?.access_token) {
             console.log('OTP verified');
+            this.cdkStepper.next();
           }
         }),
         error: ((error) => {
           console.log(error);
+          this.cdkStepper.next();
+
         })
       })
     }

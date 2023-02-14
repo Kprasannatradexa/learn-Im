@@ -6,7 +6,7 @@ import { environment } from 'src/environments/environment';
 export interface Environment {
   client_id: string;
   client_secret: string;
-  url?: string
+  url: string
 }
 
 @Injectable({
