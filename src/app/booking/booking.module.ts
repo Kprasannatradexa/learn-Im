@@ -6,11 +6,13 @@ import { SharedModule } from '../shared/shared.module';
 import { InvoiceUploadComponent } from './components/invoice-upload/invoice-upload.component';
 import { CoreModule } from '../core/core.module';
 import { ButtonLgModule } from '../components/button-lg/button-lg.module';
+import { SelectTimeSlotComponent } from './components/select-time-slot/select-time-slot.component';
 
 
 @NgModule({
   declarations: [
-    InvoiceUploadComponent
+    InvoiceUploadComponent,
+    SelectTimeSlotComponent
   ],
   imports: [
     CommonModule,
