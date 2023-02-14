@@ -13,8 +13,14 @@
           <div class="search-container">
             <input
               type="text"
-              #search
-              (keydown)="searchCourses(search.value)"
+              #searchCourse
+              (keyup)="searchCourses(searchCourse.value)"
+            />
+
+            <input
+              type="text"
+              #searchLocation
+              (keyup)="searchCity(searchLocation.value)"
             />
           </div>
         </div>
