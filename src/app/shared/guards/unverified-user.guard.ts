@@ -18,7 +18,7 @@ export class UnverifiedUserGuard implements CanActivate {
     if (!isAuthenticated) {
       return true;
     }
-    return this.router.navigate(['/auth/login'])
+    return this.router.navigate(['/'])
   }
 
 }
