@@ -5,6 +5,7 @@ import { BookingRoutingModule } from './booking-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { InvoiceUploadComponent } from './components/invoice-upload/invoice-upload.component';
 import { CoreModule } from '../core/core.module';
+import { ButtonLgModule } from '../components/button-lg/button-lg.module';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { CoreModule } from '../core/core.module';
     CommonModule,
     BookingRoutingModule,
     SharedModule,
-    CoreModule
+    CoreModule,
+    ButtonLgModule
   ]
 })
 export class BookingModule { }
