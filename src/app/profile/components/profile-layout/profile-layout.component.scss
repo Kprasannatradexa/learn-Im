@@ -1,0 +1,15 @@
+.profile-container {
+    margin: auto;
+    padding: 40px 0 0 40px;
+    background: black;
+
+    .section-heading {
+        color: white;
+    }
+
+    .nav-items {
+        display: flex;
+        justify-content: space-between;
+        color: white;
+    }
+}
