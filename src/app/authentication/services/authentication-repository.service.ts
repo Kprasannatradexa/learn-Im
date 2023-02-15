@@ -74,6 +74,21 @@ export class AuthenticationRepositoryService {
     this.userService.appUser = null;
   }
 
+  autoLogin() {
+    const userData: UserSession = JSON.parse(localStorage.getItem('userData') ?? '');
+    if (!userData) {
+      return;
+    }
+    const { access_token, refresh_token, expires_in, token_type, user } = userData
+    const logedInUser: UserSession = new UserSession(
+      access_token, refresh_token, expires_in, token_type, user
+    );
+
+    if (logedInUser.token) {
+      this.userService.appUser = logedInUser;
+    }
+  }
+
   private handleAuthentication(response: any) {
     const { access_token, refresh_token, expires_in, token_type, user } = response;
     const appUserData = new UserSession(access_token, token_type, expires_in, refresh_token, user);
