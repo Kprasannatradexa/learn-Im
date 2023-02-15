@@ -75,17 +75,17 @@ export class AuthenticationRepositoryService {
   }
 
   autoLogin() {
-    const userData: UserSession = JSON.parse(localStorage.getItem('userData') ?? '');
+    const userData: UserSession = JSON.parse(localStorage.getItem('userData') as string);
     if (!userData) {
       return;
     }
     const { access_token, refresh_token, expires_in, token_type, user } = userData
-    const logedInUser: UserSession = new UserSession(
+    const loggedInUser: UserSession = new UserSession(
       access_token, refresh_token, expires_in, token_type, user
     );
 
-    if (logedInUser.token) {
-      this.userService.appUser = logedInUser;
+    if (loggedInUser.token) {
+      this.userService.appUser = loggedInUser;
     }
   }
 
