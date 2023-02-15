@@ -7,7 +7,7 @@
     <div class="col-7">
       <input
         type="date"
-        [min]="minDate"
+        [min]="tomorrowDate"
         #date
         (change)="getAvailableSlots(date.value)"
       />

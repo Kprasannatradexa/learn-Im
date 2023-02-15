@@ -17,7 +17,7 @@ export class SelectTimeSlotComponent implements OnInit, AfterViewInit {
   @ViewChild('date') date!: ElementRef;
   @ViewChild('selectedOption') selectedOption!: ElementRef;
 
-  minDate: any;
+  tomorrowDate !: string;
   selectedTimeSlotsIndex!: number;
   selectedTimeSlots!: string;
   selectedDate!: string;
@@ -34,7 +34,7 @@ export class SelectTimeSlotComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     this.setTomorrowDate();
 
-    this.getABookingTimeSlots(this.minDate);
+    this.getABookingTimeSlots(this.tomorrowDate);
   }
 
   getABookingTimeSlots(date: string) {
@@ -51,15 +51,15 @@ export class SelectTimeSlotComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.date.nativeElement.value = this.minDate;
-    this.selectedDate = this.minDate;
+    this.date.nativeElement.value = this.tomorrowDate;
+    this.selectedDate = this.tomorrowDate;
   }
 
   setTomorrowDate() {
     let tomorrow = new Date();
     tomorrow.setDate(tomorrow.getDate() + 1);
-    this.minDate = new Date(tomorrow).toISOString().split('T')[0];
-    return this.minDate;
+    this.tomorrowDate = new Date(tomorrow).toISOString().split('T')[0];
+    return this.tomorrowDate;
   }
 
 
