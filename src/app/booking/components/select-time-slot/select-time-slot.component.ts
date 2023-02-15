@@ -55,6 +55,15 @@ export class SelectTimeSlotComponent implements OnInit, AfterViewInit {
     this.selectedDate = this.minDate;
   }
 
+  getTomorrowDate() {
+    const today = new Date()
+    let tomorrow = new Date()
+    tomorrow.setDate(today.getDate() + 1);
+    this.minDate = new Date(tomorrow).toISOString().split('T')[0];
+    return this.minDate;
+  }
+
+
   isTimeSlotResponsePresent(selectedDate: string) {
     if (this.timeSlots.some(timeSlot => timeSlot.slotDate === selectedDate)) {
       this.timeSlots.filter((timeSlot) => {
@@ -65,36 +74,6 @@ export class SelectTimeSlotComponent implements OnInit, AfterViewInit {
     } else {
       this.getABookingTimeslots(selectedDate);
     }
-  }
-
-  getTomorrowDate() {
-    const today = new Date()
-    let tomorrow = new Date()
-    tomorrow.setDate(today.getDate() + 1);
-    this.minDate = new Date(tomorrow).toISOString().split('T')[0];
-    return this.minDate;
-  }
-
-  redirectTo() {
-
-  }
-
-  bookACourse() {
-
-    if (this.selectedDate && this.selectedTimeSlots) {
-
-      const reqObject = {
-        id: this.id,
-        reqBody: {
-          time_slot: this.selectedTimeSlots
-        }
-      }
-
-      this.bookingApiService.bookCourse(reqObject).subscribe((response) => {
-        console.log(response);
-      })
-    }
-
   }
 
 
