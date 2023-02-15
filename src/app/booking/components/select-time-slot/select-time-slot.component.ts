@@ -86,7 +86,7 @@ export class SelectTimeSlotComponent implements OnInit, AfterViewInit {
 
       const reqObject = {
         id: this.id,
-        reqBody: {
+        body: {
           time_slot: this.selectedTimeSlots
         }
       }

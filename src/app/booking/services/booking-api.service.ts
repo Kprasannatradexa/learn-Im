@@ -1,8 +1,10 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { RequestBody } from 'src/app/core/interface/request-body';
 import { environment } from 'src/environments/environment';
-import { BookingTimeSlots } from '../interface/booking';
+import { BookingTimeSlots, TimeSlot } from '../interface/booking';
+import { TimeSlotRequestBody } from './booking-repository.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,8 +16,9 @@ export class BookingApiService {
 
   constructor(private http: HttpClient) { }
 
-  getCourseTimeSlots(reqObject: any): Observable<BookingTimeSlots[]> {
-    const { id = '', date = '' } = reqObject || {};
+  getCourseTimeSlots(reqObject: TimeSlotRequestBody): Observable<BookingTimeSlots[]> {
+
+    const { id, date } = reqObject || {};
 
     return this.http.get<BookingTimeSlots[]>(`${this.url}/courses/${id}/time_slots`, {
       params: new HttpParams()
@@ -23,10 +26,10 @@ export class BookingApiService {
     })
   }
 
-  bookACourse(reqObject: any) {
-    const { id = '', reqBody = '' } = reqObject || {};
+  bookACourse(reqObject: RequestBody<TimeSlot>) {
+    const { id, body } = reqObject || {};
 
-    return this.http.post(`${this.url}/courses/${id}/book`, reqBody)
+    return this.http.post(`${this.url}/courses/${id}/book`, body)
   }
 
 }
