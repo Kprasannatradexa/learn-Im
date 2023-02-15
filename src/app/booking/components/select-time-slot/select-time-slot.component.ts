@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { BookingSlots } from '../../interface/booking';
-import { BookingApiService } from '../../services/booking-api.service';
+import { BookingRepositoryService } from '../../services/booking-repository.service';
 
 interface timeSlots {
   slotDate: string;
@@ -28,7 +28,7 @@ export class SelectTimeSlotComponent implements OnInit, AfterViewInit {
 
   availableTimeSlots: BookingSlots[] = [];
 
-  constructor(private bookingApiService: BookingApiService) { }
+  constructor(private bookingRepositoryService: BookingRepositoryService) { }
 
 
   ngOnInit(): void {
@@ -38,7 +38,7 @@ export class SelectTimeSlotComponent implements OnInit, AfterViewInit {
   }
 
   getABookingTimeslots(date: string) {
-    this.bookingApiService.getCourseTimeslots({ id: this.id, date })
+    this.bookingRepositoryService.getCourseTimeSlots({ id: this.id, date })
       .subscribe((bookingTimeSlots: BookingSlots[]) => {
         if (bookingTimeSlots.length) {
           this.timeSlots.push({ slotDate: bookingTimeSlots[0]?.slot_date, availableSlots: bookingTimeSlots })
@@ -92,7 +92,7 @@ export class SelectTimeSlotComponent implements OnInit, AfterViewInit {
         }
       }
 
-      this.bookingApiService.bookCourse(reqObject).subscribe((response) => {
+      this.bookingRepositoryService.bookACourse(reqObject).subscribe((response) => {
         console.log(response);
       })
     }

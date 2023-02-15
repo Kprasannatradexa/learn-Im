@@ -14,7 +14,7 @@ export class BookingApiService {
 
   constructor(private http: HttpClient) { }
 
-  getCourseTimeslots(reqObject: any): Observable<BookingSlots[]> {
+  getCourseTimeSlots(reqObject: any): Observable<BookingSlots[]> {
     const { id = '', date = '' } = reqObject || {};
 
     return this.http.get<BookingSlots[]>(`${this.url}/courses/${id}/time_slots`, {
@@ -23,7 +23,7 @@ export class BookingApiService {
     })
   }
 
-  bookCourse(reqObject: any) {
+  bookACourse(reqObject: any) {
     const { id = '', reqBody = '' } = reqObject || {};
 
     return this.http.post(`${this.url}/courses/${id}/book`, reqBody)
