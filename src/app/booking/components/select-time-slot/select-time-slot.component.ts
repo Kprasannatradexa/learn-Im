@@ -1,6 +1,11 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { BookingSlots } from '../../interface/booking';
 import { BookingApiService } from '../../services/booking-api.service';
 
+interface timeSlots {
+  slotDate: string;
+  availableSlots: BookingSlots[];
+}
 
 @Component({
   selector: 'app-select-time-slot',
@@ -15,10 +20,13 @@ export class SelectTimeSlotComponent implements OnInit, AfterViewInit {
   minDate: any;
   selectedTimeSlotsIndex!: number;
   selectedTimeSlots!: string;
+  selectedDate!: string;
 
   id: string = "b3556c22-84b1-437b-8438-940a89c5e998";
 
-  timeSlots!: { [key: string]: any }
+  timeSlots: timeSlots[] = [];
+
+  availableTimeSlots: BookingSlots[] = [];
 
   constructor(private bookingApiService: BookingApiService) { }
 
@@ -26,16 +34,37 @@ export class SelectTimeSlotComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     this.getTomorrowDate();
 
-    this.bookingApiService.getCourseTimeslots({ id: this.id, date: this.minDate })
-      .subscribe((timeSlots) => {
-        if (timeSlots) {
+    this.getABookingTimeslots(this.minDate);
+  }
 
+  getABookingTimeslots(date: string) {
+    this.bookingApiService.getCourseTimeslots({ id: this.id, date })
+      .subscribe((bookingTimeSlots: BookingSlots[]) => {
+        if (bookingTimeSlots.length) {
+          this.timeSlots.push({ slotDate: bookingTimeSlots[0]?.slot_date, availableSlots: bookingTimeSlots })
+          this.availableTimeSlots = bookingTimeSlots;
+        } else {
+          console.log('Slot not available');
+          this.availableTimeSlots = [];
         }
       })
   }
 
   ngAfterViewInit(): void {
     this.date.nativeElement.value = this.minDate;
+    this.selectedDate = this.minDate;
+  }
+
+  isTimeSlotResponsePresent(selectedDate: string) {
+    if (this.timeSlots.some(timeSlot => timeSlot.slotDate === selectedDate)) {
+      this.timeSlots.filter((timeSlot) => {
+        if (timeSlot.slotDate === selectedDate) {
+          this.availableTimeSlots = timeSlot.availableSlots;
+        }
+      })
+    } else {
+      this.getABookingTimeslots(selectedDate);
+    }
   }
 
   getTomorrowDate() {
@@ -51,14 +80,13 @@ export class SelectTimeSlotComponent implements OnInit, AfterViewInit {
   }
 
   bookACourse() {
-    const selectedDate = this.date.nativeElement.value;
 
-    if (selectedDate && this.selectedTimeSlots) {
+    if (this.selectedDate && this.selectedTimeSlots) {
 
       const reqObject = {
-        id: this.selectedTimeSlots,
+        id: this.id,
         reqBody: {
-          time_slot: selectedDate
+          time_slot: this.selectedTimeSlots
         }
       }
 
@@ -69,31 +97,7 @@ export class SelectTimeSlotComponent implements OnInit, AfterViewInit {
 
   }
 
-  options = [
-    {
-      id: "642a866d-179c-4c33-8ace-6a67dcb4d5df",
-      slot_date: "2023-02-15",
-      start_time: "09:00:00",
-      end_time: "12:00:00"
-    },
-    {
-      id: "642a866d-179c-4c33-8ace-6a67dcb4d5df",
-      slot_date: "2023-02-15",
-      start_time: "01:00:00",
-      end_time: "04:00:00"
-    },
-    {
-      id: "642a866d-179c-4c33-8ace-6a67dcb4d5df",
-      slot_date: "2023-02-15",
-      start_time: "05:00:00",
-      end_time: "08:00:00"
-    }
-  ]
 
-  getSelectedTimeslots(timeslots: string, i: number) {
-    this.selectedTimeSlots = timeslots;
-    this.selectedTimeSlotsIndex = i;
-  }
 
 
 }
