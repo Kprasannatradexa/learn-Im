@@ -81,7 +81,23 @@ export class SelectTimeSlotComponent implements OnInit, AfterViewInit {
 
   }
 
+  bookACourse() {
 
+    if (this.selectedDate && this.selectedTimeSlots) {
+
+      const reqObject = {
+        id: this.id,
+        reqBody: {
+          time_slot: this.selectedTimeSlots
+        }
+      }
+
+      this.bookingApiService.bookCourse(reqObject).subscribe((response) => {
+        console.log(response);
+      })
+    }
+
+  }
 
   getSelectedTimeslots(timeslots: string, i: number) {
     this.selectedTimeSlots = timeslots;
