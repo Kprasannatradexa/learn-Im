@@ -2,7 +2,7 @@ import {
   HttpEvent, HttpHandler, HttpHeaders, HttpInterceptor, HttpRequest
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { exhaustMap, filter, Observable } from 'rxjs';
+import { exhaustMap, filter, Observable, take } from 'rxjs';
 import { Environment, EnvironmentService } from '../environment/environment.service';
 import { UserService } from '../user/user.service';
 
@@ -26,7 +26,8 @@ export class AuthInterceptor implements HttpInterceptor {
 
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    return this.userService.user$.pipe(
+    return this.userService?.user$?.pipe(
+      take(1),
       exhaustMap((user) => {
         let modifiedRequest
         if (user) {
