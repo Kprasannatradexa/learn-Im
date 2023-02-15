@@ -98,8 +98,8 @@ export class SelectTimeSlotComponent implements OnInit, AfterViewInit {
 
   }
 
-  getSelectedTimeSlots(timeslots: string, i: number) {
-    this.selectedTimeSlots = timeslots;
+  getSelectedTimeSlots(timeSlots: string, i: number) {
+    this.selectedTimeSlots = timeSlots;
     this.selectedTimeSlotsIndex = i;
   }
 
