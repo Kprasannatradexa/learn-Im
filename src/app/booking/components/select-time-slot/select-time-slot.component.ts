@@ -1,5 +1,4 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
 import { BookingApiService } from '../../services/booking-api.service';
 
 
@@ -14,7 +13,8 @@ export class SelectTimeSlotComponent implements OnInit, AfterViewInit {
   @ViewChild('selectedOption') selectedOption!: ElementRef;
 
   minDate: any;
-  selectedTimeSlots!: number;
+  selectedTimeSlotsIndex!: number;
+  selectedTimeSlots!: string;
 
   id: string = "b3556c22-84b1-437b-8438-940a89c5e998";
 
@@ -50,10 +50,22 @@ export class SelectTimeSlotComponent implements OnInit, AfterViewInit {
 
   }
 
-  bookASlot() {
+  bookACourse() {
     const selectedDate = this.date.nativeElement.value;
 
-    console.log(selectedDate);
+    if (selectedDate && this.selectedTimeSlots) {
+
+      const reqObject = {
+        id: this.selectedTimeSlots,
+        reqBody: {
+          time_slot: selectedDate
+        }
+      }
+
+      this.bookingApiService.bookCourse(reqObject).subscribe((response) => {
+        console.log(response);
+      })
+    }
 
   }
 
@@ -79,8 +91,8 @@ export class SelectTimeSlotComponent implements OnInit, AfterViewInit {
   ]
 
   getSelectedTimeslots(timeslots: string, i: number) {
-    this.selectedTimeSlots = i;
-    console.log(timeslots);
+    this.selectedTimeSlots = timeslots;
+    this.selectedTimeSlotsIndex = i;
   }
 
 

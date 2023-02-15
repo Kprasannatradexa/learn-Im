@@ -13,7 +13,7 @@
         <li
           id="menu_btn"
           (click)="getSelectedTimeslots(option.id, i)"
-          [ngClass]="{ 'active-slot': i === selectedTimeSlots }"
+          [ngClass]="{ 'active-slot': i === selectedTimeSlotsIndex }"
         >
           {{ option.start_time }} - {{ option.end_time }}
         </li>
@@ -24,6 +24,6 @@
     <app-button-lg (buttonClicked)="redirectTo()" class="mr-8"
       >Back</app-button-lg
     >
-    <app-button-lg (buttonClicked)="bookASlot()">Submit</app-button-lg>
+    <app-button-lg (buttonClicked)="bookACourse()">Submit</app-button-lg>
   </div>
 </div>
