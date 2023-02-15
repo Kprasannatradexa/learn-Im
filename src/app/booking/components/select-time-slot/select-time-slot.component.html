@@ -17,7 +17,7 @@
       <ng-container *ngIf="availableTimeSlots.length; else noSlotAvailable">
         <ul *ngFor="let availableTimeSlot of availableTimeSlots; let i = index">
           <li
-            (click)="getSelectedTimeslots(availableTimeSlot.id, i)"
+            (click)="getSelectedTimeSlots(availableTimeSlot.id, i)"
             [ngClass]="{ 'active-slot': i === selectedTimeSlotsIndex }"
           >
             {{ availableTimeSlot.start_time }} -

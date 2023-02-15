@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { BookingSlots } from '../interface/booking';
+import { BookingTimeSlots } from '../interface/booking';
 import { BookingApiService } from './booking-api.service';
 
 @Injectable({
@@ -11,7 +11,7 @@ export class BookingRepositoryService {
   constructor(private bookingApiService: BookingApiService) { }
 
 
-  getCourseTimeSlots(reqObject: any): Observable<BookingSlots[]> {
+  getCourseTimeSlots(reqObject: any): Observable<BookingTimeSlots[]> {
     return this.bookingApiService.getCourseTimeSlots(reqObject);
   }
 

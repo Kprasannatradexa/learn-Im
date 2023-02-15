@@ -1,10 +1,10 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { BookingSlots } from '../../interface/booking';
+import { BookingTimeSlots } from '../../interface/booking';
 import { BookingRepositoryService } from '../../services/booking-repository.service';
 
-interface timeSlots {
+interface StoredTimeSlots {
   slotDate: string;
-  availableSlots: BookingSlots[];
+  availableSlots: BookingTimeSlots[];
 }
 
 @Component({
@@ -24,24 +24,24 @@ export class SelectTimeSlotComponent implements OnInit, AfterViewInit {
 
   id: string = "b3556c22-84b1-437b-8438-940a89c5e998";
 
-  timeSlots: timeSlots[] = [];
+  storedTimeSlots: StoredTimeSlots[] = [];
 
-  availableTimeSlots: BookingSlots[] = [];
+  availableTimeSlots: BookingTimeSlots[] = [];
 
   constructor(private bookingRepositoryService: BookingRepositoryService) { }
 
 
   ngOnInit(): void {
-    this.getTomorrowDate();
+    this.setTomorrowDate();
 
-    this.getABookingTimeslots(this.minDate);
+    this.getABookingTimeSlots(this.minDate);
   }
 
-  getABookingTimeslots(date: string) {
+  getABookingTimeSlots(date: string) {
     this.bookingRepositoryService.getCourseTimeSlots({ id: this.id, date })
-      .subscribe((bookingTimeSlots: BookingSlots[]) => {
+      .subscribe((bookingTimeSlots: BookingTimeSlots[]) => {
         if (bookingTimeSlots.length) {
-          this.timeSlots.push({ slotDate: bookingTimeSlots[0]?.slot_date, availableSlots: bookingTimeSlots })
+          this.storedTimeSlots.push({ slotDate: bookingTimeSlots[0]?.slot_date, availableSlots: bookingTimeSlots })
           this.availableTimeSlots = bookingTimeSlots;
         } else {
           console.log('Slot not available');
@@ -55,24 +55,23 @@ export class SelectTimeSlotComponent implements OnInit, AfterViewInit {
     this.selectedDate = this.minDate;
   }
 
-  getTomorrowDate() {
-    const today = new Date()
-    let tomorrow = new Date()
-    tomorrow.setDate(today.getDate() + 1);
+  setTomorrowDate() {
+    let tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1);
     this.minDate = new Date(tomorrow).toISOString().split('T')[0];
     return this.minDate;
   }
 
 
-  isTimeSlotResponsePresent(selectedDate: string) {
-    if (this.timeSlots.some(timeSlot => timeSlot.slotDate === selectedDate)) {
-      this.timeSlots.filter((timeSlot) => {
+  isTimeSlotsStored(selectedDate: string) {
+    if (this.storedTimeSlots.some(timeSlot => timeSlot.slotDate === selectedDate)) {
+      this.storedTimeSlots.filter((timeSlot) => {
         if (timeSlot.slotDate === selectedDate) {
           this.availableTimeSlots = timeSlot.availableSlots;
         }
       })
     } else {
-      this.getABookingTimeslots(selectedDate);
+      this.getABookingTimeSlots(selectedDate);
     }
   }
 
@@ -99,14 +98,14 @@ export class SelectTimeSlotComponent implements OnInit, AfterViewInit {
 
   }
 
-  getSelectedTimeslots(timeslots: string, i: number) {
+  getSelectedTimeSlots(timeslots: string, i: number) {
     this.selectedTimeSlots = timeslots;
     this.selectedTimeSlotsIndex = i;
   }
 
   getAvailableSlots(selectedDate: string) {
     this.selectedDate = selectedDate;
-    this.isTimeSlotResponsePresent(selectedDate);
+    this.isTimeSlotsStored(selectedDate);
   }
 
 
