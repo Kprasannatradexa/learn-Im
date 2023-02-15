@@ -21,5 +21,10 @@ export class BookingApiService {
     })
   }
 
+  bookCourse(reqObject: any) {
+    const { id = '', reqBody = '' } = reqObject || {};
+
+    return this.http.post(`${this.url}/courses/${id}/book`, reqBody)
+  }
 
 }
