@@ -9,11 +9,11 @@
     </div>
     <div class="col-5 time-slot">
       <h4>Available slots</h4>
-      <ul>
+      <ul *ngFor="let option of options; let i = index">
         <li
           id="menu_btn"
-          *ngFor="let option of options"
-          (click)="getSelectedTimeslots(option.id)"
+          (click)="getSelectedTimeslots(option.id, i)"
+          [ngClass]="{ 'active-slot': i === selectedTimeSlots }"
         >
           {{ option.start_time }} - {{ option.end_time }}
         </li>
