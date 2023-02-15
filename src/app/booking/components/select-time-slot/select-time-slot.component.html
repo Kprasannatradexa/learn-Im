@@ -5,19 +5,29 @@
   </div>
   <div class="row">
     <div class="col-7">
-      <input type="date" [min]="minDate" #date />
+      <input
+        type="date"
+        [min]="minDate"
+        #date
+        (change)="getAvailableSlots(date.value)"
+      />
     </div>
     <div class="col-5 time-slot">
       <h4>Available slots</h4>
-      <ul *ngFor="let option of options; let i = index">
-        <li
-          id="menu_btn"
-          (click)="getSelectedTimeslots(option.id, i)"
-          [ngClass]="{ 'active-slot': i === selectedTimeSlotsIndex }"
-        >
-          {{ option.start_time }} - {{ option.end_time }}
-        </li>
-      </ul>
+      <ng-container *ngIf="availableTimeSlots.length; else noSlotAvailable">
+        <ul *ngFor="let availableTimeSlot of availableTimeSlots; let i = index">
+          <li
+            (click)="getSelectedTimeslots(availableTimeSlot.id, i)"
+            [ngClass]="{ 'active-slot': i === selectedTimeSlotsIndex }"
+          >
+            {{ availableTimeSlot.start_time }} -
+            {{ availableTimeSlot.end_time }}
+          </li>
+        </ul>
+      </ng-container>
+      <ng-template #noSlotAvailable>
+        <p>No slot available on this day. Please select other day.</p>
+      </ng-template>
     </div>
   </div>
   <div class="button-container">
