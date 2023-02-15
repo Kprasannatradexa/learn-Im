@@ -77,6 +77,21 @@ export class SelectTimeSlotComponent implements OnInit, AfterViewInit {
   }
 
 
+  redirectTo() {
+
+  }
+
+
+
+  getSelectedTimeslots(timeslots: string, i: number) {
+    this.selectedTimeSlots = timeslots;
+    this.selectedTimeSlotsIndex = i;
+  }
+
+  getAvailableSlots(selectedDate: string) {
+    this.selectedDate = selectedDate;
+    this.isTimeSlotResponsePresent(selectedDate);
+  }
 
 
 }
