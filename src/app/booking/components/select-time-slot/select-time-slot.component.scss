@@ -9,6 +9,20 @@
 }
 
 .time-slot {
-    border: 1px solid black;
-    margin-top: 5px;
+    padding-top: 20px;
+    text-align: center;
+    min-height: 250px;
+    background: #F9FBFC;
+
+    li {
+        cursor: pointer;
+        list-style-type: none;
+        border: 1px solid black;
+        margin-bottom: 10px;
+        padding: 5px 0px
+    }
+
+    li:last-child {
+        margin: 0;
+    }
 }

@@ -5,15 +5,19 @@
   </div>
   <div class="row">
     <div class="col-7">
-      <input type="date" #date />
+      <input type="date" [min]="minDate" #date />
     </div>
-    <div class="col-5">
+    <div class="col-5 time-slot">
       <h4>Available slots</h4>
-      <select class="form-select" aria-label="Default select example">
-        <option *ngFor="let option of options" #selectedOption>
+      <ul>
+        <li
+          id="menu_btn"
+          *ngFor="let option of options"
+          (click)="getSelectedTimeslots(option.id)"
+        >
           {{ option.start_time }} - {{ option.end_time }}
-        </option>
-      </select>
+        </li>
+      </ul>
     </div>
   </div>
   <div class="button-container">
