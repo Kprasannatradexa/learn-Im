@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { RequestBody } from 'src/app/core/interface/request-body';
-import { BookingTimeSlots, TimeSlot } from '../interface/booking';
+import { BookedCourses, BookingTimeSlots, TimeSlot } from '../interface/booking';
 import { BookingApiService } from './booking-api.service';
 
 export interface TimeSlotRequestBody {
@@ -20,7 +20,7 @@ export class BookingRepositoryService {
     return this.bookingApiService.getCourseTimeSlots(reqObject);
   }
 
-  bookACourse(reqObject: RequestBody<TimeSlot>) {
+  bookACourse(reqObject: RequestBody<TimeSlot>): Observable<BookedCourses> {
     return this.bookingApiService.bookACourse(reqObject);
   }
 

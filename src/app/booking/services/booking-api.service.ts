@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { RequestBody } from 'src/app/core/interface/request-body';
 import { environment } from 'src/environments/environment';
-import { BookingTimeSlots, TimeSlot } from '../interface/booking';
+import { BookedCourses, BookingTimeSlots, TimeSlot } from '../interface/booking';
 import { TimeSlotRequestBody } from './booking-repository.service';
 
 @Injectable({
@@ -26,10 +26,10 @@ export class BookingApiService {
     })
   }
 
-  bookACourse(reqObject: RequestBody<TimeSlot>) {
+  bookACourse(reqObject: RequestBody<TimeSlot>): Observable<BookedCourses> {
     const { id, body } = reqObject || {};
 
-    return this.http.post(`${this.url}/courses/${id}/book`, body)
+    return this.http.post<BookedCourses>(`${this.url}/courses/${id}/book`, body)
   }
 
 }
