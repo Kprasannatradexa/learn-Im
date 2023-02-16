@@ -28,7 +28,8 @@ export class HomeComponent implements OnInit {
 
   institutes$!: Observable<Institute[]>;
 
-  courses$!: Observable<string[]>;
+  searchedCourses$!: Observable<string[]>;
+
 
   searchForm = this.fb.group({
     search_course: [''],
@@ -56,10 +57,7 @@ export class HomeComponent implements OnInit {
       }))
 
 
-    this.homeApiService.getCourses().subscribe((response) => {
-      console.log(response);
 
-    })
 
     this.searchCourse$.pipe(
       debounceTime(1000)
@@ -81,7 +79,7 @@ export class HomeComponent implements OnInit {
 
   getSearchedCourses(searchValue: string) {
     this.isLoading = true;
-    this.courses$ = this.homeApiService.getSearchedCourse(searchValue).pipe(
+    this.searchedCourses$ = this.homeApiService.getSearchedCourse(searchValue).pipe(
       map((coursesDetails: CourseDetails[]) => {
         return coursesDetails.map((courseDetail: CourseDetails) => courseDetail.title)
       }),
