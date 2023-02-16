@@ -3,7 +3,7 @@ import { FormBuilder, FormControl } from '@angular/forms';
 import { catchError, debounceTime, distinctUntilChanged, map, Observable, of, ReplaySubject, Subject, tap } from 'rxjs';
 import { CourseDetails } from 'src/app/booking/interface/booking';
 import { NotificationService } from 'src/app/core/services/notification/notification.service';
-import { HomeApiService } from '../../services/home-api.service';
+import { HomeApiService, Institute } from '../../services/home-api.service';
 
 @Component({
   selector: 'app-home',
@@ -26,6 +26,8 @@ export class HomeComponent implements OnInit {
 
   allCourses: any;
 
+  institutes$!: Observable<Institute[]>;
+
   courses$!: Observable<string[]>;
 
   searchForm = this.fb.group({
@@ -47,13 +49,14 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
 
+    this.institutes$ = this.homeApiService.getInstitutes().pipe(
+      catchError(() => {
+        this.notificationService.showWarning('Failed load instituted')
+        return of()
+      }))
+
+
     this.homeApiService.getCourses().subscribe((response) => {
-      this.allCourses = response
-      console.log(response);
-
-    })
-
-    this.homeApiService.getInstitutes().subscribe((response) => {
       console.log(response);
 
     })
