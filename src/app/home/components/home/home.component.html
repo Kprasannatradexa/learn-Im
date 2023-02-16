@@ -1,30 +1,125 @@
 <div class="main-container">
-  <div class="container">
-    <div class="row">
-      <div class="col-12">
-        <div class="home-container">
-          <div class="home-heading-section">
-            <h2>Lets find a desired course for you</h2>
-            <p>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quam,
-              soluta?
-            </p>
-          </div>
-          <div class="search-container">
-            <input
-              type="text"
-              #searchCourse
-              (keyup)="searchCourses(searchCourse.value)"
+  <div
+    class="primary-section d-sm-flex justify-content-between align-item-center"
+  >
+    <div class="primary-left-part d-flex flex-column">
+      <div class="primary-left-part-1">
+        <h1>
+          Lets find a desired <br />
+          course for you
+        </h1>
+        <p>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. <br />
+          Tenetur dolores sit ullam possimus sint vitae.
+        </p>
+      </div>
+      <div class="primary-left-part-2">
+        <form
+          [formGroup]="searchForm"
+          class="d-flex flex-lg-row flex-column align-item-center justify-content-between"
+        >
+          <div class="inputbar d-flex align-items-center">
+            <img
+              src="https://assets.hyperinvento.com/www_learnim_com/assets/learnim-assets/images/search.svg"
             />
+            <input
+              type="search"
+              formControlName="search_course"
+              placeholder="Type course name, institute, brand..."
+              (keyup)="searchCourses()"
+            />
+          </div>
 
-            <input
-              type="text"
-              #searchLocation
-              (keyup)="searchCity(searchLocation.value)"
-            />
+          <div class="d-flex">
+            <div class="inputbar d-flex align-items-center">
+              <img
+                src="https://assets.hyperinvento.com/www_learnim_com/assets/learnim-assets/images/pin_drop.svg"
+                alt=""
+              />
+              <input
+                type="search"
+                formControlName="search_location"
+                (keyup)="searchCity()"
+                placeholder="City, state or zip code"
+              />
+            </div>
+
+            <button type="submit" class="active-lg-device">search</button>
+
+            <button type="submit" class="active-sm-device">
+              <img
+                src="https://assets.hyperinvento.com/www_learnim_com/assets/learnim-assets/images/right-arrow.svg"
+              />
+            </button>
           </div>
+        </form>
+
+        <ng-container *ngIf="search_course.value">
+          <div class="mega-menu">
+            <ng-container *ngIf="courses$ | async as courses">
+              <ng-container *ngIf="courses.length; else noCourses">
+                <ul class="d-flex flex-column">
+                  <li *ngFor="let course of courses">
+                    <a class="d-flex">
+                      <div>
+                        <img
+                          src="https://assets.hyperinvento.com/www_learnim_com/assets/learnim-assets/images/search.svg"
+                        />
+                      </div>
+                      <div>{{ course }}</div>
+                    </a>
+                  </li>
+                </ul>
+              </ng-container>
+            </ng-container>
+            <ng-template #noCourses>
+              <ul class="d-flex flex-column">
+                No courses
+              </ul>
+            </ng-template>
+          </div>
+        </ng-container>
+      </div>
+
+      <div class="primary-left-part-3">
+        <h4>Course Available For These Brands</h4>
+
+        <div class="">
+          <ul class="brand-list d-flex justify-content-sm-between">
+            <li>
+              <img
+                src="https://assets.hyperinvento.com/www_learnim_com/assets/learnim-assets/images/godox-brand-logo.svg"
+              />
+            </li>
+            <li>
+              <img
+                src="https://assets.hyperinvento.com/www_learnim_com/assets/learnim-assets/images/hiti-brand-logo.svg"
+              />
+            </li>
+            <li>
+              <img
+                src="https://assets.hyperinvento.com/www_learnim_com/assets/learnim-assets/images/andbon-brand-logo.svg"
+              />
+            </li>
+            <li>
+              <img
+                src="https://assets.hyperinvento.com/www_learnim_com/assets/learnim-assets/images/samyang-brand-logo.svg"
+              />
+            </li>
+            <li>
+              <img
+                src="https://assets.hyperinvento.com/www_learnim_com/assets/learnim-assets/images/mirfak-brand-logo.svg"
+              />
+            </li>
+          </ul>
         </div>
       </div>
+    </div>
+
+    <div class="primary-right-part">
+      <img
+        src="https://assets.hyperinvento.com/www_learnim_com/assets/learnim-assets/images/home-page.svg"
+      />
     </div>
   </div>
 </div>
