@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { debounceTime, distinctUntilChanged, Observable, ReplaySubject, Subject } from 'rxjs';
+import { FormBuilder, FormControl } from '@angular/forms';
+import { catchError, debounceTime, distinctUntilChanged, map, Observable, of, ReplaySubject, Subject, tap } from 'rxjs';
+import { CourseDetails } from 'src/app/booking/interface/booking';
+import { NotificationService } from 'src/app/core/services/notification/notification.service';
 import { HomeApiService } from '../../services/home-api.service';
 
 @Component({
@@ -15,17 +18,30 @@ export class HomeComponent implements OnInit {
   searchLocation = new Subject<string>();
   searchLocation$ = this.searchLocation.asObservable();
 
+  isLoading: boolean = false;
+
   destroyed$: ReplaySubject<boolean> = new ReplaySubject(1);
 
   allCourses: any;
 
-  course: any;
+  courses$!: Observable<string[]>;
 
-  location: any;
+  searchForm = this.fb.group({
+    search_course: [''],
+    search_location: ['']
+  })
 
-  url: any
+  get search_course() {
+    return this.searchForm.get('search_course') as FormControl
+  }
 
-  constructor(private homeApiService: HomeApiService) { }
+  get search_location() {
+    return this.searchForm.get('search_location') as FormControl
+  }
+
+  constructor(private homeApiService: HomeApiService,
+    private fb: FormBuilder,
+    private notificationService: NotificationService) { }
 
   ngOnInit(): void {
 
@@ -41,14 +57,14 @@ export class HomeComponent implements OnInit {
     })
 
     this.searchCourse$.pipe(
-      debounceTime(500)
+      debounceTime(1000)
     ).subscribe((searchValue: string) => {
       console.log(searchValue);
       this.getSearchedCourses(searchValue);
     })
 
     this.searchLocation$.pipe(
-      debounceTime(500)
+      debounceTime(1000)
     ).
       subscribe((searchValue: string) => {
         console.log(searchValue);
@@ -59,22 +75,34 @@ export class HomeComponent implements OnInit {
 
 
   getSearchedCourses(searchValue: string) {
-    this.course = this.homeApiService.getSearchedCourse(searchValue).subscribe();
+    this.isLoading = true;
+    this.courses$ = this.homeApiService.getSearchedCourse(searchValue).pipe(
+      map((coursesDetails: CourseDetails[]) => {
+        return coursesDetails.map((courseDetail: CourseDetails) => courseDetail.title)
+      }),
+      catchError(() => {
+        this.notificationService.showWarning('Failed load courses.');
+        this.isLoading = false;
+        return of();
+      })
+    )
   }
 
   getCourseLocation(searchValue: string) {
-    this.location = this.homeApiService.getCoursesLocation(searchValue).subscribe((city) => {
+    this.homeApiService.getCoursesLocation(searchValue).subscribe((city) => {
       console.log(city);
     })
   }
 
-  searchCourses(value: string) {
+  searchCourses() {
+    const value = this.search_course.value;
     if (value !== '') {
       this.searchCourse.next(value);
     }
   }
 
-  searchCity(value: string) {
+  searchCity() {
+    const value = this.search_location.value;
     if (value !== '') {
       this.searchLocation.next(value);
     }
