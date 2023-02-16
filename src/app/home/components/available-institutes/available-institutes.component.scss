@@ -46,22 +46,19 @@
     color: $light-black;
 }
 
-.avlble-institutes div:first-child>div h1,
-.course-trial div:first-child>div h1 {
+.avlble-institutes div:first-child>div h1 {
     font-size: 2.5rem;
     font-weight: bold;
     font-family: $georgia;
     margin-bottom: 15px;
 }
 
-.avlble-institutes div:first-child>div h1 span,
-.course-trial div:first-child>div h1 span {
+.avlble-institutes div:first-child>div h1 span {
     color: $red;
     font-family: $georgia;
 }
 
-.avlble-institutes div:first-child>p,
-.course-trial div:first-child>p {
+.avlble-institutes div:first-child>p {
     font-size: 1rem;
     margin: 0 0 50px 0;
 }
@@ -84,6 +81,21 @@
     border: none;
 }
 
+.col-split {
+    flex: 0 0 auto;
+    width: 30%;
+}
+
+h1 {
+    margin: 0px;
+}
+
+@media only screen and (min-width:769px) and (max-width:1230px) {
+    .col-split {
+        flex: 0 0 auto;
+        width: 40%;
+    }
+}
 
 
 @media only screen and (min-width:1px) and (max-width:768px) {
@@ -91,16 +103,14 @@
         margin: 20px;
     }
 
-    .avlble-institutes div:first-child>div h1,
-    .course-trial div:first-child>div h1 {
+    .avlble-institutes div:first-child>div h1 {
         font-weight: 700;
         font-size: 1.563rem;
         line-height: 107%;
         color: $light-black;
     }
 
-    .avlble-institutes div:first-child>p,
-    .course-trial div:first-child>p {
+    .avlble-institutes div:first-child>p {
         display: none;
     }
 

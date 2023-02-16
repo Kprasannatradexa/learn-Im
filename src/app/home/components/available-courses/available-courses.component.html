@@ -1,1 +1,44 @@
-<p>available-courses works!</p>
+<div class="course-trial">
+  <div>
+    <div
+      class="d-flex justify-content-between align-items-center course-trial-name"
+    >
+      <h1>Course <span>Trial</span></h1>
+      <a href="#" class="viewall-btn"
+        >View all <img src="./images/right-arrow.svg" alt="" srcset=""
+      /></a>
+    </div>
+
+    <p>
+      A wide range of courses from which you can pick up photography-related
+      skills. Learn fundamentals to move forward by clearing up your confusion.
+      A thorough explanation of all you need to know about photography and the
+      products that are associated to it.
+    </p>
+  </div>
+
+  <div class="row flx-wrp-unset">
+    <div class="col-split col-6" *ngFor="let course of courses">
+      <div class="card-conatiner">
+        <div class="card-img">
+          <img
+            src="https://assets.hyperinvento.com/www_learnim_com/assets/learnim-assets/images/course-trial.png"
+            alt=""
+          />
+        </div>
+        <div class="card-content">
+          <h5>Canon camera course : Getting started with Canon photography</h5>
+          <div class="course-guide">
+            <span>Kunal Malhotrra</span>
+          </div>
+          <div class="course-status">
+            <span>Offline</span>
+          </div>
+          <div class="cost-badge">
+            <span>₹ 2699</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
