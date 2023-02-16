@@ -27,15 +27,15 @@
           />
         </div>
         <div class="card-content">
-          <h5>Canon camera course : Getting started with Canon photography</h5>
+          <h5>{{ course.title }} :{{ course.description }}</h5>
           <div class="course-guide">
-            <span>Kunal Malhotrra</span>
+            <span>{{ course.institute }}</span>
           </div>
           <div class="course-status">
-            <span>Offline</span>
+            <span>{{ course.course_mode }}</span>
           </div>
           <div class="cost-badge">
-            <span>₹ 2699</span>
+            <span>₹ {{ course.price }}</span>
           </div>
         </div>
       </div>
