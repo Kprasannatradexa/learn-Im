@@ -24,10 +24,8 @@ export class HomeComponent implements OnInit {
 
   destroyed$: ReplaySubject<boolean> = new ReplaySubject(1);
 
-  allCourses: any;
-
   institutes$!: Observable<Institute[]>;
-
+  courses$!: Observable<CourseDetails[]>
   searchedCourses$!: Observable<string[]>;
 
 
@@ -57,7 +55,11 @@ export class HomeComponent implements OnInit {
       }))
 
 
-
+    this.courses$ = this.homeApiService.getCourses().pipe(
+      catchError(() => {
+        this.notificationService.showWarning('Failed load instituted')
+        return of()
+      }))
 
     this.searchCourse$.pipe(
       debounceTime(1000)
