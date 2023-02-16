@@ -1,0 +1,149 @@
+@import 'src/assets/scss/partials/variables';
+
+
+.avlble-institutes {
+    margin: 40px 50px;
+}
+
+.avlble-institutes .card-img {
+    border: 1px solid $img-border-clr;
+}
+
+.avlble-institutes .card-img img {
+    width: 100%;
+    height: 100%;
+}
+
+.avlble-institutes .card-content {
+    padding: 15px 0;
+}
+
+.avlble-institutes .card-content h5 {
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.avlble-institutes .card-content p {
+    font-size: 1rem;
+    font-weight: 400;
+    color: $light-black;
+    line-height: 23px;
+}
+
+
+
+.avlble-institutes .institute-location img {
+    width: 20px;
+    height: 20px;
+    border: none;
+}
+
+.avlble-institutes .institute-location a {
+    text-decoration: none;
+    font-size: 1rem;
+    color: black;
+    column-gap: 5px;
+    color: $light-black;
+}
+
+.avlble-institutes div:first-child>div h1,
+.course-trial div:first-child>div h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    font-family: $georgia;
+    margin-bottom: 15px;
+}
+
+.avlble-institutes div:first-child>div h1 span,
+.course-trial div:first-child>div h1 span {
+    color: $red;
+    font-family: $georgia;
+}
+
+.avlble-institutes div:first-child>p,
+.course-trial div:first-child>p {
+    font-size: 1rem;
+    margin: 0 0 50px 0;
+}
+
+.viewall-btn {
+    font-size: 1.125rem;
+    font-weight: 400;
+    color: $red;
+    text-decoration: none;
+}
+
+.viewall-btn:hover {
+    opacity: 0.8;
+    color: $red;
+}
+
+.viewall-btn img {
+    width: 20px;
+    height: unset;
+    border: none;
+}
+
+
+
+@media only screen and (min-width:1px) and (max-width:768px) {
+    .avlble-institutes {
+        margin: 20px;
+    }
+
+    .avlble-institutes div:first-child>div h1,
+    .course-trial div:first-child>div h1 {
+        font-weight: 700;
+        font-size: 1.563rem;
+        line-height: 107%;
+        color: $light-black;
+    }
+
+    .avlble-institutes div:first-child>p,
+    .course-trial div:first-child>p {
+        display: none;
+    }
+
+    .avlble-institutes-name {
+        padding: 20px 0;
+    }
+
+    .avlble-institutes .card-content h5 {
+        font-weight: 600;
+        font-size: 0.938rem;
+        line-height: 120%;
+        color: $light-black;
+    }
+
+    .col-6 {
+        padding: 0 7px;
+    }
+
+    .avlble-institutes .card-content p {
+        font-weight: 400;
+        font-size: 0.75rem;
+        line-height: 147%;
+    }
+
+    .avlble-institutes .institute-location a {
+        font-weight: 400;
+        font-size: 0.75rem;
+        line-height: 120%
+    }
+
+    .viewall-btn {
+        font-weight: 400;
+        font-size: 0.813rem;
+        line-height: 120.2%;
+        display: flex;
+        justify-content: end;
+        column-gap: 10px;
+        flex-direction: row;
+        width: 72px;
+    }
+
+
+    .viewall-btn img {
+        width: 15px;
+    }
+}

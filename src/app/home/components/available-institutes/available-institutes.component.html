@@ -1,1 +1,45 @@
-<p>available-institutes works!</p>
+<div class="avlble-institutes">
+  <div>
+    <div
+      class="d-flex justify-content-between align-items-center avlble-institutes-name"
+    >
+      <h1>Available <span>Institutes</span></h1>
+      <a href="#" class="viewall-btn"
+        >View all
+        <img
+          src="https://assets.hyperinvento.com/www_learnim_com/assets/learnim-assets/images/arrow-right-red.svg"
+      /></a>
+    </div>
+
+    <p>
+      A wide range of courses from you can pick up photography-related skills.
+      Learn fundmental to move forward by clearing up your confusion
+    </p>
+  </div>
+
+  <div class="row flx-wrp-unset">
+    <div class="col-xl-3 col-md-4 col-6" *ngFor="let institute of institutes">
+      <div class="card-container">
+        <div class="card-img">
+          <img
+            src="https://media-assets.hyperinvento.com/companies/3a5f1158-d966-4bf9-8fbb-11e3b361b94b/others/others/files/35efa13009b74de29633043ed4f0fc09-other-other.webp"
+            alt=""
+          />
+        </div>
+        <div class="card-content">
+          <h5>{{ institute.name }}</h5>
+          <p class="card-text">
+            {{ institute.description }}
+          </p>
+          <div class="institute-location">
+            <a class="d-flex justify-content-start align-items-center"
+              ><img
+                src="https://assets.hyperinvento.com/www_learnim_com/assets/learnim-assets/images/pin_drop.svg"
+              />{{ institute.addresses?.city }}</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
