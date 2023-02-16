@@ -48,7 +48,8 @@ button {
 
 .main-container .row {
     width: 100%;
-    max-width: 1272px;
+    // max-width: 1272px;
+    max-width: 1500px;
     margin: 0 auto;
 }
 
@@ -163,6 +164,25 @@ input[type="submit"] {
 
 .row {
     padding: 0;
+}
+
+.flx-wrp-unset {
+    flex-wrap: unset;
+    overflow-x: scroll;
+}
+
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.flx-wrp-unset::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.flx-wrp-unset {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
 }
 
 // All Mobile screens
