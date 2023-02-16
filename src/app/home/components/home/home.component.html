@@ -130,4 +130,8 @@
     <app-available-institutes [institutes]="availableInstitutes">
     </app-available-institutes>
   </ng-container>
+
+  <ng-container *ngIf="courses$ | async as availableCourses">
+    <app-available-courses [courses]="availableCourses"></app-available-courses>
+  </ng-container>
 </div>
