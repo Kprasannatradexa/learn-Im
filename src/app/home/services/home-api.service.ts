@@ -1,8 +1,26 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { CourseDetails } from 'src/app/booking/interface/booking';
 import { EnvironmentService } from 'src/app/core/services/environment/environment.service';
 import { environment } from 'src/environments/environment';
 
+export interface Institute {
+  id: string;
+  name: string;
+  description: string;
+  addresses?: InstituteAddress
+}
+
+export interface InstituteAddress {
+  id: string;
+  country: string;
+  state: string;
+  city: string;
+  pincode: string;
+  landmark: string;
+  is_active: boolean;
+}
 @Injectable({
   providedIn: 'root'
 })
@@ -19,16 +37,16 @@ export class HomeApiService {
     // })
   }
 
-  getCourses() {
-    return this.http.get(`${this.url}/courses/`)
+  getCourses(): Observable<CourseDetails[]> {
+    return this.http.get<CourseDetails[]>(`${this.url}/courses/`)
   }
 
-  getInstitutes() {
-    return this.http.get(`${this.url}/institutes/`)
+  getInstitutes(): Observable<Institute[]> {
+    return this.http.get<Institute[]>(`${this.url}/institutes/`)
   }
 
-  getSearchedCourse(searchValue: string) {
-    return this.http.get(`${this.url}/courses/`, {
+  getSearchedCourse(searchValue: string): Observable<CourseDetails[]> {
+    return this.http.get<CourseDetails[]>(`${this.url}/courses/`, {
       params: new HttpParams()
         .set('search', searchValue)
         .set('expand', 'product')
