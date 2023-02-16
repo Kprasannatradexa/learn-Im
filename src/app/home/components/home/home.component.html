@@ -122,4 +122,9 @@
       />
     </div>
   </div>
+
+  <ng-container *ngIf="institutes$ | async as availableInstitutes">
+    <app-available-institutes [institutes]="availableInstitutes">
+    </app-available-institutes>
+  </ng-container>
 </div>
