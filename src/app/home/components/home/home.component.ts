@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl } from '@angular/forms';
 import { catchError, debounceTime, distinctUntilChanged, map, Observable, of, ReplaySubject, Subject, tap } from 'rxjs';
 import { CourseDetails } from 'src/app/booking/interface/booking';
@@ -11,6 +11,8 @@ import { HomeApiService } from '../../services/home-api.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+
+  @ViewChild('megaMenu') megaMenu!: ElementRef;
 
   searchCourse = new Subject<string>();
   searchCourse$ = this.searchCourse.asObservable();
@@ -106,6 +108,11 @@ export class HomeComponent implements OnInit {
     if (value !== '') {
       this.searchLocation.next(value);
     }
+  }
+
+  patchCourseToSearch(course: string) {
+    this.search_course.setValue(course);
+    this.megaMenu.nativeElement.style.display = 'none';
   }
 
 }
