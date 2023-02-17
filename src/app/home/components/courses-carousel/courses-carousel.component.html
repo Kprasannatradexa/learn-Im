@@ -1,0 +1,48 @@
+<div class="course-trial">
+  <div>
+    <div
+      class="d-flex justify-content-between align-items-center course-trial-name"
+    >
+      <h1>Course <span>Trial</span></h1>
+      <a href="#" class="viewall-btn"
+        >View all
+        <img
+          src="https://assets.hyperinvento.com/www_learnim_com/assets/learnim-assets/images/arrow-right-red.svg"
+      /></a>
+    </div>
+
+    <p>
+      A wide range of courses from which you can pick up photography-related
+      skills. Learn fundamentals to move forward by clearing up your confusion.
+      A thorough explanation of all you need to know about photography and the
+      products that are associated to it.
+    </p>
+  </div>
+
+  <div class="course-carousel-section">
+    <owl-carousel-o #owlCar [options]="customOptions">
+      <ng-template carouselSlide *ngFor="let course of courses">
+        <a [routerLink]="['/search']">
+          <div class="row flx-wrp-unset">
+            <app-courses [course]="course"></app-courses>
+          </div>
+        </a>
+      </ng-template>
+    </owl-carousel-o>
+
+    <!-- <button
+      class="prev-btn left-navigation"
+      type="button"
+      (click)="owlCar.prev()"
+    >
+      Prev
+    </button>
+    <button
+      class="next-btn right-navigation"
+      type="button"
+      (click)="owlCar.next()"
+    >
+      Next
+    </button> -->
+  </div>
+</div>
