@@ -4,7 +4,7 @@ import { CourseDetails } from 'src/app/booking/interface/booking';
 
 const customOptions: OwlOptions = {
   loop: true,
-  margin: 15,
+  margin: 25,
   autoplay: true,
   dots: false,
   smartSpeed: 400,
