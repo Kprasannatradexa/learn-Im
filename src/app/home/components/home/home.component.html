@@ -43,9 +43,19 @@
                 />
               </div>
 
-              <button type="submit" class="active-lg-device">search</button>
+              <button
+                type="submit"
+                class="active-lg-device"
+                (click)="getCourses()"
+              >
+                search
+              </button>
 
-              <button type="submit" class="active-sm-device">
+              <button
+                type="submit"
+                class="active-sm-device"
+                (click)="getCourses()"
+              >
                 <img
                   src="https://assets.hyperinvento.com/www_learnim_com/assets/learnim-assets/images/right-arrow.svg"
                 />
@@ -60,20 +70,22 @@
             [ngClass]="{ 'position-top': search_course.value }"
             #megaMenu
           >
-            <ng-container *ngIf="searchedCourses$ | async as searchedCourses">
-              <ng-container *ngIf="searchedCourses.length; else noCourses">
+            <ng-container
+              *ngIf="searchedCourseNames$ | async as searchedCourseNames"
+            >
+              <ng-container *ngIf="searchedCourseNames.length; else noCourses">
                 <ul class="d-flex flex-column">
-                  <li *ngFor="let searchedCourse of searchedCourses">
+                  <li *ngFor="let searchedCourseName of searchedCourseNames">
                     <a
                       class="d-flex"
-                      (click)="patchCourseToSearch(searchedCourse)"
+                      (click)="patchCourseToSearch(searchedCourseName)"
                     >
                       <div>
                         <img
                           src="https://assets.hyperinvento.com/www_learnim_com/assets/learnim-assets/images/search.svg"
                         />
                       </div>
-                      <div>{{ searchedCourse }}</div>
+                      <div>{{ searchedCourseName }}</div>
                     </a>
                   </li>
                 </ul>

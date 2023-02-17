@@ -25,10 +25,7 @@ export class HomeComponent implements OnInit {
 
   institutes$!: Observable<Institute[]>;
   courses$!: Observable<CourseDetails[]>
-  searchedCourses$!: Observable<string[]>;
-  searchedLocations$!: Observable<string[]>;
-
-
+  searchedCourseNames$!: Observable<string[]>;
 
   searchForm = this.fb.group({
     search_course: [''],
@@ -65,15 +62,14 @@ export class HomeComponent implements OnInit {
     this.searchCourse$.pipe(
       debounceTime(1000)
     ).subscribe((searchValue: string) => {
-      console.log(searchValue);
-      this.getSearchedCourses(searchValue);
+      this.getSearchedCourseNames(searchValue);
     })
   }
 
 
-  getSearchedCourses(searchValue: string) {
+  getSearchedCourseNames(searchValue: string) {
     this.isLoading = true;
-    this.searchedCourses$ = this.homeRepositoryService.searchCourses(searchValue).pipe(
+    this.searchedCourseNames$ = this.homeRepositoryService.searchCourses(searchValue).pipe(
       map((coursesDetails: CourseDetails[]) => {
         return coursesDetails.map((courseDetail: CourseDetails) => courseDetail.title)
       }),
@@ -99,6 +95,26 @@ export class HomeComponent implements OnInit {
 
   closeMenu() {
     this.megaMenu.nativeElement.style.display = 'none';
+  }
+
+  getCourses() {
+    const searchedCourse = this.searchForm.get('search_course')?.value;
+    const searchedLocation = this.searchForm.get('search_location')?.value;
+
+    if (searchedCourse || searchedLocation) {
+      let searchValue = {
+        ...(searchedCourse &&
+          { searchedCourse }
+        ),
+        ...(searchedLocation &&
+          { searchedLocation }
+        )
+      }
+      searchValue = Object.values(searchValue).join(',').replace(',', ' ');
+      this.homeRepositoryService.searchCourses(searchValue).subscribe((res) => {
+        console.log(res);
+      })
+    }
   }
 
 }
