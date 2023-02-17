@@ -13,49 +13,54 @@
           Tenetur dolores sit ullam possimus sint vitae.
         </p>
       </div>
-      <div class="primary-left-part-2">
-        <form
-          [formGroup]="searchForm"
-          class="d-flex flex-lg-row flex-column align-item-center justify-content-between"
-        >
-          <div class="inputbar d-flex align-items-center">
-            <img
-              src="https://assets.hyperinvento.com/www_learnim_com/assets/learnim-assets/images/search.svg"
-            />
-            <input
-              type="search"
-              formControlName="search_course"
-              placeholder="Type course name, institute, brand..."
-              (keyup)="searchCourses()"
-            />
-          </div>
-
-          <div class="d-flex">
+      <div class="primary-left-part-2 position-relative">
+        <div>
+          <form
+            [formGroup]="searchForm"
+            class="d-flex flex-lg-row flex-column align-item-center justify-content-between"
+          >
             <div class="inputbar d-flex align-items-center">
               <img
-                src="https://assets.hyperinvento.com/www_learnim_com/assets/learnim-assets/images/pin_drop.svg"
-                alt=""
+                src="https://assets.hyperinvento.com/www_learnim_com/assets/learnim-assets/images/search.svg"
               />
               <input
                 type="search"
-                formControlName="search_location"
-                (keyup)="searchCity()"
-                placeholder="City, state or zip code"
+                formControlName="search_course"
+                placeholder="Type course name, institute, brand..."
+                (keyup)="searchCourses()"
               />
             </div>
 
-            <button type="submit" class="active-lg-device">search</button>
+            <div class="d-flex">
+              <div class="inputbar d-flex align-items-center">
+                <img
+                  src="https://assets.hyperinvento.com/www_learnim_com/assets/learnim-assets/images/pin_drop.svg"
+                />
+                <input
+                  type="search"
+                  formControlName="search_location"
+                  (keyup)="searchCity()"
+                  placeholder="City, state or zip code"
+                />
+              </div>
 
-            <button type="submit" class="active-sm-device">
-              <img
-                src="https://assets.hyperinvento.com/www_learnim_com/assets/learnim-assets/images/right-arrow.svg"
-              />
-            </button>
-          </div>
-        </form>
+              <button type="submit" class="active-lg-device">search</button>
+
+              <button type="submit" class="active-sm-device">
+                <img
+                  src="https://assets.hyperinvento.com/www_learnim_com/assets/learnim-assets/images/right-arrow.svg"
+                />
+              </button>
+            </div>
+          </form>
+        </div>
 
         <ng-container *ngIf="search_course.value">
-          <div class="mega-menu" #megaMenu>
+          <div
+            class="mega-menu position-absolute"
+            [ngClass]="{ 'position-top': search_course.value }"
+            #megaMenu
+          >
             <ng-container *ngIf="searchedCourses$ | async as searchedCourses">
               <ng-container *ngIf="searchedCourses.length; else noCourses">
                 <ul class="d-flex flex-column">
@@ -78,6 +83,40 @@
             <ng-template #noCourses>
               <ul class="d-flex flex-column">
                 No courses
+              </ul>
+            </ng-template>
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="search_location.value">
+          <div class="mega-menu position-absolute align-items-center" #megaMenu>
+            <div class="d-flex float-end close-mega-menu" (click)="closeMenu()">
+              x
+            </div>
+            <ng-container
+              *ngIf="searchedLocations$ | async as searchedLocations"
+            >
+              <ng-container *ngIf="searchedLocations.length; else noLocations">
+                <ul class="d-flex flex-column">
+                  <li *ngFor="let searchedLocation of searchedLocations">
+                    <a
+                      class="d-flex"
+                      (click)="patchCourseToSearch(searchedLocation)"
+                    >
+                      <div>
+                        <img
+                          src="https://assets.hyperinvento.com/www_learnim_com/assets/learnim-assets/images/pin_drop.svg"
+                        />
+                      </div>
+                      <div>{{ searchedLocation }}</div>
+                    </a>
+                  </li>
+                </ul>
+              </ng-container>
+            </ng-container>
+            <ng-template #noLocations>
+              <ul class="d-flex flex-column">
+                No Location found.
               </ul>
             </ng-template>
           </div>

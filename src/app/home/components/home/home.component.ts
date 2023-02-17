@@ -28,6 +28,8 @@ export class HomeComponent implements OnInit {
   institutes$!: Observable<Institute[]>;
   courses$!: Observable<CourseDetails[]>
   searchedCourses$!: Observable<string[]>;
+  searchedLocations$!: Observable<string[]>;
+
 
 
   searchForm = this.fb.group({
@@ -95,9 +97,8 @@ export class HomeComponent implements OnInit {
   }
 
   getCourseLocation(searchValue: string) {
-    this.homeRepositoryService.searchCourseLocations(searchValue).subscribe((city) => {
-      console.log(city);
-    })
+    this.isLoading = true;
+    this.searchedLocations$ = this.homeRepositoryService.searchCourseLocations(searchValue);
   }
 
   searchCourses() {
@@ -116,6 +117,10 @@ export class HomeComponent implements OnInit {
 
   patchCourseToSearch(course: string) {
     this.search_course.setValue(course);
+    this.megaMenu.nativeElement.style.display = 'none';
+  }
+
+  closeMenu() {
     this.megaMenu.nativeElement.style.display = 'none';
   }
 
