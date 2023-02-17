@@ -38,7 +38,11 @@ export class HomeApiService {
   }
 
   getCourses(): Observable<CourseDetails[]> {
-    return this.http.get<CourseDetails[]>(`${this.url}/courses/`)
+    return this.http.get<CourseDetails[]>(`${this.url}/courses/`, {
+      params: new HttpParams()
+        .set('expand', 'product')
+        .append('expand', 'institute')
+    })
   }
 
   getInstitutes(): Observable<Institute[]> {
