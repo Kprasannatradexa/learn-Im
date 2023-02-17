@@ -1,0 +1,132 @@
+@import 'src/assets/scss/partials/variables';
+
+
+.logo h1 a {
+    font-family: $roboto;
+    font-weight: 700;
+    font-size: 2.1875rem;
+    text-decoration: none;
+    color: black;
+}
+
+.logo h1 a span {
+    color: $red;
+}
+
+.logo h1 a span span {
+    font-size: 1.875rem;
+    font-weight: bold;
+}
+
+
+header {
+    padding: 25px 30px;
+    // box-shadow: 0px 2px 9px $box-shadow-color;
+    // width: 100%;
+    // position: fixed;
+    // top: 0;
+    // left: 0;
+    // right: 0;
+    // z-index: 1;
+    // background-color: $white;
+}
+
+.fixed-header {
+    box-shadow: 0px 2px 9px $box-shadow-color;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    background-color: $white;
+}
+
+main {
+    position: absolute;
+    top: 100px;
+    left: 0;
+    right: 0;
+}
+
+.header-btns {
+    column-gap: 10px;
+}
+
+.header-btns button img {
+    width: 17px;
+    height: 24px;
+}
+
+.hamburger {
+    display: none;
+}
+
+.header-btns>div button {
+    border: 1px solid $light-black;
+    padding: 12px;
+    width: 50px;
+    height: 50px;
+    background-color: transparent;
+    margin: 0 5px 0 0;
+}
+
+.header-btns button:hover {
+    opacity: 0.8;
+}
+
+.header-btns .sign-in {
+    min-width: 100px;
+    height: 50px;
+    background-color: $light-black;
+    color: $white;
+    border: none;
+    padding: 10px;
+}
+
+.header-btns .sign-in:hover {
+    opacity: 0.8;
+}
+
+@media only screen and (min-width:1px) and (max-width:768px) {
+    header {
+        padding: 15px 30px;
+    }
+
+    .logo h1 a {
+        font-weight: 700;
+        font-size: 1.813rem;
+        line-height: 107%;
+    }
+
+    .logo h1 a span span {
+        font-size: 1.59rem;
+    }
+
+    .hamburger {
+        display: flex;
+        cursor: pointer;
+    }
+
+    .hamburger img {
+        height: 15px;
+    }
+
+    .header-btns button img {
+        width: 12px;
+        height: 17px;
+    }
+
+    .header-btns>div button {
+        padding: unset;
+        width: 35px;
+        height: 35px;
+        justify-content: center;
+        display: flex;
+        align-items: center;
+    }
+
+    .header-btns .sign-in {
+        display: none;
+    }
+}

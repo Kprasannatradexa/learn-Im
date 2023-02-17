@@ -1,1 +1,29 @@
-<p>header works!</p>
+<div class="main-container">
+  <header
+    class="d-flex align-items-center justify-content-between"
+    [ngClass]="{ 'fixed-header': isScrolled }"
+    #header
+  >
+    <div class="hamburger">
+      <img [src]="'images/hamburger.svg' | mediaBucket" />
+    </div>
+    <div class="logo">
+      <h1 class="d-flex">
+        <a href="#"
+          >Learn.<span>I<span>M</span></span></a
+        >
+      </h1>
+    </div>
+    <div class="header-btns d-flex">
+      <div class="d-flex">
+        <button class="d-flex justify-content-center align-items-center">
+          <img [src]="'images/hamburger.svg' | mediaBucket" />
+        </button>
+        <button class="d-flex justify-content-center align-items-center">
+          <img [src]="'images/notification.svg' | mediaBucket" />
+        </button>
+      </div>
+      <button class="sign-in">Sign In</button>
+    </div>
+  </header>
+</div>
