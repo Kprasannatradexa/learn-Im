@@ -18,11 +18,11 @@ export class HomeRepositoryService {
     return this.homeApiService.getInstitutes();
   }
 
-  getSearchedCourse(searchValue: string): Observable<CourseDetails[]> {
-    return this.homeApiService.getSearchedCourse(searchValue);
+  searchCourses(searchValue: string): Observable<CourseDetails[]> {
+    return this.homeApiService.searchCourses(searchValue);
   }
 
-  getCoursesLocation(searchValue: string) {
+  searchCourseLocations(searchValue: string) {
     return this.homeApiService.searchCourseLocations(searchValue);
   }
 

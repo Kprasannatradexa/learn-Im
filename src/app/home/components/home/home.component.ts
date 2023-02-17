@@ -3,7 +3,8 @@ import { FormBuilder, FormControl } from '@angular/forms';
 import { catchError, debounceTime, distinctUntilChanged, map, Observable, of, ReplaySubject, Subject, tap } from 'rxjs';
 import { CourseDetails } from 'src/app/booking/interface/booking';
 import { NotificationService } from 'src/app/core/services/notification/notification.service';
-import { HomeApiService, Institute } from '../../services/home-api.service';
+import { Institute } from '../../services/home-api.service';
+import { HomeRepositoryService } from '../../services/home-repository.service';
 
 @Component({
   selector: 'app-home',
@@ -42,20 +43,20 @@ export class HomeComponent implements OnInit {
     return this.searchForm.get('search_location') as FormControl
   }
 
-  constructor(private homeApiService: HomeApiService,
+  constructor(private homeRepositoryService: HomeRepositoryService,
     private fb: FormBuilder,
     private notificationService: NotificationService) { }
 
   ngOnInit(): void {
 
-    this.institutes$ = this.homeApiService.getInstitutes().pipe(
+    this.institutes$ = this.homeRepositoryService.getInstitutes().pipe(
       catchError(() => {
         this.notificationService.showWarning('Failed load instituted')
         return of()
       }))
 
 
-    this.courses$ = this.homeApiService.getCourses().pipe(
+    this.courses$ = this.homeRepositoryService.getCourses().pipe(
       catchError(() => {
         this.notificationService.showWarning('Failed load instituted')
         return of()
@@ -81,7 +82,7 @@ export class HomeComponent implements OnInit {
 
   getSearchedCourses(searchValue: string) {
     this.isLoading = true;
-    this.searchedCourses$ = this.homeApiService.getSearchedCourse(searchValue).pipe(
+    this.searchedCourses$ = this.homeRepositoryService.searchCourses(searchValue).pipe(
       map((coursesDetails: CourseDetails[]) => {
         return coursesDetails.map((courseDetail: CourseDetails) => courseDetail.title)
       }),
@@ -94,7 +95,7 @@ export class HomeComponent implements OnInit {
   }
 
   getCourseLocation(searchValue: string) {
-    this.homeApiService.getCoursesLocation(searchValue).subscribe((city) => {
+    this.homeRepositoryService.searchCourseLocations(searchValue).subscribe((city) => {
       console.log(city);
     })
   }

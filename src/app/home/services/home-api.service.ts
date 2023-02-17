@@ -49,7 +49,7 @@ export class HomeApiService {
     return this.http.get<Institute[]>(`${this.url}/institutes/`)
   }
 
-  getSearchedCourse(searchValue: string): Observable<CourseDetails[]> {
+  searchCourses(searchValue: string): Observable<CourseDetails[]> {
     return this.http.get<CourseDetails[]>(`${this.url}/courses/`, {
       params: new HttpParams()
         .set('search', searchValue)
