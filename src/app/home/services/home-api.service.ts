@@ -58,14 +58,14 @@ export class HomeApiService {
     })
   }
 
-  getCoursesLocation(searchValue: string) {
+  searchCourseLocations(searchValue: string) {
     return this.http.get(`${this.url}/courses/`, {
       params: new HttpParams()
         .set('institute__addresses__icity', searchValue)  // i for case insensitivity.
     })
   }
 
-  getSearchCourseByInstituteName(searchValue: string) {
+  searchCoursesByInstituteName(searchValue: string) {
     return this.http.get(`${this.url}/courses/`, {
       params: new HttpParams()
         .set('institute__name', searchValue)

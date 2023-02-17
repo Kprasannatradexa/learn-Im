@@ -23,7 +23,11 @@ export class HomeRepositoryService {
   }
 
   getCoursesLocation(searchValue: string) {
-    return this.homeApiService.getCoursesLocation(searchValue);
+    return this.homeApiService.searchCourseLocations(searchValue);
+  }
+
+  searchCoursesByInstituteName(searchValue: string) {
+    return this.homeApiService.searchCoursesByInstituteName(searchValue);
   }
 
 }
