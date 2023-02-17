@@ -20,12 +20,14 @@
     font-size: 3.125rem;
     line-height: 56.1px;
     letter-spacing: 1%;
+    margin-bottom: 20px;
 }
 
 .primary-left-part p {
     font-size: 1.25rem;
     line-height: 29.54px;
     color: $light-black;
+    width: 70%;
 }
 
 .primary-left-part-2 form,
@@ -99,8 +101,9 @@
     padding: 10px;
 }
 
-.mega-menu .primary-left-part-3 h4 {
+.primary-left-part-3 h4 {
     font-size: 1.25rem;
+    margin-bottom: 25px;
 }
 
 .close-mega-menu {
@@ -234,13 +237,14 @@
         font-size: 1.875rem;
         line-height: 112.2%;
         letter-spacing: 0.01em;
-        color: var(--light-black);
+        color: $light-black;
     }
 
     .primary-left-part p {
         font-weight: 400;
         font-size: 0.813rem;
         line-height: 147.7%;
+        width: unset;
     }
 
     .primary-section {

@@ -9,15 +9,15 @@
           course for you
         </h1>
         <p>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. <br />
-          Tenetur dolores sit ullam possimus sint vitae.
+          Choose from over a large variety of courses on photography. Book and
+          schedule your slots as per your convenience
         </p>
       </div>
       <div class="primary-left-part-2 position-relative">
         <div>
           <form
             [formGroup]="searchForm"
-            class="d-flex flex-lg-row flex-column align-item-center justify-content-between"
+            class="d-flex flex-lg-row flex-column align-item-center"
           >
             <div class="inputbar d-flex align-items-center">
               <img
@@ -26,7 +26,7 @@
               <input
                 type="search"
                 formControlName="search_course"
-                placeholder="Type course name, institute, brand..."
+                placeholder="Search Products"
                 (keyup)="searchCourses()"
               />
             </div>
@@ -48,7 +48,7 @@
                 class="active-lg-device"
                 (click)="getCourses()"
               >
-                search
+                Search
               </button>
 
               <button
