@@ -5,12 +5,14 @@ import { AuthInterceptor } from './services/interceptor/auth.interceptor';
 import { ServerInterceptor } from './services/interceptor/server.interceptor';
 import { SharedModule } from '../shared/shared.module';
 import { DragDropDirective } from './directives/drag-drop.directive';
+import { HeaderComponent } from './components/header/header.component';
 
 
 
 @NgModule({
   declarations: [
-    DragDropDirective
+    DragDropDirective,
+    HeaderComponent
   ],
   imports: [
     CommonModule,
@@ -29,7 +31,9 @@ import { DragDropDirective } from './directives/drag-drop.directive';
     }
   ],
   exports: [
-    DragDropDirective
+    DragDropDirective,
+    HeaderComponent
+
   ]
 })
 export class CoreModule { }
