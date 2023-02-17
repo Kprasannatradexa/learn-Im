@@ -58,10 +58,10 @@ export class HomeApiService {
     })
   }
 
-  searchCourseLocations(searchValue: string) {
-    return this.http.get(`${this.url}/courses/`, {
+  searchCourseLocations(searchValue: string): Observable<string[]> {
+    return this.http.get<string[]>(`${this.url}/courses/`, {
       params: new HttpParams()
-        .set('institute__addresses__icity', searchValue)  // i for case insensitivity.
+        .set('search', searchValue)  // i for case insensitivity.
     })
   }
 

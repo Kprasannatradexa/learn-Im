@@ -22,7 +22,7 @@ export class HomeRepositoryService {
     return this.homeApiService.searchCourses(searchValue);
   }
 
-  searchCourseLocations(searchValue: string) {
+  searchCourseLocations(searchValue: string): Observable<string[]> {
     return this.homeApiService.searchCourseLocations(searchValue);
   }
 
