@@ -18,16 +18,19 @@
 .primary-left-part h1 {
     font-family: $georgia;
     font-size: 3.125rem;
-    line-height: 56.1px;
-    letter-spacing: 1%;
     margin-bottom: 20px;
+    font-weight: 400;
+    line-height: 112%;
+    letter-spacing: 0.01em;
+    color: $light-black;
 }
 
 .primary-left-part p {
     font-size: 1.25rem;
-    line-height: 29.54px;
-    color: $light-black;
+    color: $paragraph-color;
     width: 70%;
+    font-weight: 400;
+    line-height: 147%;
 }
 
 .primary-left-part-2 form,
@@ -104,6 +107,9 @@
 .primary-left-part-3 h4 {
     font-size: 1.25rem;
     margin-bottom: 25px;
+    font-weight: 600;
+    line-height: 107%;
+    color: $paragraph-color;
 }
 
 .close-mega-menu {

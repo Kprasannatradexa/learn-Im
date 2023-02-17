@@ -21,13 +21,15 @@
 .avlble-institutes .card-content h5 {
     font-size: 1.25rem;
     font-weight: 600;
+    line-height: 120%;
+    color: $light-black;
 }
 
 .avlble-institutes .card-content p {
     font-size: 1rem;
     font-weight: 400;
-    color: $light-black;
-    line-height: 23px;
+    color: $paragraph-color;
+    line-height: 147%;
 }
 
 
@@ -48,9 +50,11 @@
 
 .avlble-institutes div:first-child>div h1 {
     font-size: 2.5rem;
-    font-weight: bold;
     font-family: $georgia;
+    color: $light-black;
     margin-bottom: 15px;
+    font-weight: 700;
+    line-height: 107%;
 }
 
 .avlble-institutes div:first-child>div h1 span {
@@ -60,6 +64,9 @@
 
 .avlble-institutes div:first-child>p {
     font-size: 1rem;
+    font-weight: 400;
+    line-height: 120%;
+    color: $paragraph-color;
     margin: 0 0 50px 0;
 }
 
