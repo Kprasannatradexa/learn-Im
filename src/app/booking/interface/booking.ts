@@ -1,4 +1,5 @@
 import { User } from "src/app/core/models/user.model";
+import { Institute } from "src/app/home/services/home-api.service";
 
 export interface BookingTimeSlots {
     id: string;
@@ -28,7 +29,7 @@ export interface CourseDetails {
     description: string;
     price: string;
     product: string[];
-    institute: string;
+    institute: Institute;
     start_date: string;
     end_date: string;
     maximum_bookings: number;
