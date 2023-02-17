@@ -39,7 +39,6 @@
                 <input
                   type="search"
                   formControlName="search_location"
-                  (keyup)="searchCity()"
                   placeholder="City, state or zip code"
                 />
               </div>
@@ -83,40 +82,6 @@
             <ng-template #noCourses>
               <ul class="d-flex flex-column">
                 No courses
-              </ul>
-            </ng-template>
-          </div>
-        </ng-container>
-
-        <ng-container *ngIf="search_location.value">
-          <div class="mega-menu position-absolute align-items-center" #megaMenu>
-            <div class="d-flex float-end close-mega-menu" (click)="closeMenu()">
-              x
-            </div>
-            <ng-container
-              *ngIf="searchedLocations$ | async as searchedLocations"
-            >
-              <ng-container *ngIf="searchedLocations.length; else noLocations">
-                <ul class="d-flex flex-column">
-                  <li *ngFor="let searchedLocation of searchedLocations">
-                    <a
-                      class="d-flex"
-                      (click)="patchCourseToSearch(searchedLocation)"
-                    >
-                      <div>
-                        <img
-                          src="https://assets.hyperinvento.com/www_learnim_com/assets/learnim-assets/images/pin_drop.svg"
-                        />
-                      </div>
-                      <div>{{ searchedLocation }}</div>
-                    </a>
-                  </li>
-                </ul>
-              </ng-container>
-            </ng-container>
-            <ng-template #noLocations>
-              <ul class="d-flex flex-column">
-                No Location found.
               </ul>
             </ng-template>
           </div>

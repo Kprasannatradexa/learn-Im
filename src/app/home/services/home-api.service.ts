@@ -58,13 +58,6 @@ export class HomeApiService {
     })
   }
 
-  searchCourseLocations(searchValue: string): Observable<string[]> {
-    return this.http.get<string[]>(`${this.url}/courses/`, {
-      params: new HttpParams()
-        .set('search', searchValue)  // i for case insensitivity.
-    })
-  }
-
   searchCoursesByInstituteName(searchValue: string) {
     return this.http.get(`${this.url}/courses/`, {
       params: new HttpParams()
@@ -73,7 +66,5 @@ export class HomeApiService {
         .append('expand', 'institute')
     })
   }
-
-
 
 }

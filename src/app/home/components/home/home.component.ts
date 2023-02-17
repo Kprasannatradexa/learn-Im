@@ -18,8 +18,6 @@ export class HomeComponent implements OnInit {
   searchCourse = new Subject<string>();
   searchCourse$ = this.searchCourse.asObservable();
 
-  searchLocation = new Subject<string>();
-  searchLocation$ = this.searchLocation.asObservable();
 
   isLoading: boolean = false;
 
@@ -70,15 +68,6 @@ export class HomeComponent implements OnInit {
       console.log(searchValue);
       this.getSearchedCourses(searchValue);
     })
-
-    this.searchLocation$.pipe(
-      debounceTime(1000)
-    ).
-      subscribe((searchValue: string) => {
-        console.log(searchValue);
-        this.getCourseLocation(searchValue);
-      })
-
   }
 
 
@@ -96,22 +85,10 @@ export class HomeComponent implements OnInit {
     )
   }
 
-  getCourseLocation(searchValue: string) {
-    this.isLoading = true;
-    this.searchedLocations$ = this.homeRepositoryService.searchCourseLocations(searchValue);
-  }
-
   searchCourses() {
     const value = this.search_course.value;
     if (value !== '') {
       this.searchCourse.next(value);
-    }
-  }
-
-  searchCity() {
-    const value = this.search_location.value;
-    if (value !== '') {
-      this.searchLocation.next(value);
     }
   }
 

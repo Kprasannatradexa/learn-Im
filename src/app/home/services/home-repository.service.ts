@@ -22,10 +22,6 @@ export class HomeRepositoryService {
     return this.homeApiService.searchCourses(searchValue);
   }
 
-  searchCourseLocations(searchValue: string): Observable<string[]> {
-    return this.homeApiService.searchCourseLocations(searchValue);
-  }
-
   searchCoursesByInstituteName(searchValue: string) {
     return this.homeApiService.searchCoursesByInstituteName(searchValue);
   }
