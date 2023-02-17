@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, ElementRef, HostListener, Input, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -23,7 +24,10 @@ export class HeaderComponent {
     }
   }
 
-  constructor() { }
+  constructor(private router: Router) { }
 
+  navigateToSignIn() {
+    this.router.navigate(['/auth/login'])
+  }
 
 }
