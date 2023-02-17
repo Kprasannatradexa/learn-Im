@@ -22,4 +22,8 @@ export class HomeRepositoryService {
     return this.homeApiService.getSearchedCourse(searchValue);
   }
 
+  getCoursesLocation(searchValue: string) {
+    return this.homeApiService.getCoursesLocation(searchValue);
+  }
+
 }
