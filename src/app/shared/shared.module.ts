@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CarouselModule } from 'ngx-owl-carousel-o';
+import { PipesModule } from './pipes/pipes.module';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    CarouselModule
+    CarouselModule,
+    PipesModule
   ]
 })
 export class SharedModule { }
