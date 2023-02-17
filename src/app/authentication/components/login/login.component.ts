@@ -42,7 +42,7 @@ export class LoginComponent implements OnDestroy {
       ).subscribe({
         next: ((response) => {
           if (response?.access_token) {
-            console.log(response);
+            this.router.navigate(['/'])
           }
         }),
         error: ((error) => {
