@@ -1,6 +1,9 @@
 /* Global styles */
 @import "./assets/scss/partials/variables";
 @import "./assets/scss/partials/spacing-utility";
+/*ngx-owl-carousel-o imports */
+@import 'ngx-owl-carousel-o/lib/styles/scss/owl.carousel';
+@import 'ngx-owl-carousel-o/lib/styles/scss/owl.theme.default';
 
 
 *,
