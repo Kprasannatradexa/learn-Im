@@ -1,14 +1,19 @@
-import { AfterViewInit, Component, ElementRef, HostListener, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { UserSession } from '../../models/user.model';
+import { UserService } from '../../services/user/user.service';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
 
   @ViewChild('header') header!: ElementRef;
+
+  user$!: Observable<UserSession | null>;
 
   isScrolled: boolean = false
 
@@ -24,10 +29,21 @@ export class HeaderComponent {
     }
   }
 
-  constructor(private router: Router) { }
+  constructor(private router: Router,
+    private userService: UserService) { }
+
+
+  ngOnInit(): void {
+    this.user$ = this.userService.user$;
+  }
 
   navigateToSignIn() {
     this.router.navigate(['/auth/login'])
   }
+
+  navigateToAccount() {
+    this.router.navigate(['/profile'])
+  }
+
 
 }
