@@ -132,6 +132,6 @@
   </ng-container>
 
   <ng-container *ngIf="courses$ | async as availableCourses">
-    <app-available-courses [courses]="availableCourses"></app-available-courses>
+    <app-courses-carousel [courses]="availableCourses"></app-courses-carousel>
   </ng-container>
 </div>
