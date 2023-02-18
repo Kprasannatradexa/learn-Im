@@ -1,9 +1,7 @@
 <div class="course-trial">
   <div class="card-container">
     <div class="card-img">
-      <img
-        src="https://assets.hyperinvento.com/www_learnim_com/assets/learnim-assets/images/course-trial.png"
-      />
+      <img [src]="'images/course-trial.png' | mediaBucket" />
     </div>
     <div class="card-content">
       <h5>{{ course.title }} :{{ course.description }}</h5>
