@@ -1,4 +1,47 @@
 <div class="main-container main" *ngIf="courses$ | async as courses">
+  <ng-container *ngIf="isSearching">
+    <div class="top-section">
+      <div class="top-section-heading">
+        <h1>3,000 results for “Canon course”</h1>
+      </div>
+
+      <div class="primary-left-part-2 top-section-searchbar">
+        <form
+          action=""
+          class="d-flex flex-lg-row flex-column align-item-center"
+        >
+          <div class="inputbar d-flex align-items-center">
+            <img src="./images/search.svg" alt="" />
+            <input
+              type="search"
+              name=""
+              id=""
+              placeholder="Type course name, institute, brand..."
+            />
+          </div>
+
+          <div class="d-flex">
+            <div class="inputbar d-flex align-items-center">
+              <img src="./images/pin_drop.svg" alt="" />
+              <input
+                type="search"
+                name=""
+                id=""
+                placeholder="City, state or zip code"
+              />
+            </div>
+
+            <button type="submit" class="active-lg-device">Search</button>
+
+            <button type="submit" class="active-sm-device">
+              <img src="./images/right-arrow-button.svg" alt="" srcset="" />
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </ng-container>
+
   <ng-container *ngFor="let course of courses">
     <div class="course-list-section">
       <div class="row">

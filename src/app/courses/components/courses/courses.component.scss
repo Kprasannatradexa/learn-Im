@@ -1,7 +1,74 @@
 @import 'src/assets/scss/partials/variables';
 
+.top-section,
 .course-list-section {
     margin: 40px 50px;
+}
+
+.top-section-heading {
+    margin-bottom: 35px;
+}
+
+.top-section-heading h1 {
+    font-weight: 700;
+    font-size: 2.188rem;
+    line-height: 120%;
+    color: var(--light-black);
+}
+
+.top-section-searchbar form,
+.top-section-searchbar form>div:nth-child(2) {
+    column-gap: 12px;
+    row-gap: 10px;
+}
+
+.inputbar img {
+    position: absolute;
+    padding: 10px;
+}
+
+.top-section-searchbar input:focus {
+    border: 1px solid var(--inputbar-border-clr);
+
+}
+
+.top-section-searchbar input[type=search] {
+    outline-offset: unset;
+}
+
+.top-section-searchbar form button:hover {
+    opacity: 0.8;
+    background-color: var(--red);
+}
+
+.top-section-searchbar input {
+    width: 300px;
+    height: 50px;
+    border-radius: 100px;
+    padding: 0 10px 0 40px;
+    font-size: 0.875rem;
+    border: 1px solid var(--inputbar-border-clr);
+}
+
+.top-section-searchbar form,
+.top-section-searchbar form>div:nth-child(2) {
+    column-gap: 12px;
+    row-gap: 10px;
+}
+
+.active-lg-device {
+    width: 100px;
+    height: 50px;
+    border-radius: 100px;
+    padding: 0 20px;
+    background-color: var(--red);
+    color: var(--white);
+    font-size: 0.875rem;
+    border: none;
+}
+
+.active-sm-device {
+    display: none;
 }
 
 .course-provider {
@@ -85,8 +152,59 @@ p {
 
 
 @media only screen and (min-width:1px) and (max-width:768px) {
+
+    .top-section-heading h1 {
+        font-size: 1.563rem;
+    }
+
+    .top-section-heading {
+        margin-bottom: 25px;
+    }
+
+    .top-section,
     .course-list-section {
         margin: 35px 20px;
+    }
+
+    .top-section-searchbar input {
+        padding: 18px 26px 18px 40px;
+        font-size: 0.875rem;
+        font-weight: 400;
+        font-size: 0.75rem;
+        line-height: 107%;
+        width: 278px;
+        height: 50px;
+        border-radius: 102px;
+    }
+
+    .inputbar img {
+        position: absolute;
+        padding: 10px;
+        width: 42px;
+    }
+
+    .inputbar input {
+        width: 250px;
+        height: 50px;
+        border-radius: 102px;
+    }
+
+    .active-sm-device {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        padding: 10px;
+        background-color: var(--red);
+        color: var(--white);
+        font-size: 0.875rem;
+        border: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .active-lg-device {
+        display: none;
     }
 
     .course-list-img img {
