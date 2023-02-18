@@ -13,4 +13,9 @@ export class CourseRepositoryService {
   getCourses(): Observable<CourseDetails[]> {
     return this.courseApiService.getCourses();
   }
+
+  searchCourses(searchValue: string): Observable<CourseDetails[]> {
+    return this.courseApiService.searchCourses(searchValue);
+  }
+
 }

@@ -20,4 +20,13 @@ export class CourseApiService {
         .append('expand', 'institute')
     })
   }
+
+  searchCourses(searchValue: string): Observable<CourseDetails[]> {
+    return this.http.get<CourseDetails[]>(`${this.url}/courses/`, {
+      params: new HttpParams()
+        .set('search', searchValue)
+        .set('expand', 'product')
+        .append('expand', 'institute')
+    })
+  }
 }
