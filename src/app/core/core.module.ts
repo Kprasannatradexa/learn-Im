@@ -6,6 +6,7 @@ import { ServerInterceptor } from './services/interceptor/server.interceptor';
 import { SharedModule } from '../shared/shared.module';
 import { DragDropDirective } from './directives/drag-drop.directive';
 import { HeaderComponent } from './components/header/header.component';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -16,7 +17,8 @@ import { HeaderComponent } from './components/header/header.component';
   ],
   imports: [
     CommonModule,
-    SharedModule
+    SharedModule,
+    RouterModule
   ],
   providers: [
     {
