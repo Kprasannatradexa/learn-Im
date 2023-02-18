@@ -1,5 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 import { catchError, debounceTime, distinctUntilChanged, map, Observable, of, ReplaySubject, Subject, tap } from 'rxjs';
 import { CourseDetails } from 'src/app/booking/interface/booking';
 import { NotificationService } from 'src/app/core/services/notification/notification.service';
@@ -42,7 +43,8 @@ export class HomeComponent implements OnInit {
 
   constructor(private homeRepositoryService: HomeRepositoryService,
     private fb: FormBuilder,
-    private notificationService: NotificationService) { }
+    private notificationService: NotificationService,
+    private router: Router) { }
 
   ngOnInit(): void {
 
@@ -98,22 +100,21 @@ export class HomeComponent implements OnInit {
   }
 
   getCourses() {
-    const searchedCourse = this.searchForm.get('search_course')?.value;
-    const searchedLocation = this.searchForm.get('search_location')?.value;
+    const searchedValues = this.searchForm.getRawValue();
+    const { search_course = '', search_location = '' } = searchedValues || {};
 
-    if (searchedCourse || searchedLocation) {
-      let searchValue = {
-        ...(searchedCourse &&
-          { searchedCourse }
+    if (search_course || search_location) {
+      let queries = {
+        ...(search_course &&
+          { search_course }
         ),
-        ...(searchedLocation &&
-          { searchedLocation }
+        ...(search_location &&
+          { search_location }
         )
       }
-      searchValue = Object.values(searchValue).join(',').replace(',', ' ');
-      this.homeRepositoryService.searchCourses(searchValue).subscribe((res) => {
-        console.log(res);
-      })
+      queries = Object.values(queries).join(',').replace(',', ' ');
+
+      this.router.navigate(['/search'], { queryParams: { query: queries }, queryParamsHandling: 'merge' })
     }
   }
 
