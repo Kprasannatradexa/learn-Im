@@ -22,17 +22,44 @@ export class CoursesComponent implements OnInit {
     private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.courses$ = this.courseRepositoryService.getCourses().pipe(
-      catchError(() => {
-        this.notificationService.showWarning('Failed load instituted')
-        return of()
-      }))
 
-    this.route.queryParams.pipe(
-      takeUntil(this.destroyed$)
-    ).subscribe((response) => {
-      console.log(response);
-    })
+    if (this.isViewing) {
+      this.courses$ = this.courseRepositoryService.getCourses().pipe(
+        catchError(() => {
+          this.notificationService.showWarning('Failed load institute.')
+          return of()
+        }))
+    }
+
+    if (this.isSearching) {
+      this.route.queryParams.pipe(
+        takeUntil(this.destroyed$)
+      ).subscribe((queryParams) => {
+        if (queryParams) {
+          console.log(queryParams);
+
+          this.courses$ = this.courseRepositoryService.searchCourses(queryParams?.['query'])
+        }
+      })
+    }
+
+
+  }
+
+
+  get isSearching() {
+    const isSearching = this.route.snapshot.parent?.url.length &&
+      this.route.snapshot.parent.url[0].path === 'search' &&
+      this.route.snapshot.queryParams?.['query'] !== '';
+
+    return isSearching;
+  }
+
+  get isViewing() {
+    const isViewing = this.route.snapshot.parent?.url.length &&
+      this.route.snapshot.parent.url[0].path === 'courses'
+
+    return isViewing;
   }
 
 }
