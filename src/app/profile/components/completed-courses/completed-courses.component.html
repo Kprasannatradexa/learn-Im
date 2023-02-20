@@ -1,1 +1,8 @@
-<p>completed-courses works!</p>
+<ng-container *ngIf="completedCourses$ | async as completedCourses">
+  <ng-container *ngIf="completedCourses.length; else noCompletedCourse">
+    <ng-container *ngFor="let completedCourse of completedCourses">
+      <p>{{ completedCourse.title }}</p>
+    </ng-container>
+  </ng-container>
+  <ng-template #noCompletedCourse> No completed courses. </ng-template>
+</ng-container>
