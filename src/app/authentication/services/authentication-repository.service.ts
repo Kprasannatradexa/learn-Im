@@ -47,8 +47,8 @@ export class AuthenticationRepositoryService {
     }))
   }
 
-  sendPasswordResetOtp(userName: string) {
-    return this.authenticationApiService.sendPasswordResetOtp(userName);
+  sendPasswordResetOtp(requestObj: any) {
+    return this.authenticationApiService.sendPasswordResetOtp(requestObj);
   }
 
   verifyPasswordResetOtp(requestObj: any) {

@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ReplaySubject, takeUntil } from 'rxjs';
 import { IMAGE_URLS } from 'src/app/core/constants/image-source';
 import { CustomValidators } from 'src/app/core/constants/validators';
+import { NotificationService } from 'src/app/core/services/notification/notification.service';
 import { AuthenticationRepositoryService } from '../../services/authentication-repository.service';
 
 @Component({
@@ -18,7 +19,8 @@ export class LoginOtpComponent implements OnDestroy {
   constructor(
     private fb: FormBuilder,
     private authenticationRepositoryService: AuthenticationRepositoryService,
-    private router: Router
+    private router: Router,
+    private notificationService: NotificationService
   ) { }
 
   login_credential = this.fb.control('', [Validators.required, CustomValidators.noWhiteSpaceValidator, CustomValidators.email]);
@@ -37,7 +39,7 @@ export class LoginOtpComponent implements OnDestroy {
         takeUntil(this.destroyed$)
       ).subscribe({
         next: ((success) => {
-          console.log('OTP sent');
+          this.notificationService.showSuccess('OTP sent successfully.')
           this.authenticationRepositoryService.currentLoginCredentials = login_credential;
           this.router.navigate(['/auth/verify-otp'], { skipLocationChange: true, queryParamsHandling: 'preserve' })
         }),

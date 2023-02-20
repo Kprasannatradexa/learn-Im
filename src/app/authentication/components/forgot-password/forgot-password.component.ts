@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { ReplaySubject, takeUntil } from 'rxjs';
 import { StepperComponent } from 'src/app/components/stepper/stepper.component';
 import { CustomValidators } from 'src/app/core/constants/validators';
+import { NotificationService } from 'src/app/core/services/notification/notification.service';
 import { AuthenticationRepositoryService } from '../../services/authentication-repository.service';
 
 @Component({
@@ -23,7 +24,8 @@ export class ForgotPasswordComponent {
 
   constructor(
     private fb: FormBuilder,
-    private authenticationRepositoryService: AuthenticationRepositoryService
+    private authenticationRepositoryService: AuthenticationRepositoryService,
+    private notificationService: NotificationService
   ) { }
 
   private destroyed$: ReplaySubject<boolean> = new ReplaySubject(1);
@@ -54,13 +56,13 @@ export class ForgotPasswordComponent {
 
     if (this.login_credential.valid) {
       const userCredential = this.login_credential.value;
-      this.authenticationRepositoryService.sendOtp({ user_name: userCredential }).pipe(
+      this.authenticationRepositoryService.sendPasswordResetOtp({ user_name: userCredential }).pipe(
         takeUntil(this.destroyed$)
       ).subscribe({
         next: ((success) => {
           this.authenticationRepositoryService.currentLoginCredentials = userCredential;
           this.userEmail = userCredential;
-          console.log('OTP sent');
+          this.notificationService.showSuccess('OTP sent successfully.')
           this.cdkStepper.next();
         }),
         error: ((error) => {
@@ -75,12 +77,12 @@ export class ForgotPasswordComponent {
     this.otp.markAllAsTouched();
 
     if (this.otp.valid) {
-      this.authenticationRepositoryService.verifyOtp({ otp: this.otp.value }).pipe(
+      this.authenticationRepositoryService.verifyPasswordResetOtp({ otp: this.otp.value }).pipe(
         takeUntil(this.destroyed$)
       ).subscribe({
         next: ((response) => {
           if (response?.access_token) {
-            console.log('OTP verified');
+            this.notificationService.showSuccess('OTP verified successfully.')
             this.cdkStepper.next();
           }
         }),
@@ -98,14 +100,15 @@ export class ForgotPasswordComponent {
     const currentCredential = this.authenticationRepositoryService.currentLoginCredentials;
 
     if (!currentCredential) {
-      console.log('Otp cannot be sent');
+      this.notificationService.showError('Failed to resend OTP, Please try again.');
+      return;
     }
 
-    this.authenticationRepositoryService.sendOtp({ otp: currentCredential }).pipe(
+    this.authenticationRepositoryService.sendPasswordResetOtp({ otp: currentCredential }).pipe(
       takeUntil(this.destroyed$)
     ).subscribe({
       next: ((success) => {
-        console.log('OTP sent');
+        this.notificationService.showSuccess('OTP sent successfully.')
       }),
       error: ((error) => {
         console.log(error);
@@ -123,7 +126,7 @@ export class ForgotPasswordComponent {
         next: ((response) => {
           if (response) {
             this.authenticationRepositoryService.resetUser();
-            console.log('Password has been reset.');
+            this.notificationService.showSuccess('Password Reset Successfully.');
           }
         }),
         error: ((error) => {
