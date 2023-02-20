@@ -1,15 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-mega-menu',
   templateUrl: './mega-menu.component.html',
   styleUrls: ['./mega-menu.component.scss']
 })
-export class MegaMenuComponent implements OnInit {
+export class MegaMenuComponent {
 
-  constructor() { }
+  @Input() isSearched: boolean = false;
 
-  ngOnInit(): void {
+  @Input() set searchedCourseNames(courseNames: string[]) {
+    this._searchedCourseNames = courseNames
   }
+
+  get searchedCourseNames() {
+    return this._searchedCourseNames;
+  }
+
+  private _searchedCourseNames: string[] = [];
 
 }
