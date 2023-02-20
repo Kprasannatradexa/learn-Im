@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { UserBookedCourses } from 'src/app/booking/interface/user-booked-courses';
 import { SuccessResponse } from 'src/app/core/interface/success-response';
+import { UserDetail } from 'src/app/core/interface/user-detail';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -14,6 +15,9 @@ export class UserProfileApiService {
 
   constructor(private http: HttpClient) { }
 
+  getUserDetails(): Observable<Partial<UserDetail>> {
+    return this.http.get<Partial<UserDetail>>(`${this.url}/user/profile/`)
+  }
 
   getBookedCourses(): Observable<UserBookedCourses[]> {
     return this.http.get<UserBookedCourses[]>(`${this.url}/user/courses/`)
