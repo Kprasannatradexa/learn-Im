@@ -20,8 +20,7 @@
                 class="sm-device-active"
                 [src]="'images/pin_drop-small.svg' | mediaBucket"
             /></span>
-            Bangalore, 196, 12th Cross Road, 17th Main Rd, 2nd Phase, J. P.
-            Nagar, Bengaluru, Karnataka 560078
+            {{ courseDetail?.institute?.addresses | completeAddressConcat }}
           </p>
           <!-- <span class="course-hour">Hours : 10 am - 10pm</span> -->
         </div>

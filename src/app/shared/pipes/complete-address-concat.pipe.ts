@@ -16,14 +16,13 @@ export class CompleteAddressConcatPipe implements PipeTransform {
       if (address.city) {
         _address.push(address.city);
       }
-      if (address.pincode) {
-        _address.push(address.pincode);
-      }
       if (address.state) {
         _address.push(address.state);
       }
-
-      return _address.join(',')
+      if (address.pincode) {
+        _address.push(address.pincode);
+      }
+      return _address.join(', ')
     }
     return 'N/A';
   }
