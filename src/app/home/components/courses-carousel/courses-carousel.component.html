@@ -4,10 +4,8 @@
       class="d-flex justify-content-between align-items-center course-trial-name"
     >
       <h1>Course <span>Trial</span></h1>
-      <a href="#" class="viewall-btn"
-        >View all
-        <img
-          src="https://assets.hyperinvento.com/www_learnim_com/assets/learnim-assets/images/arrow-right-red.svg"
+      <a routerLink="/courses" class="viewall-btn"
+        >View all <img [src]="'images/arrow-right-red.svg' | mediaBucket"
       /></a>
     </div>
 
