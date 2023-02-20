@@ -26,19 +26,19 @@ export class AuthenticationApiService {
   }
 
   verifyOtp(requestObj: any) {
-    return this.http.post(`${this.url}/auth/validate_login_otp`, requestObj)
+    return this.http.post(`${this.url}/user/validate_login_otp/`, requestObj)
   }
 
   sendPasswordResetOtp(requestObj: any) {
-    return this.http.post(`${this.url}/consumer/auth/request_reset_password_otp/`, requestObj);
+    return this.http.post(`${this.url}/user/request_reset_password_otp/`, requestObj);
   }
 
   verifyPasswordResetOtp(requestObj: any) {
-    return this.http.post(`${this.url}/consumer/auth/validate_reset_password_otp/`, requestObj);
+    return this.http.post(`${this.url}/user/validate_reset_password_otp/`, requestObj);
   }
 
   resetPassword(requestObj: any) {
-    return this.http.post(`${this.url}/consumer/auth/reset_password/`, requestObj);
+    return this.http.post(`${this.url}/user/reset_password/`, requestObj);
   }
 
 }
