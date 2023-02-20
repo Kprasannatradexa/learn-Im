@@ -25,6 +25,7 @@ export class CoursesComponent implements OnInit {
 
   searchedCourseNames$!: Observable<string[]>;
 
+  params: string = '';
 
   searchForm = this.fb.group({
     search_course: [''],
@@ -52,7 +53,7 @@ export class CoursesComponent implements OnInit {
     if (this.isViewing) {
       this.courses$ = this.courseRepositoryService.getCourses().pipe(
         catchError(() => {
-          this.notificationService.showWarning('Failed load institute.')
+          this.notificationService.showWarning('Failed load courses.')
           return of()
         }))
     }
@@ -62,8 +63,7 @@ export class CoursesComponent implements OnInit {
         takeUntil(this.destroyed$)
       ).subscribe((queryParams) => {
         if (queryParams) {
-          console.log(queryParams);
-
+          this.params = queryParams?.['query'];
           this.courses$ = this.courseRepositoryService.searchCourses(queryParams?.['query'])
         }
       })
