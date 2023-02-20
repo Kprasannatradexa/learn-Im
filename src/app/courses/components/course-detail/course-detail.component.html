@@ -15,7 +15,7 @@
             <span
               ><img
                 class="lg-device-active"
-                [src]="'images/pin_drop.svg' | mediaBucket" />
+                [src]="'images/pin_drop-white.svg' | mediaBucket" />
               <img
                 class="sm-device-active"
                 [src]="'images/pin_drop-small.svg' | mediaBucket"
@@ -42,6 +42,7 @@
             >
             <button
               class="slot-book-btn d-flex align-items-center justify-content-center"
+              [routerLink]="['/book/' + courseDetail.id]"
             >
               <img [src]="'images/book-icon.svg' | mediaBucket" /> Book a slot
             </button>
