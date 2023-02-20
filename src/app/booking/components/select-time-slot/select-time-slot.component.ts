@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { BookingTimeSlots } from '../../interface/booking';
 import { BookingRepositoryService } from '../../services/booking-repository.service';
 
@@ -22,13 +23,14 @@ export class SelectTimeSlotComponent implements OnInit, AfterViewInit {
   selectedTimeSlots!: string;
   selectedDate!: string;
 
-  id: string = "b3556c22-84b1-437b-8438-940a89c5e998";
+  id = this.route.snapshot.paramMap.get('id') as string;
 
   storedTimeSlots: StoredTimeSlots[] = [];
 
   availableTimeSlots: BookingTimeSlots[] = [];
 
-  constructor(private bookingRepositoryService: BookingRepositoryService) { }
+  constructor(private bookingRepositoryService: BookingRepositoryService,
+    private route: ActivatedRoute) { }
 
 
   ngOnInit(): void {
