@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { UserBookedCourses } from 'src/app/booking/interface/user-booked-courses';
 import { UserProfileApiService } from './user-profile-api.service';
 
 @Injectable({
@@ -6,5 +8,9 @@ import { UserProfileApiService } from './user-profile-api.service';
 })
 export class UserProfileRepositoryService {
 
+  constructor(private userProfileApiService: UserProfileApiService) { }
 
+  getBookedCourses(): Observable<UserBookedCourses[]> {
+    return this.userProfileApiService.getBookedCourses();
+  }
 }
