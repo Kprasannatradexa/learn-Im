@@ -2,7 +2,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { catchError, debounceTime, map, Observable, of, ReplaySubject, Subject, takeUntil } from 'rxjs';
-import { CourseDetails } from 'src/app/booking/interface/booking';
+import { CourseDetail } from 'src/app/booking/interface/booking';
 import { NotificationService } from 'src/app/core/services/notification/notification.service';
 import { CourseRepositoryService } from '../../services/course-repository.service';
 
@@ -16,7 +16,7 @@ export class CoursesComponent implements OnInit {
   @ViewChild('megaMenu') megaMenu!: ElementRef;
 
 
-  courses$!: Observable<CourseDetails[]>
+  courses$!: Observable<CourseDetail[]>
 
   destroyed$: ReplaySubject<boolean> = new ReplaySubject(1);
 
@@ -81,8 +81,8 @@ export class CoursesComponent implements OnInit {
   getSearchedCourseNames(searchValue: string) {
     this.isLoading = true;
     this.searchedCourseNames$ = this.courseRepositoryService.searchCourses(searchValue).pipe(
-      map((coursesDetails: CourseDetails[]) => {
-        return coursesDetails.map((courseDetail: CourseDetails) => courseDetail.title)
+      map((coursesDetails: CourseDetail[]) => {
+        return coursesDetails.map((courseDetail: CourseDetail) => courseDetail.title)
       }),
       catchError(() => {
         this.notificationService.showWarning('Failed load courses.');

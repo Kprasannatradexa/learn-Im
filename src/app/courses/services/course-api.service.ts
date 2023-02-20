@@ -1,7 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { CourseDetails } from 'src/app/booking/interface/booking';
+import { CourseDetail } from 'src/app/booking/interface/booking';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -13,16 +13,16 @@ export class CourseApiService {
 
   constructor(private http: HttpClient) { }
 
-  getCourses(): Observable<CourseDetails[]> {
-    return this.http.get<CourseDetails[]>(`${this.url}/courses/`, {
+  getCourses(): Observable<CourseDetail[]> {
+    return this.http.get<CourseDetail[]>(`${this.url}/courses/`, {
       params: new HttpParams()
         .set('expand', 'product')
         .append('expand', 'institute')
     })
   }
 
-  searchCourses(searchValue: string): Observable<CourseDetails[]> {
-    return this.http.get<CourseDetails[]>(`${this.url}/courses/`, {
+  searchCourses(searchValue: string): Observable<CourseDetail[]> {
+    return this.http.get<CourseDetail[]>(`${this.url}/courses/`, {
       params: new HttpParams()
         .set('search', searchValue)
         .set('expand', 'product')
@@ -30,8 +30,8 @@ export class CourseApiService {
     })
   }
 
-  getCourseDetail(id: string): Observable<CourseDetails[]> {
-    return this.http.get<CourseDetails[]>(`${this.url}/courses/${id}/`, {
+  getCourseDetail(id: string): Observable<CourseDetail> {
+    return this.http.get<CourseDetail>(`${this.url}/courses/${id}/`, {
       params: new HttpParams()
         .set('expand', 'product')
         .append('expand', 'institute')

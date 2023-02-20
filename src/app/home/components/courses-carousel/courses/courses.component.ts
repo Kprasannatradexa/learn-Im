@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { CourseDetails } from 'src/app/booking/interface/booking';
+import { CourseDetail } from 'src/app/booking/interface/booking';
 
 @Component({
   selector: 'app-courses',
@@ -8,5 +8,5 @@ import { CourseDetails } from 'src/app/booking/interface/booking';
 })
 export class CoursesComponent {
 
-  @Input() course!: CourseDetails;
+  @Input() course!: CourseDetail;
 }

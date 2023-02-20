@@ -15,7 +15,7 @@ export interface TimeSlot {
 export interface BookedCourses {
     id: string;
     buyer: User;
-    course: CourseDetails;
+    course: CourseDetail;
     time_slot: BookingTimeSlots;
     booked_on: string;
     booking_status: string;
@@ -23,7 +23,7 @@ export interface BookedCourses {
     pdf: any
 }
 
-export interface CourseDetails {
+export interface CourseDetail {
     id: string;
     title: string;
     description: string;

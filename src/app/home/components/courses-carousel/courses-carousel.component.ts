@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
-import { CourseDetails } from 'src/app/booking/interface/booking';
+import { CourseDetail } from 'src/app/booking/interface/booking';
 
 const customOptions: OwlOptions = {
   loop: true,
@@ -33,7 +33,7 @@ const customOptions: OwlOptions = {
 })
 export class CoursesCarouselComponent {
 
-  @Input() set courses(courses: CourseDetails[]) {
+  @Input() set courses(courses: CourseDetail[]) {
     this._courses = courses;
   }
 
@@ -41,7 +41,7 @@ export class CoursesCarouselComponent {
     return this._courses;
   }
 
-  private _courses: CourseDetails[] = [];
+  private _courses: CourseDetail[] = [];
 
   customOptions = customOptions;
 

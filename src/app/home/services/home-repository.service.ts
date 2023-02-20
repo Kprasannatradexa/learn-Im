@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { CourseDetails } from 'src/app/booking/interface/booking';
+import { CourseDetail } from 'src/app/booking/interface/booking';
 import { HomeApiService, Institute } from './home-api.service';
 
 @Injectable({
@@ -10,7 +10,7 @@ export class HomeRepositoryService {
 
   constructor(private homeApiService: HomeApiService) { }
 
-  getCourses(): Observable<CourseDetails[]> {
+  getCourses(): Observable<CourseDetail[]> {
     return this.homeApiService.getCourses();
   }
 
@@ -18,7 +18,7 @@ export class HomeRepositoryService {
     return this.homeApiService.getInstitutes();
   }
 
-  searchCourses(searchValue: string): Observable<CourseDetails[]> {
+  searchCourses(searchValue: string): Observable<CourseDetail[]> {
     return this.homeApiService.searchCourses(searchValue);
   }
 

@@ -2,7 +2,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { catchError, debounceTime, distinctUntilChanged, map, Observable, of, ReplaySubject, Subject, tap } from 'rxjs';
-import { CourseDetails } from 'src/app/booking/interface/booking';
+import { CourseDetail } from 'src/app/booking/interface/booking';
 import { NotificationService } from 'src/app/core/services/notification/notification.service';
 import { Institute } from '../../services/home-api.service';
 import { HomeRepositoryService } from '../../services/home-repository.service';
@@ -25,7 +25,7 @@ export class HomeComponent implements OnInit {
   destroyed$: ReplaySubject<boolean> = new ReplaySubject(1);
 
   institutes$!: Observable<Institute[]>;
-  courses$!: Observable<CourseDetails[]>
+  courses$!: Observable<CourseDetail[]>
   searchedCourseNames$!: Observable<string[]>;
 
   searchForm = this.fb.group({
@@ -72,8 +72,8 @@ export class HomeComponent implements OnInit {
   getSearchedCourseNames(searchValue: string) {
     this.isLoading = true;
     this.searchedCourseNames$ = this.homeRepositoryService.searchCourses(searchValue).pipe(
-      map((coursesDetails: CourseDetails[]) => {
-        return coursesDetails.map((courseDetail: CourseDetails) => courseDetail.title)
+      map((coursesDetails: CourseDetail[]) => {
+        return coursesDetails.map((courseDetail: CourseDetail) => courseDetail.title)
       }),
       catchError(() => {
         this.notificationService.showWarning('Failed load courses.');
