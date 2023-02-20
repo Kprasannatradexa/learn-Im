@@ -6,6 +6,7 @@ import { ProfileLayoutComponent } from './components/profile-layout/profile-layo
 import { MyCoursesComponent } from './components/my-courses/my-courses.component';
 import { CompletedCoursesComponent } from './components/completed-courses/completed-courses.component';
 import { MyProfileComponent } from './components/my-profile/my-profile.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { MyProfileComponent } from './components/my-profile/my-profile.component
   ],
   imports: [
     CommonModule,
-    ProfileRoutingModule
+    ProfileRoutingModule,
+    SharedModule
   ]
 })
 export class ProfileModule { }
