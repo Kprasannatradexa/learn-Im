@@ -1,1 +1,3 @@
-<p>my-profile works!</p>
+<ng-container *ngIf="userDetail$ | async as userDetail">
+  <h1>{{ userDetail.first_name }} {{ userDetail.last_name }}</h1>
+</ng-container>
