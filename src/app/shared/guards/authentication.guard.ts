@@ -20,7 +20,11 @@ export class AuthenticationGuard implements CanActivate {
       return true;
     }
 
-    return this.router.navigate(['/auth/login'])
+    return this.router.createUrlTree(['auth/login/'], {
+      queryParams: {
+        returnUrl: state.url
+      }
+    })
   }
 
 }
