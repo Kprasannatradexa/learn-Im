@@ -13,7 +13,7 @@ export class UnverifiedUserGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
-    const isAuthenticated = localStorage.getItem('userData');
+    const isAuthenticated = JSON.parse(localStorage.getItem('userData') as string);
 
     if (!isAuthenticated) {
       return true;

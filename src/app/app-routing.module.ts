@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeModule } from './home/home.module';
 import { AuthenticationGuard } from './shared/guards/authentication.guard';
+import { UnverifiedUserGuard } from './shared/guards/unverified-user.guard';
 
 const routes: Routes = [
   {
@@ -10,6 +11,7 @@ const routes: Routes = [
   },
   {
     path: 'auth',
+    canActivate: [UnverifiedUserGuard],
     loadChildren: () => import('./authentication/authentication.module').then(m => m.AuthenticationModule)
   },
   {
