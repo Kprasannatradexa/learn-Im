@@ -4,7 +4,7 @@ import { InvoiceUploadComponent } from './components/invoice-upload/invoice-uplo
 import { SelectTimeSlotComponent } from './components/select-time-slot/select-time-slot.component';
 
 const routes: Routes = [
-  { path: '', component: SelectTimeSlotComponent },
+  { path: ':id', component: SelectTimeSlotComponent },
   { path: 'upload', component: InvoiceUploadComponent }
 ];
 
