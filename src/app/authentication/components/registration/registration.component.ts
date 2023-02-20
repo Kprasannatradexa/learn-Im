@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ReplaySubject, takeUntil } from 'rxjs';
 import { IMAGE_URLS } from 'src/app/core/constants/image-source';
 import { CustomValidators } from 'src/app/core/constants/validators';
@@ -24,7 +25,9 @@ export class RegistrationComponent implements OnInit, OnDestroy {
   private destroyed$: ReplaySubject<boolean> = new ReplaySubject(1);
 
   constructor(private fb: FormBuilder,
-    private authenticationRepositoryService: AuthenticationRepositoryService) { }
+    private authenticationRepositoryService: AuthenticationRepositoryService,
+    private route: ActivatedRoute,
+    private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -54,8 +57,8 @@ export class RegistrationComponent implements OnInit, OnDestroy {
       ).subscribe({
         next: (response) => {
           if (response?.access_token) {
-            console.log(response);
-            console.log("You are registered now");
+            const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/'
+            this.router.navigateByUrl(returnUrl);
           }
         },
         error: (error) => {

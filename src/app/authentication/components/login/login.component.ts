@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ReplaySubject, takeUntil } from 'rxjs';
 import { IMAGE_URLS } from 'src/app/core/constants/image-source';
 import { CustomValidators } from 'src/app/core/constants/validators';
@@ -26,7 +26,8 @@ export class LoginComponent implements OnDestroy {
   constructor(
     private fb: FormBuilder,
     private authenticationRepositoryService: AuthenticationRepositoryService,
-    private router: Router) { }
+    private router: Router,
+    private route: ActivatedRoute) { }
 
 
 
@@ -42,7 +43,8 @@ export class LoginComponent implements OnDestroy {
       ).subscribe({
         next: ((response) => {
           if (response?.access_token) {
-            this.router.navigate(['/'])
+            const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/'
+            this.router.navigateByUrl(returnUrl);
           }
         }),
         error: ((error) => {

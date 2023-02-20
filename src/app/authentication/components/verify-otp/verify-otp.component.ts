@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { of, ReplaySubject, takeUntil } from 'rxjs';
 import { CustomValidators } from 'src/app/core/constants/validators';
 import { AuthenticationRepositoryService } from '../../services/authentication-repository.service';
@@ -26,7 +26,8 @@ export class VerifyOtpComponent implements OnInit, OnDestroy {
   constructor(
     private fb: FormBuilder,
     private authenticationRepositoryService: AuthenticationRepositoryService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) { }
 
   otp = this.fb.control(null, { updateOn: 'blur', validators: CustomValidators.otp })
@@ -50,8 +51,8 @@ export class VerifyOtpComponent implements OnInit, OnDestroy {
       ).subscribe({
         next: ((response) => {
           if (response?.access_token) {
-            console.log('Your logged in');
-            this.router.navigate(['/login'])
+            const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/'
+            this.router.navigateByUrl(returnUrl);
           }
         }),
         error: ((error) => {
