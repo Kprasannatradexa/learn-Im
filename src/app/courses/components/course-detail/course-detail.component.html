@@ -1,1 +1,175 @@
-<p>course-detail works!</p>
+<ng-container *ngIf="courseDetail$ | async as courseDetail">
+  <div class="main-container main">
+    <div class="row primary-section d-flex">
+      <div class="col-xl-8 col-lg-7 primary-section-left">
+        <div class="d-flex flex-column">
+          <h5 class="course-provider">{{ courseDetail.institute.name }}</h5>
+          <h1 class="course-name">
+            {{ courseDetail.title }} : {{ courseDetail.institute.description }}
+          </h1>
+          <h2 class="course-content">
+            {{ courseDetail.description }}
+          </h2>
+          <!-- <span class="course-guide">Vikrant Meheta</span> -->
+          <p class="course-location">
+            <span
+              ><img
+                class="lg-device-active"
+                [src]="'images/pin_drop.svg' | mediaBucket" />
+              <img
+                class="sm-device-active"
+                [src]="'images/pin_drop-small.svg' | mediaBucket"
+            /></span>
+            Bangalore, 196, 12th Cross Road, 17th Main Rd, 2nd Phase, J. P.
+            Nagar, Bengaluru, Karnataka 560078
+          </p>
+          <!-- <span class="course-hour">Hours : 10 am - 10pm</span> -->
+        </div>
+      </div>
+
+      <div
+        class="col-xl-4 col-lg-5 primary-section-right d-lg-flex flex-lg-column-reverse"
+      >
+        <div class="book-slot-container">
+          <div
+            class="course-img justify-content-lg-center d-flex align-items-center justify-content-center justify-content-sm-start"
+          >
+            <img [src]="'images/course-trial.png' | mediaBucket" />
+          </div>
+
+          <div class="d-flex justify-content-between">
+            <span class="course-cost d-flex align-items-center"
+              >₹ {{ courseDetail.price }}</span
+            >
+            <button
+              class="slot-book-btn d-flex align-items-center justify-content-center"
+            >
+              <img [src]="'images/book-icon.svg' | mediaBucket" /> Book a slot
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row secondary-section d-flex justify-content-between">
+      <div class="col-xl-8 col-lg-7 secondary-section-left">
+        <div class="skill-develop-list">
+          <div>
+            <h2>What skills you will develop</h2>
+          </div>
+
+          <ul class="d-flex flex-column">
+            <li>
+              Lorem ipsum dolor sit amet consectetur. At nunc vitae pulvinar
+              massa suspendisse non volutpat pellentesque quis.
+            </li>
+
+            <li>
+              Lorem ipsum dolor sit amet consectetur. At nunc vitae pulvinar
+              massa suspendisse non volutpat pellentesque quis.
+            </li>
+
+            <li>
+              Lorem ipsum dolor sit amet consectetur. At nunc vitae pulvinar
+              massa suspendisse non volutpat pellentesque quis.
+            </li>
+
+            <li>
+              Lorem ipsum dolor sit amet consectetur. At nunc vitae pulvinar
+              massa suspendisse non volutpat pellentesque quis.
+            </li>
+
+            <li>
+              Lorem ipsum dolor sit amet consectetur. At nunc vitae pulvinar
+              massa suspendisse non volutpat pellentesque quis.
+            </li>
+          </ul>
+        </div>
+        <div class="about-institute lg-device-active">
+          <div class="about-institute-heading">
+            <h2>About Institute/Mentor</h2>
+          </div>
+
+          <div class="about-institute-body d-flex align-items-center">
+            <div class="about-institute-img">
+              <img [src]="'images/about-institute.png' | mediaBucket" />
+            </div>
+            <div class="about-institute-content">
+              <p>
+                Lorem ipsum dolor sit amet consectetur. Arcu cras imperdiet
+                faucibus quis sagittis sit. Mauris enim et lorem posuere sed
+                augue eleifend. Erat bibendum sit vestibulum mattis enim odio
+                cursus justo orci. Id fames semper eget sed at amet lorem.
+                Bibendum leo pellentesque nulla fames hendrerit risus neque sed
+                eu. Venenatis laoreet et pellentesque dui.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xl-4 col-lg-5 secondary-section-right">
+        <div class="course-outline-list">
+          <div class="d-flex justify-content-between">
+            <span class="course-outline-heading d-flex align-items-center"
+              >Course Outline</span
+            >
+
+            <!-- <span
+              class="course-hours d-flex align-items-center justify-content-center"
+            >
+              <img src="./images/course-detail-hours-icon.svg" alt="" />4
+              hours</span
+            > -->
+          </div>
+
+          <ul class="d-flex flex-column">
+            <li>Welcome to the course - Canon camera for Beginners</li>
+            <li>Tips to Improve Your Course Taking Experience</li>
+            <li>
+              COURSE BREAK: Check Out Our Ultimate Resource for New
+              Photographers
+            </li>
+            <li>
+              How to Read & Adjust Exposure with Your Camera | Canon Cameras for
+              Beginners
+            </li>
+            <li>Adjusting the Aperture and ISO</li>
+            <li>Focusing, expose triangle</li>
+            <li>Adjusting the Aperture and ISO</li>
+            <li>
+              How to Read & Adjust Exposure with Your Camera | Canon Cameras for
+              Beginners
+            </li>
+            <li>
+              How to Read & Adjust Exposure with Your Camera | Canon Cameras for
+              Beginners
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="about-institute d-flex flex-column sm-device-active">
+        <div class="about-institute-heading">
+          <h2>About Institute/Mentor</h2>
+        </div>
+
+        <div class="about-institute-body d-flex">
+          <div class="about-institute-img">
+            <img [src]="'images/about-institute.png' | mediaBucket" />
+          </div>
+          <div class="about-institute-content">
+            <p>
+              Lorem ipsum dolor sit amet consectetur. Arcu cras imperdiet
+              faucibus quis sagittis sit. Mauris enim et lorem posuere sed augue
+              eleifend. Erat bibendum sit vestibulum mattis enim odio cursus
+              justo orci. Id fames semper eget sed at amet lorem. Bibendum leo
+              pellentesque nulla fames hendrerit risus neque sed eu. Venenatis
+              laoreet et pellentesque dui.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>

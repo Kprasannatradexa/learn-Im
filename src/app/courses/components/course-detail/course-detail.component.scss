@@ -1,0 +1,367 @@
+@import 'src/assets/scss/partials/variables';
+
+/* primary section */
+.primary-section {
+    background-color: $light-black;
+    margin: 0 50px;
+}
+
+.primary-section-left {
+    padding: 35px 40px;
+}
+
+.primary-section-left>div {
+    row-gap: 15px;
+}
+
+.course-provider {
+    font-weight: 600;
+    font-size: 1.375rem;
+    line-height: 120%;
+    color: $blue;
+}
+
+.course-name {
+    font-weight: 700;
+    font-size: 1.875rem;
+    line-height: 120%;
+    color: $white;
+}
+
+.course-content {
+    font-weight: 400;
+    font-size: 1.375rem;
+    line-height: 120%;
+    color: $light-gray;
+}
+
+.course-guide {
+    font-weight: 400;
+    font-size: 1.125rem;
+    line-height: 120%;
+    color: $light-gray;
+}
+
+.course-location {
+    font-weight: 400;
+    font-size: 1.125rem;
+    line-height: 120%;
+    color: $light-gray;
+}
+
+.course-hour {
+    font-weight: 400;
+    font-size: 1.125rem;
+    line-height: 120%;
+    color: $light-gray;
+}
+
+/* primary-right-section*/
+.primary-section-right {
+    padding: 0;
+}
+
+.book-slot-container>div:nth-child(2) {
+    padding: 10px 0;
+}
+
+.book-slot-container {
+    /* margin: 70px 70px 0 0; */
+    background-color: $white;
+    padding: 10px;
+    position: absolute;
+}
+
+.course-cost {
+    font-weight: 700;
+    font-size: 2.188rem;
+    line-height: 120%;
+    color: $black;
+}
+
+.course-img img {
+    width: 100%;
+    position: relative;
+}
+
+.slot-book-btn {
+    font-weight: 400;
+    font-size: 1.25rem;
+    line-height: 120%;
+    color: $white;
+    border: none;
+
+    padding: 15px;
+
+
+    background: $red;
+    column-gap: 10px;
+}
+
+.secondary-section-left {
+    padding: 0px 20px 0 0;
+    margin: 40px 0;
+}
+
+.skill-develop-list {
+    box-sizing: border-box;
+    border: 1px solid $border-color;
+    padding: 30px;
+}
+
+.skill-develop-list ul {
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 120%;
+    color: $light-gray-font-color;
+    row-gap: 15px;
+}
+
+.skill-develop-list>div:first-child h2 {
+    font-weight: 700;
+    font-size: 1.5rem;
+    line-height: 120%;
+    color: $light-black;
+    margin-bottom: 15px;
+}
+
+.secondary-section {
+    margin: 0 50px;
+}
+
+.secondary-section-right {
+    padding: 0;
+}
+
+.course-outline-heading {
+    font-weight: 700;
+    font-size: 1.5rem;
+    line-height: 120%;
+    color: $black;
+}
+
+.course-outline-list {
+    width: 346px;
+    box-shadow: 0px 0px 44px $course-outline-boxshadow-clr;
+}
+
+.course-outline-list ul {
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 120%;
+    color: $course-outline-list-clr;
+    row-gap: 15px;
+}
+
+.course-outline-list {
+
+    padding: 0 10px 20px;
+}
+
+.course-outline-list>div:first-child {
+    padding: 20px 0;
+}
+
+.course-hours {
+    font-weight: 600;
+    font-size: 1.375rem;
+    line-height: 120%;
+    color: $red;
+}
+
+.course-hours img {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+.about-institute {
+    margin: 80px 40px 0 0;
+}
+
+.about-institute-heading h2 {
+    font-weight: 700;
+    font-size: 1.5rem;
+    line-height: 120%;
+    color: $header-color;
+    margin-bottom: 15px;
+}
+
+.about-institute-img img {
+    width: 150px;
+    border-radius: 50%;
+}
+
+.about-institute-content p {
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 163%;
+    color: $light-gray-font-color;
+}
+
+.about-institute-body {
+    column-gap: 20px;
+}
+
+.sm-device-active {
+    display: none !important;
+}
+
+@media only screen and (min-width:1px) and (max-width:991px) {
+
+    .primary-section {
+        background: none;
+        margin: 0 15px;
+        flex-direction: column-reverse;
+    }
+
+    .primary-section-left {
+        /* background-color: $light-black); */
+        padding: 0;
+        margin: 10px 0;
+    }
+
+    .primary-section-right {
+        margin: 10px 0;
+    }
+
+    .book-slot-container {
+        /* margin: 70px 70px 0 0; */
+        /* background-color: $white); */
+        padding: 0;
+        position: unset;
+    }
+
+    .course-img img {
+        width: unset;
+        position: unset;
+    }
+
+    .book-slot-container>div:nth-child(2) {
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        background: $white;
+        box-shadow: 0px -2px 11px rgb(0 0 0 / 7%);
+        padding: 10px 15px;
+    }
+
+    .secondary-section {
+        margin: 0 15px;
+    }
+
+    .course-provider {
+        font-weight: 700;
+        font-size: 1rem;
+        text-shadow: 0px 0px 1px rgb(0 0 0 / 10%);
+    }
+
+    .course-name {
+        font-size: 1.563rem;
+        color: $light-black;
+    }
+
+    .course-content {
+        font-size: 1.125rem;
+        color: $light-black;
+    }
+
+    .course-location {
+        font-size: 0.875rem;
+        color: $light-gray-font-color;
+    }
+
+    .course-hour {
+        font-size: 0.875rem;
+        color: $light-gray-font-color;
+    }
+
+    .course-guide {
+        font-size: 0.875rem;
+        color: $light-gray;
+    }
+
+    .lg-device-active {
+        display: none;
+    }
+
+    .sm-device-active {
+        display: inline-flex !important;
+    }
+
+    .primary-section-left>div {
+        row-gap: 10px;
+    }
+
+    .skill-develop-list>div:first-child h2 {
+        font-size: 1.125rem;
+    }
+
+    .skill-develop-list {
+        padding: 20px 15px;
+    }
+
+    /* .skill-develop-list ul {
+        font-size: 0.813rem;
+        padding: 0 0 0 20px;
+
+    } */
+
+    .secondary-section-left {
+        padding: 0;
+        margin: 20px 0;
+    }
+
+    .course-outline-heading {
+        font-size: 1.125rem;
+    }
+
+    .course-outline-list {
+        padding: 20px 15px;
+        background: $bg-gray-color;
+        box-shadow: none;
+        width: 100%;
+    }
+
+    .course-outline-list ul,
+    .skill-develop-list ul {
+        font-size: 0.813rem;
+        padding: 0 0 0 25px;
+    }
+
+    .course-outline-list>div:first-child {
+        padding: 15px 0;
+    }
+
+    .course-hours {
+        font-size: 1.125rem;
+    }
+
+    .course-hours img {
+        width: 15px;
+        height: 15px;
+        margin-right: 8px;
+    }
+
+    .about-institute {
+        margin: 25px 0 100px;
+        padding: 0;
+    }
+
+    .about-institute-heading h2 {
+        font-size: 1.125rem;
+    }
+
+    .about-institute-content p {
+        font-size: 0.813rem;
+    }
+
+    .about-institute-img img {
+        width: 85px;
+    }
+
+    .about-institute-body {
+        column-gap: 15px;
+    }
+}
