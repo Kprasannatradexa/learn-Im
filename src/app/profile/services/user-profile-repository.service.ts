@@ -13,4 +13,8 @@ export class UserProfileRepositoryService {
   getBookedCourses(): Observable<UserBookedCourses[]> {
     return this.userProfileApiService.getBookedCourses();
   }
+
+  getCompletedCourses(): Observable<UserBookedCourses[]> {
+    return this.userProfileApiService.getCompletedCourses();
+  }
 }

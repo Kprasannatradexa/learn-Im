@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { UserBookedCourses } from 'src/app/booking/interface/user-booked-courses';
@@ -16,6 +16,13 @@ export class UserProfileApiService {
 
   getBookedCourses(): Observable<UserBookedCourses[]> {
     return this.http.get<UserBookedCourses[]>(`${this.url}/user/courses/`)
+  }
+
+  getCompletedCourses(): Observable<UserBookedCourses[]> {
+    return this.http.get<UserBookedCourses[]>(`${this.url}/user/courses/`, {
+      params: new HttpParams()
+        .set('course_status', 'Completed')
+    })
   }
 
 }
