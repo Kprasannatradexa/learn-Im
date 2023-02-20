@@ -19,6 +19,7 @@ const routes: Routes = [
   },
   {
     path: 'profile',
+    canActivate: [AuthenticationGuard],
     loadChildren: () => import('./profile/profile.module').then(m => m.ProfileModule)
   },
   {
