@@ -18,4 +18,8 @@ export class CourseRepositoryService {
     return this.courseApiService.searchCourses(searchValue);
   }
 
+  getCourseDetail(id: string): Observable<CourseDetails[]> {
+    return this.courseApiService.getCourseDetail(id);
+  }
+
 }
