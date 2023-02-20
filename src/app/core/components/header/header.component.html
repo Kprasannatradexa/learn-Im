@@ -29,7 +29,7 @@
         </div>
       </ng-container>
       <ng-container *ngIf="!(user$ | async)">
-        <button class="sign-in" (click)="navigateToSignIn()">Sign In</button>
+        <button class="sign-in" routerLink="auth/login">Sign In</button>
       </ng-container>
     </div>
   </header>

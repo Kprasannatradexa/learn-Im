@@ -1,6 +1,6 @@
 import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Observable, shareReplay } from 'rxjs';
 import { UserSession } from '../../models/user.model';
 import { UserService } from '../../services/user/user.service';
 
@@ -17,6 +17,7 @@ export class HeaderComponent implements OnInit {
 
   isScrolled: boolean = false
 
+
   @HostListener('window:scroll', ['$event']) // for window scroll events
 
   onScroll() {
@@ -30,7 +31,8 @@ export class HeaderComponent implements OnInit {
   }
 
   constructor(private router: Router,
-    private userService: UserService) { }
+    private userService: UserService,
+    private route: ActivatedRoute) { }
 
 
   ngOnInit(): void {
@@ -40,10 +42,5 @@ export class HeaderComponent implements OnInit {
   navigateToSignIn() {
     this.router.navigate(['/auth/login'])
   }
-
-  navigateToAccount() {
-    this.router.navigate(['/profile'])
-  }
-
 
 }
