@@ -7,16 +7,16 @@
 
       <div class="primary-left-part-2 top-section-searchbar">
         <form
-          action=""
+          [formGroup]="searchForm"
           class="d-flex flex-lg-row flex-column align-item-center"
         >
           <div class="inputbar d-flex align-items-center">
             <img [src]="'images/search.svg' | mediaBucket" />
             <input
               type="search"
-              name=""
-              id=""
-              placeholder="Type course name, institute, brand..."
+              formControlName="search_course"
+              placeholder="Search Products"
+              (keyup)="searchCourses()"
             />
           </div>
 
@@ -25,16 +25,27 @@
               <img [src]="'images/pin_drop.svg' | mediaBucket" />
               <input
                 type="search"
-                name=""
-                id=""
+                formControlName="search_location"
                 placeholder="City, state or zip code"
               />
             </div>
 
-            <button type="submit" class="active-lg-device">Search</button>
+            <button
+              type="submit"
+              class="active-lg-device"
+              (click)="getCourses()"
+            >
+              Search
+            </button>
 
-            <button type="submit" class="active-sm-device">
-              <img src="./images/right-arrow-button.svg" alt="" srcset="" />
+            <button
+              type="submit"
+              class="active-sm-device"
+              (click)="getCourses()"
+            >
+              <img
+                src="https://assets.hyperinvento.com/www_learnim_com/assets/learnim-assets/images/right-arrow.svg"
+              />
             </button>
           </div>
         </form>
@@ -50,15 +61,14 @@
         </div>
         <div class="col-md-8 col-9 d-flex flex-md-row flex-column">
           <div class="d-flex flex-column course-list-details">
-            <h5 class="course-provider">Video School</h5>
+            <h5 class="course-provider">{{ course.institute.name }}</h5>
             <h3 class="course-name">
-              Canon camera course : Getting started with Canon photogra...
+              {{ course.title }} : {{ course.institute.description }}
             </h3>
             <p class="course-content">
-              Improve your photography learning how to confidently use canon
-              DSLR camera - Perfectfor beginners photographer
+              {{ course.description }}
             </p>
-            <div class="d-flex flex-md-column flex-wrap">
+            <!-- <div class="d-flex flex-md-column flex-wrap">
               <span class="course-guide">Vikrant Meheta</span>
               <span class="course-duration d-flex align-items-center"
                 ><img src="./images/course-list-clock-icon.svg" alt="" /> 4
@@ -68,7 +78,7 @@
                 ><img src="./images/course-list-location-icon.svg" alt="" />
                 Bangalore</span
               >
-            </div>
+            </div> -->
           </div>
           <div>
             <div class="cost-badge">
