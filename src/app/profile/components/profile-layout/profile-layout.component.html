@@ -1,32 +1,32 @@
-<div class="container">
-  <div class="profile-container">
-    <h2 class="section-heading">My Profile</h2>
-    <ul class="nav nav-items">
-      <li
-        class="nav-item"
-        routerLink="/profile"
-        routerLinkActive="item-active"
-        [routerLinkActiveOptions]="{ exact: true }"
-      >
-        My Profile
-      </li>
-      <li
-        class="nav-item"
-        routerLink="/profile/completed-courses"
-        routerLinkActive="item-active"
-        [routerLinkActiveOptions]="{ exact: true }"
-      >
-        Courses Completed
-      </li>
-      <li
-        class="nav-item"
-        routerLink="/profile/information"
-        routerLinkActive="item-active"
-        [routerLinkActiveOptions]="{ exact: true }"
-      >
-        Information
-      </li>
-    </ul>
+<div class="main-container">
+  <div class="my-profile-header">
+    <h2>My Profile</h2>
+
+    <nav>
+      <ul class="d-flex flex-row">
+        <li
+          routerLink="/profile"
+          routerLinkActive="my-profile-active"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          My courses
+        </li>
+        <li
+          routerLink="/profile/completed-courses"
+          routerLinkActive="my-profile-active"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          Completed courses
+        </li>
+        <li
+          routerLink="/profile/information"
+          routerLinkActive="my-profile-active"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          Information
+        </li>
+      </ul>
+    </nav>
   </div>
   <router-outlet></router-outlet>
 </div>

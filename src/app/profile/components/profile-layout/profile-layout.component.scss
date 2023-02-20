@@ -1,26 +1,68 @@
-.profile-container {
-    margin: auto;
-    padding: 40px 0 0 40px;
-    background: black;
+@import 'src/assets/scss/partials/variables';
 
-    .section-heading {
-        color: white;
+
+.my-profile-header {
+    background-color: $light-black;
+    padding: 60px 40px 0px;
+    row-gap: 35px;
+    margin: 0 50px;
+}
+
+.my-profile-header h2 {
+    font-family: $georgia;
+    font-weight: 700;
+    font-size: 1.875rem;
+    line-height: 107.7%;
+    color: $white;
+    margin-bottom: 35px;
+}
+
+h2 {
+    margin: 0;
+}
+
+.my-profile-header ul {
+    list-style: none;
+    font-weight: 600;
+    font-size: 1.375rem;
+    line-height: 120%;
+    color: $white;
+    padding: 0;
+    column-gap: 70px;
+    margin: 0;
+    color: $my-profile-header-clr;
+}
+
+.my-profile-header ul li:hover {
+    cursor: pointer;
+    color: $white;
+}
+
+.my-profile-active {
+    border-bottom: 5px solid $blue;
+    padding: 0 5px;
+    color: $white;
+}
+
+@media only screen and (min-width:1px) and (max-width:768px) {
+    .my-profile-header {
+        padding: 15px 20px 0;
+        row-gap: 35px;
+        margin: 0 15px;
     }
 
-    .nav-items {
-        display: flex;
+    .my-profile-header h2 {
+        font-size: 1.563rem;
+        margin-bottom: 30px;
+    }
+
+    .my-profile-body {
+        margin: 0 15px;
+    }
+
+    .my-profile-header ul {
+        font-size: 0.75rem;
+        column-gap: unset;
         justify-content: space-between;
-        color: #FFFFFFB2;
-    }
-
-    .nav-items {
-        li {
-            font-size: 22px;
-        }
-    }
-
-    li.item-active {
-        color: #FFFFFF;
-        border-bottom: 7px solid #80CBC4;
     }
 }
