@@ -90,40 +90,42 @@
 
   <ng-container *ngFor="let course of courses">
     <div class="course-list-section">
-      <div class="row">
-        <div class="col-md-4 col-3 course-list-img">
-          <img [src]="'images/course-trial.png' | mediaBucket" />
-        </div>
-        <div
-          class="col-md-8 col-9 d-flex flex-md-row flex-column justify-content-between"
-        >
-          <div class="d-flex flex-column course-list-details">
-            <h5 class="course-provider">{{ course.institute.name }}</h5>
-            <h3 class="course-name">
-              {{ course.title }} : {{ course.institute.description }}
-            </h3>
-            <p class="course-content">
-              {{ course.description }}
-            </p>
-            <!-- <div class="d-flex flex-md-column flex-wrap">
-              <span class="course-guide">Vikrant Meheta</span>
-              <span class="course-duration d-flex align-items-center"
-                ><img src="./images/course-list-clock-icon.svg" alt="" /> 4
-                hours</span
-              >
-              <span class="course-location d-flex align-items-center"
-                ><img src="./images/course-list-location-icon.svg" alt="" />
-                Bangalore</span
-              >
-            </div> -->
+      <a [routerLink]="['/courses/' + course.id]">
+        <div class="row">
+          <div class="col-md-4 col-3 course-list-img">
+            <img [src]="'images/course-trial.png' | mediaBucket" />
           </div>
-          <div>
-            <div class="cost-badge">
-              <span>₹ 2699</span>
+          <div
+            class="col-md-8 col-9 d-flex flex-md-row flex-column justify-content-between"
+          >
+            <div class="d-flex flex-column course-list-details">
+              <h5 class="course-provider">{{ course.institute.name }}</h5>
+              <h3 class="course-name">
+                {{ course.title }} : {{ course.institute.description }}
+              </h3>
+              <p class="course-content">
+                {{ course.description }}
+              </p>
+              <!-- <div class="d-flex flex-md-column flex-wrap">
+                <span class="course-guide">Vikrant Meheta</span>
+                <span class="course-duration d-flex align-items-center"
+                  ><img src="./images/course-list-clock-icon.svg" alt="" /> 4
+                  hours</span
+                >
+                <span class="course-location d-flex align-items-center"
+                  ><img src="./images/course-list-location-icon.svg" alt="" />
+                  Bangalore</span
+                >
+              </div> -->
+            </div>
+            <div>
+              <div class="cost-badge">
+                <span>₹ 2699</span>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </a>
     </div>
     <hr />
   </ng-container>
