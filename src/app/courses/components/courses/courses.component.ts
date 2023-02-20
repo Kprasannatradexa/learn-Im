@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { catchError, debounceTime, map, Observable, of, ReplaySubject, Subject, takeUntil } from 'rxjs';
@@ -12,6 +12,9 @@ import { CourseRepositoryService } from '../../services/course-repository.servic
   styleUrls: ['./courses.component.scss']
 })
 export class CoursesComponent implements OnInit {
+
+  @ViewChild('megaMenu') megaMenu!: ElementRef;
+
 
   courses$!: Observable<CourseDetails[]>
 
@@ -96,6 +99,11 @@ export class CoursesComponent implements OnInit {
     }
   }
 
+  patchCourseToSearch(course: string) {
+    this.search_course.setValue(course);
+    this.megaMenu.nativeElement.style.display = 'none';
+  }
+
 
   get isSearching() {
     const isSearching = this.route.snapshot.parent?.url.length &&
@@ -126,7 +134,7 @@ export class CoursesComponent implements OnInit {
         )
       }
       queries = Object.values(queries).join(',').replace(',', ' ');
-
+      this.searchForm.reset();
       this.router.navigate(['/search'], { queryParams: { query: queries }, queryParamsHandling: 'merge' })
     }
   }

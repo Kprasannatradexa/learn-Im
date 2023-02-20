@@ -150,6 +150,53 @@ p {
 }
 
 
+.mega-menu {
+    background-color: #FFFFFF;
+    border: 1px solid rgba(42, 44, 48, 0.4);
+    box-shadow: 0px 3px 10px rgb(0 0 0 / 25%);
+    width: 610px;
+    margin-top: 5px;
+    /* position: absolute; */
+}
+
+.mega-menu ul {
+    padding: 20px;
+    margin: 0px;
+}
+
+.mega-menu ul a {
+    column-gap: 20px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 107.7%;
+    color: #2A2C30;
+    text-decoration: none;
+}
+
+.mega-menu ul li:hover {
+    opacity: 0.8;
+    background-color: $bg-gray-color;
+}
+
+
+.mega-menu ul a img {
+    width: 15px;
+    height: 15px;
+}
+
+.mega-menu ul li {
+    /* column-gap: 40px;
+    padding: 10px; */
+    list-style: none;
+    padding: 10px;
+}
+
+.close-mega-menu {
+    padding: 10px 15px;
+}
+
+
 
 @media only screen and (min-width:1px) and (max-width:768px) {
 
@@ -248,5 +295,30 @@ p {
 
     .course-list-section hr {
         margin: 20px 0;
+    }
+
+    .mega-menu ul a {
+        font-size: 12px;
+    }
+
+    .mega-menu {
+        width: 100%;
+    }
+
+    .position-top {
+        top: 45%;
+    }
+
+    .mega-menu ul a img {
+        width: 13px;
+        height: 13px;
+    }
+
+    .mega-menu ul {
+        padding: 10px;
+    }
+
+    .mega-menu ul li {
+        padding: 8px;
     }
 }
