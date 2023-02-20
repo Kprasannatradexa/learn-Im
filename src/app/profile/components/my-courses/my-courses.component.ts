@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { catchError, Observable, of } from 'rxjs';
+import { UserBookedCourses } from 'src/app/booking/interface/user-booked-courses';
+import { NotificationService } from 'src/app/core/services/notification/notification.service';
+import { UserProfileRepositoryService } from '../../services/user-profile-repository.service';
 
 @Component({
   selector: 'app-my-courses',
@@ -7,9 +11,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MyCoursesComponent implements OnInit {
 
-  constructor() { }
+  bookedCourses$!: Observable<UserBookedCourses[]>;
+
+  constructor(private userProfileRepositoryService: UserProfileRepositoryService,
+    private notificationService: NotificationService) { }
 
   ngOnInit(): void {
+    this.bookedCourses$ = this.userProfileRepositoryService.getBookedCourses().pipe(
+      catchError(() => {
+        this.notificationService.showError('Failed to load booked courses.')
+        return of()
+      })
+    )
   }
 
 }

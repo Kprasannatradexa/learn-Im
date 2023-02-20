@@ -1,1 +1,8 @@
-<p>my-courses works!</p>
+<ng-container *ngIf="bookedCourses$ | async as bookedCourses">
+  <ng-container *ngIf="bookedCourses.length; else notBooked">
+    <ng-container *ngFor="let bookedCourse of bookedCourses">
+      You can now start learning.
+    </ng-container>
+  </ng-container>
+</ng-container>
+<ng-template #notBooked> Please book a course. </ng-template>
