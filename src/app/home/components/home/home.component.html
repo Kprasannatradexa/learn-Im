@@ -20,9 +20,7 @@
             class="d-flex flex-lg-row flex-column align-item-center"
           >
             <div class="inputbar d-flex align-items-center">
-              <img
-                src="https://assets.hyperinvento.com/www_learnim_com/assets/learnim-assets/images/search.svg"
-              />
+              <img [src]="'images/search.svg' | mediaBucket" />
               <input
                 type="search"
                 formControlName="search_course"
@@ -33,9 +31,7 @@
 
             <div class="d-flex">
               <div class="inputbar d-flex align-items-center">
-                <img
-                  src="https://assets.hyperinvento.com/www_learnim_com/assets/learnim-assets/images/pin_drop.svg"
-                />
+                <img [src]="'images/pin_drop.svg' | mediaBucket" />
                 <input
                   type="search"
                   formControlName="search_location"

@@ -11,7 +11,7 @@
           class="d-flex flex-lg-row flex-column align-item-center"
         >
           <div class="inputbar d-flex align-items-center">
-            <img src="./images/search.svg" alt="" />
+            <img [src]="'images/search.svg' | mediaBucket" />
             <input
               type="search"
               name=""
@@ -22,7 +22,7 @@
 
           <div class="d-flex">
             <div class="inputbar d-flex align-items-center">
-              <img src="./images/pin_drop.svg" alt="" />
+              <img [src]="'images/pin_drop.svg' | mediaBucket" />
               <input
                 type="search"
                 name=""
