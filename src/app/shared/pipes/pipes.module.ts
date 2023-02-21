@@ -17,7 +17,8 @@ import { MeridiemPipe } from './meridiem.pipe';
   ],
   exports: [
     MediaBucketPipe,
-    CompleteAddressConcatPipe
+    CompleteAddressConcatPipe,
+    MeridiemPipe
   ]
 })
 export class PipesModule { }
