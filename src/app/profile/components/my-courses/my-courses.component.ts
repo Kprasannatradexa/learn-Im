@@ -17,7 +17,7 @@ export enum BookStatus {
 })
 export class MyCoursesComponent implements OnInit {
 
-  @ViewChild('kebabMenu') kebabMenu!: ElementRef;
+  isKebabMenuClicked: boolean = false;
 
   BookStatus = BookStatus;
 
@@ -33,6 +33,10 @@ export class MyCoursesComponent implements OnInit {
         return of()
       })
     )
+  }
+
+  openKebabMenu() {
+    this.isKebabMenuClicked = !this.isKebabMenuClicked;
   }
 
 }

@@ -10,12 +10,16 @@
             <div class="card-img position-relative">
               <div class="kebab-menu">
                 <div
+                  (click)="openKebabMenu()"
                   class="kebab-menu-icon position-absolute d-flex justify-content-center align-items-center"
                 >
                   <img [src]="'images/kebab-menu.svg' | mediaBucket" />
                 </div>
 
-                <div class="position-absolute kebab-menu-view" #kebabMenu>
+                <div
+                  class="position-absolute kebab-menu-view"
+                  *ngIf="isKebabMenuClicked"
+                >
                   <ul class="d-flex flex-column">
                     <li>
                       <img
