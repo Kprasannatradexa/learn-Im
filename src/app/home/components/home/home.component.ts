@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { catchError, debounceTime, distinctUntilChanged, map, Observable, of, ReplaySubject, Subject, tap } from 'rxjs';
@@ -15,6 +15,12 @@ import { HomeRepositoryService } from '../../services/home-repository.service';
 export class HomeComponent implements OnInit {
 
   @ViewChild('megaMenu') megaMenu!: ElementRef;
+
+  @HostListener('document:click', ['$event.target']) onClick(target: any) {
+    if (this.megaMenu && !this.megaMenu.nativeElement.contains(target)) {
+      this.megaMenu.nativeElement.style.display = 'none';
+    }
+  }
 
   searchCourse = new Subject<string>();
   searchCourse$ = this.searchCourse.asObservable();
@@ -62,7 +68,8 @@ export class HomeComponent implements OnInit {
       }))
 
     this.searchCourse$.pipe(
-      debounceTime(1000)
+      debounceTime(1000),
+      distinctUntilChanged()
     ).subscribe((searchValue: string) => {
       this.getSearchedCourseNames(searchValue);
     })

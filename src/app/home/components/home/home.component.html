@@ -65,27 +65,24 @@
             class="mega-menu position-absolute"
             [ngClass]="{ 'position-top': search_course.value }"
             #megaMenu
+            *ngIf="searchedCourseNames$ | async as searchedCourseNames"
           >
-            <ng-container
-              *ngIf="searchedCourseNames$ | async as searchedCourseNames"
-            >
-              <ng-container *ngIf="searchedCourseNames.length; else noCourses">
-                <ul class="d-flex flex-column">
-                  <li *ngFor="let searchedCourseName of searchedCourseNames">
-                    <a
-                      class="d-flex"
-                      (click)="patchCourseToSearch(searchedCourseName)"
-                    >
-                      <div>
-                        <img
-                          src="https://assets.hyperinvento.com/www_learnim_com/assets/learnim-assets/images/search.svg"
-                        />
-                      </div>
-                      <div>{{ searchedCourseName }}</div>
-                    </a>
-                  </li>
-                </ul>
-              </ng-container>
+            <ng-container *ngIf="searchedCourseNames.length; else noCourses">
+              <ul class="d-flex flex-column">
+                <li *ngFor="let searchedCourseName of searchedCourseNames">
+                  <a
+                    class="d-flex"
+                    (click)="patchCourseToSearch(searchedCourseName)"
+                  >
+                    <div>
+                      <img
+                        src="https://assets.hyperinvento.com/www_learnim_com/assets/learnim-assets/images/search.svg"
+                      />
+                    </div>
+                    <div>{{ searchedCourseName }}</div>
+                  </a>
+                </li>
+              </ul>
             </ng-container>
             <ng-template #noCourses>
               <ul class="d-flex flex-column">
