@@ -1,0 +1,71 @@
+@import 'src/assets/scss/partials/variables';
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    margin: 0;
+}
+
+.my-profile-body {
+    margin: 60px 160px;
+    padding: 25px;
+    border: 1px solid $my-profile-body-color;
+}
+
+.information-header {
+    margin-bottom: 30px;
+}
+
+.information-header h2 {
+    font-weight: 600;
+    font-size: 1.5rem;
+    line-height: 120%;
+    color: $light-black;
+}
+
+.information-header img {
+    width: 20px;
+    height: 20px;
+}
+
+.information-header img:hover {
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+.information-body {
+    row-gap: 30px;
+}
+
+.information-body span {
+    font-weight: 600;
+    font-size: 1rem;
+    line-height: 120%;
+    color: $information-body-color;
+}
+
+.information-body p {
+    font-weight: 600;
+    font-size: 1.25rem;
+    line-height: 120%;
+    color: $light-black;
+}
+
+@media only screen and (min-width:1px) and (max-width:768px) {
+    .my-profile-body {
+        margin: 45px 15px;
+    }
+
+    .information-header h2 {
+        font-size: 1.25rem;
+    }
+
+    .information-header img {
+        width: 15px;
+        height: 15px;
+    }
+}

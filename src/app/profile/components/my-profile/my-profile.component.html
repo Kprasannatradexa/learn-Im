@@ -1,3 +1,28 @@
 <ng-container *ngIf="userDetail$ | async as userDetail">
-  <h1>{{ userDetail.first_name }} {{ userDetail.last_name }}</h1>
+  <div class="main-container">
+    <div class="my-profile-body">
+      <div
+        class="d-flex justify-content-between align-items-center information-header"
+      >
+        <h2>General Information</h2>
+        <img [src]="'images/edit.svg' | mediaBucket" />
+      </div>
+      <div
+        class="d-flex flex-lg-row flex-column justify-content-md-between information-body"
+      >
+        <div>
+          <span>Name</span>
+          <p>{{ userDetail.first_name }} {{ userDetail.last_name }}</p>
+        </div>
+        <div>
+          <span>Contact</span>
+          <p>+91{{ userDetail.mobile_number }}</p>
+        </div>
+        <div>
+          <span>Email</span>
+          <p>{{ userDetail.email }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </ng-container>
