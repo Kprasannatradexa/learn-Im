@@ -1,0 +1,156 @@
+@import 'src/assets/scss/partials/variables';
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    margin: 0;
+}
+
+.my-profile-body {
+    margin: 0 50px;
+}
+
+
+.card-content {
+    row-gap: 15px;
+    padding: 25px 0;
+}
+
+.kebab-menu-icon {
+    width: 30px;
+    height: 30px;
+    background: $my-profile-header-clr;
+    box-shadow: 0px 2px 4px rgb(0 0 0 / 25%);
+    right: 0;
+    top: 0;
+    margin: 10px;
+}
+
+.kebab-menu-icon:hover {
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+
+
+
+.card-img img {
+    width: 100%;
+}
+
+.card-content .course-provider h4 {
+    font-weight: 600;
+    font-size: 1.125rem;
+    line-height: 120%;
+    color: $light-gray-font-color;
+}
+
+.card-content .course-name h2 {
+    font-weight: 600;
+    font-size: 1.25rem;
+    line-height: 120%;
+    color: $light-black;
+}
+
+.course-period {
+    flex-wrap: wrap;
+    row-gap: 10px;
+}
+
+.course-period div {
+    margin-right: 10px;
+}
+
+.course-period img {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+}
+
+.course-period div span {
+    font-weight: 600;
+    font-size: 1.125rem;
+    line-height: 120%;
+    color: $light-gray-font-color;
+}
+
+.course-status {
+    column-gap: 20px;
+    padding: 10px;
+}
+
+.status-warning {
+    background-color: $status-warning-bg-clr;
+}
+
+.status-success {
+    background-color: $status-success-bg-clr;
+}
+
+.col-pad {
+    padding: 20px;
+}
+
+.bs-gutter-x {
+    --bs-gutter-x: 40px;
+}
+
+.kebab-menu img {
+    width: 5px;
+}
+
+.kebab-menu-view {
+    background-color: $white;
+    width: 140px;
+    right: 10px;
+    padding: 10px;
+    top: 45px;
+}
+
+.kebab-menu-view img {
+    width: 15px;
+    margin-right: 5px;
+}
+
+.kebab-menu-view ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    font-weight: 400;
+    font-size: 0.875rem;
+    line-height: 120%;
+    color: $light-black;
+    row-gap: 15px;
+}
+
+.kebab-menu-view ul li:hover {
+    cursor: pointer;
+}
+
+@media only screen and (min-width:1px) and (max-width:768px) {
+    .my-profile-body {
+        margin: 0 15px;
+    }
+
+    .col-pad {
+        padding: unset;
+    }
+
+    .bs-gutter-x {
+        --bs-gutter-x: unset;
+    }
+
+    .col-pad {
+        padding: 10px;
+    }
+
+    .bs-gutter-x {
+        --bs-gutter-x: 20px;
+    }
+}
